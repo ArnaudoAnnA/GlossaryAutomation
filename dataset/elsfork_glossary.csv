@@ -1,0 +1,66 @@
+term,definition
+Accuracy (for wind turbines),Specified value of a parameter that represents the uncertainty in the measurement.
+Address,"Field, or Fields, in a message identifying both the source and / or destination of the message."
+Alarm,Information for attracting attention to some abnormal state.
+Analogue signal,Signal in the form of a continuously variable value.
+Application layer,"The top layer, Layer 7, in the ISO Reference Model comprising the interface between the ISO environment and the IED's / user's applications."
+Availability,The availability of a unit or system characterises its ability to perform its required function at any given moment.
+Availability (for wind turbines),"Ratio of the total number of hours during a certain period, excluding the number of hours that the wind turbine could not be operated due to maintenance or fault situations, to the total number of hours in the period, expressed as a percentage."
+Binary state information,"Monitored information of the status of operational equipment that is characterised by one of two states, for example on/off."
+Check sequence; check sum,Part of a message used for error checking or error correcting purpose.
+Client,"An IED, or user, that requests data or services from another IED, or user, which thus responds as a server."
+Command,Information used to cause a change of state of operational equipment.
+Communication stack,"A 7 Layer stack, ISO Reference Model, each layer performing a specific functional role in Open Systems Interconnection communication."
+Configuration (of a system or device),"A step in system design e.g. selecting of functional units, assigning their locations and defining their interconnections. Configuration is the process setting up the required parameters for a specific application."
+Connection,An association established between functional units for conveying information. A connection is established between two IEDs prior to any data exchange. A connection may be of short duration or long term.
+Control,Purposeful action on or in a system to meet specified objectives.
+Control centre,A control centre is a location where a master station is located.
+Control system (for wind turbines),Sub-system that receives information about the condition of the wind turbine and/or its environment and adjusts the turbine in order to maintain it within its operating limits.
+CRC,Cyclic Redundancy Check. A CRC is performed for each frame and the value is included in that frame when it is transmitted. The CRC check calculation may be simple or complex depending on the protocol being used. The CRC value is used by the recipient communication interface to check and if possible correct errors incurred during transmission of that frame.
+Data consistency,Measure of conformity of information on variables at different locations in different instants.
+Data integrity,The ability of a communication system to deliver data from its originator to its destination with an acceptable residual error rate.
+Data Link Layer,"Layer 2 of the ISO Reference Model, responsible for the transmission of data over a physical medium. After establishing the link, layer 2 performs data rate control, error detection, contention / collision detection and recovery."
+Data object,A reference structure comprised of one or more data items. Used to represent the specific elements of functionality of the device. These data objects may be hierarchical and may be nested to any number of levels.
+Data security,"Procedures and actions designed to prevent the unauthorised disclosure, transfer, modification or destruction, whether accidental or intentional, of data."
+Data type,"A defined method of data presentation, for example data type INTEGER for whole numbers or data type OCTET STRING for an assembly of octets."
+Digital measured value,Digital representation of a measured value.
+Encryption,The cryptographic transformation of data to produce ciphertext.
+Event information,Monitored information on the change of state of operational equipment.
+Function,"Functions are tasks that are performed in the control centre or the wind power plant by the system. Generally, a function consists of subfunctions that exchange data which each other. Depending on the function definition functions itself exchange data with other functions. There is no unique allocation of functions or subfunctions to devices. One ore more functions may reside in a single device or be distributed among several devices at the same or at different control levels. In minimum, the most functions consist of three subfunctions, i.e. the subfunctions with the core functionality itself, the process interface function and the HMI (human-machine interface) function meaning human access to the function."
+Flow control (in the communication sense),Control of the data transfer rate.
+HMI,"Human Machine Interface - A Display screen, either part of an IED or as a standalone device, presenting relevant data in a logical format with which the user interacts. An HMI will typically present windows, icons, menus, and pointers, and may include a keypad to enable user access and interaction."
+IED,"Intelligent Electronic Device - e.g. numeric Protection relay, or Bay controller, or multi-function electronic Meter. An IED may have connections as a client, or as a server, or both, with other IEDs. An IED is, therefore, any device incorporating one or more processors, with the capability to receive, or send, data / control from, or to, an external source. An IED may provide multi-Function capability."
+Interface,"A shared boundary between two functional units, defined by functional characteristics, e.g. common physical interconnection characteristics, signal characteristics or other characteristics as appropriate, and the provision of a declared collection of services."
+Interoperability,"The ability of two, or more, IEDs, from the same or different vendors, to communicate, exchange data and use that information for correct operation."
+IP,"Internet Protocol - the TCP/IP standard protocol. IP defines the datagram that provides the basis of connectionless packet delivery. It includes control and error message protocol providing the equivalent functions to Network services, Layer 3, of the OSI Reference Model."
+Maintenance,The combination of all technical and corresponding administrative actions intended to retain an item in or restore it to a state in which it can perform its required function.
+MMS,Manufacturing Message Specification - standard ISO 9506.
+Meter reading,A value representing the integrated total of a measurable variable (such as energy flow) taken of a specified point in time.
+Overall response time,"The time interval between the initiation of an event in a sending station and the output, in the same station, of the associated response coming from the receiving station."
+Overall transfer time,The time duration by which information is delayed after the actual event in the sending station and until presentation at the receiving station.
+Periodic data transmission,Transmission of sets of data that is repeated in equal time intervals.
+PICOM,Piece of information for COMmunication.
+Protocol,The rules for communication system operation that must be followed if communication is to be effected.
+Quality of Service (QoS),"A set of characteristics of a connection described in terms of quality of service (QoS) parameters, normally negotiated between peer entities."
+Reliability,The ability of a functional unit to perform a required function under stated conditions for a stated period of time.
+Remote control,Control of an operation from a distance. This involves a link between the control device and the apparatus to be operated.
+RTU,Remote Terminal Unit - an RTU acts as an interface between the communication network and the substation equipment.
+Server,"On a communication network, a server provides data, or allows access to its resources."
+Set point command,A command in which the value for the required state of operational equipment is transmitted to a controlled station where it is stored.
+Signal,"A visual, audible or other indication used to convey information."
+Single point information,Monitored information represented by only one bit characterising two determined states of operational equipment.
+Spontaneous data transfer,Data transfer initiated by an application process upon events or change of data.
+Supervisory Control and Data Acquisition (SCADA),A system that supervises and controls a geographically distributed process.
+Switching command,A command used to change the state of two-state operational equipment from one state to the other state.
+TCP/IP,Transmission Control Protocol/Internet Protocol.
+Telecontrol application service element (TASE),A specific application service element for telecontrol purpose.
+"Time resolution, limit of accuracy of chronology",The minimum time by which two events must be separated in order that the corresponding time tags be different.
+Time tagging,"Method of transmission of change-of-state so that transmitted information is accompanied by data giving the registered time at which the change occurred, within the time resolution."
+Transmission on demand,A transmission method in which messages are transmitted only as result of a request such as an interrogation command from a control centre or master station.
+Transmission quality,"A term specifying some quality description of a communication network, e.g. bit error rate, availability of a dedicated channel, probability of bit error bursts, signal to noise ratio, amplitude and phase distortion, non-linearities, inter-channel interference."
+Transport Layer,"Layer 4 of the ISO OSI Reference Model, acts as an intermediary between the Network and the User application."
+Wind farm,"A Wind farm is characterised by the size and the location of the wind power plant, i.e. the effects on the power network. Furthermore, the properties and functions of the wind farm are more advanced than of a smaller wind power plant. A wind farm generally has a main controller for co-ordinated control of the individual wind turbines. The wind farm will typically have its own high voltage feeder network with a number of small substations. The electrical properties and behaviour of the wind farm is of such a nature, that it typically will be met with specific requirements regarding power quality and reactive power compensation. In some locations, the wind farm must participate actively in the regulation of the network stability."
+Wind power plant,Wind power plant is the general name for one or more wind turbines that converts kinetic energy in the wind into electrical energy within a geographically confined area.
+Wind turbine,System that converts kinetic energy in the wind into electrical energy.
+Field device,"Wind turbine controllers, pitch/yaw drive actuators, condition monitoring devices, and meteorological sensors"
+Office application,"SCADA management suites, energy accounting software, predictive maintenance databases, and reporting tools"

@@ -1,0 +1,5 @@
+google-genai==1.74.0
+filelock
+pydantic
+torch
+transformers

@@ -1,0 +1,47 @@
+term,definition
+A&G,Acquisition and Guiding
+Access Mode Allocation,"A method of allocation resources that works using both access method and access privileges. For example, the Telescope Operator may be able to issue direct commands to the TCS, even while the TCS is under the control of a planned observing program. An on-site observer might have privileges that allow the monitoring of systems that are allocated to others."
+ACK/NAK,Any communication protocol that mandates either a positive or negative acknowledgment to all messages.
+(network) Bridging,"The use of hardware to isolate sections of a network, so messages with both source and destination on the same section are not transmitted to other sections."
+CASE,Computer-Aided Software Engineering
+CLUI,Command Line User Interface
+Data-loss compression,"Any compression algorithm that results in the loss of original data (resolution) after uncompression. Typical compression savings from these algorithms depend upon the amount of data loss that is acceptable, but can exceed 99%. Also see 'loss-less compression'."
+DBMS,Database Management System
+Eavesdropping,Allowing an observer to watch an observation from a secondary site
+ESO,European Southern Observatory
+FITS,Flexible Image Transport System
+GUI,Graphical User Interface
+(command) Handshaking,"A software protocol where subsystems acknowledge acceptance of a command. Unlike ACK/NAK, handshaking acknowledges acceptance of the message contents."
+HOS,High-level Operations Software
+ICS,Instrument Control Software
+IOC,Input/Output Control Module
+IPC,Interprocess Communication
+LAN,Local Area Network
+Loss-less compression,Any compression algorithm that results in no data loss on uncompression. Typical compression savings with loss-less compression are 25-75%. Also see data-loss compression.
+NFS,Network File System
+Observing Modes,The 'styles' of observing supported by the Gemini Control System
+OCS,Observatory Control Software
+Planner,A software-environment for developing observing software
+RDBMS,Relational DBMS
+ROM,Read-Only memory
+RPC,Remote Procedure Call
+Scheduler,The portion of the Gemini Control System that is responsible for dispatching Science Programs to the Sequencer for execution.
+Science Program,"A formal description of an observers plan for using the Gemini 8-m Telescopes, suitable for near-automatic execution."
+Sequencer,The command interpreter for Science Programs and telescope control
+SRS,Software Requirements Specification (this document)
+STARCAT,Space Telescope Archive and Catalog
+TBD,To Be Determined
+TCS,Telescope Control Software
+VLT,ESO's Very Large Telescope
+VOS,Virtual Observatory System - a model for designing the Gemini Control System that seeks to minimize both intersystem dependencies as well as hide subsystem implementation details from system level operations.
+VSI,Virtual System Interface - a layer of interface abstraction within the VOS that serves to isolate and hide implementation-specific interface requirements.
+WAN,Wide-Area Network
+Telnet,Client-server application protocol
+FTP,File Transfer Protocol
+SMTP,Simple Mail Transfer Protocol
+Interactive,"The observing mode that allows an observer to interactively alter or execute viewing programs using a visual interface, with real-time participation enabled across multiple stations"
+Queue-based,"The observing mode that executes preprogrammed sequences via a software scheduler, dynamically selecting and interleaving science programs based on target positions, site weather conditions, and instrument availability."
+Remote diagnostics,The capability of the system to support off-site troubleshooting. They include analyzing axis motor encoder telemetry and performing thermal sensor health checks.
+Visiting Astronomer's Home Institute,"The base institutions of visiting astronomers, which function as remote sites for using the Gemini 8m Telescopes. Astronomers can conduct remote observations directly from these locations."
+Operations staff,"Highly experienced users-such as night assistants, telescope operators, and operations supervisors-who oversee the Gemini 8m Telescopes. Their primary responsibilities include controlling the telescopes, monitoring system safety and performance, and advising astronomers on efficient equipment use."
+Operations facilities,The various locations where users of the Gemini system are situated.

@@ -1,0 +1,617 @@
+[
+  {
+    "requirement": "The FCP shall configure each ICP as a simplex VG.",
+    "targets": [
+      {
+        "target": "Simplex",
+        "term_to_substitute": "simplex VG",
+        "possible_definition": "A single-processor unit that operates independently without redundant parallel partners."
+      },
+      {
+        "target": "FCP",
+        "term_to_substitute": "FCP",
+        "possible_definition": "The Fault Containment Processor, the main flight control computer that coordinates the other processors."
+      },
+      {
+        "target": "ICP",
+        "term_to_substitute": "ICP",
+        "possible_definition": "The Input/Output Control Processor, a peripheral processor that manages I/O boards and network interfaces."
+      },
+      {
+        "target": "Virtual Group",
+        "term_to_substitute": "VG",
+        "possible_definition": "A virtual processor group in a parallel processing environment."
+      }
+    ]
+  },
+  {
+    "requirement": "Boot phase, from hardware reset to starting of the 50 Hz timer, shall take no longer than 1.5 minutes.",
+    "targets": [
+      {
+        "target": "Start-up",
+        "term_to_substitute": "Boot phase",
+        "possible_definition": "The specific period spanning from physical hardware reset until the primary scheduler and timers are fully active."
+      },
+      {
+        "target": "Hardware reset",
+        "term_to_substitute": "hardware reset",
+        "possible_definition": "A hardware-triggered reset that restores the processor to its initial state."
+      }
+    ]
+  },
+  {
+    "requirement": "The FCP shall, if the NEFU ICP fails to send its ICP Ready signal, suppress input from that ICP, but continue to use the NE.",
+    "targets": [
+      {
+        "target": "suppress input from",
+        "term_to_substitute": "Masking",
+        "possible_definition": "To actively ignore and discard data and signals coming from a specific module deemed faulty or untrusted."
+      },
+      {
+        "target": "NEFU ICP",
+        "term_to_substitute": "NEFU ICP",
+        "possible_definition": "The Network Element Front Unit Input/Output Control Processor."
+      },
+      {
+        "target": "ICP Ready signal",
+        "term_to_substitute": "ICP Ready signal",
+        "possible_definition": "The signal sent by an ICP indicating that it has completed initialization and is ready to communicate."
+      },
+      {
+        "target": "FCP",
+        "term_to_substitute": "FCP",
+        "possible_definition": "The Fault Containment Processor, the main flight control computer that coordinates the other processors."
+      },
+      {
+        "target": "ICP",
+        "term_to_substitute": "ICP",
+        "possible_definition": "The Input/Output Control Processor, a peripheral processor that manages I/O boards and network interfaces."
+      },
+      {
+        "target": "NE",
+        "term_to_substitute": "NE",
+        "possible_definition": "The Network Element, a node within the fiber optic network."
+      }
+    ]
+  },
+  {
+    "requirement": "The FCP shall wait up to 15 seconds, after configuring the ICP redundant processor groups, for communication to start from the ICP. The application can use this time on the ICP to initialize I/O boards.",
+    "targets": [
+      {
+        "target": "Virtual Group",
+        "term_to_substitute": "redundant processor groups",
+        "possible_definition": "Logical or physical groupings of processors operating in parallel to verify output consistency and tolerate localized faults."
+      },
+      {
+        "target": "I/O boards",
+        "term_to_substitute": "I/O boards",
+        "possible_definition": "Hardware boards that handle input and output operations for the processor."
+      },
+      {
+        "target": "FCP",
+        "term_to_substitute": "FCP",
+        "possible_definition": "The Fault Containment Processor, the main flight control computer that coordinates the other processors."
+      },
+      {
+        "target": "ICP",
+        "term_to_substitute": "ICP",
+        "possible_definition": "The Input/Output Control Processor, a peripheral processor that manages I/O boards and network interfaces."
+      }
+    ]
+  },
+  {
+    "requirement": "If the failed FCP processor has not synced in 2.5 seconds after the surviving triplex has detected the loss of the FCP, then the surviving triplex shall, within 1 second, send a single voted VMEbus reset through the NE to the failed FCP",
+    "targets": [
+      {
+        "target": "Surviving triplex",
+        "term_to_substitute": "surviving triplex",
+        "possible_definition": "The remaining three processors (of a redundant set) that keep operating after another processor has failed."
+      },
+      {
+        "target": "VMEbus reset",
+        "term_to_substitute": "VMEbus reset",
+        "possible_definition": "A reset of the VMEbus, triggered only when a strict majority of redundant voters agree on the state."
+      },
+      {
+        "target": "FCP",
+        "term_to_substitute": "FCP",
+        "possible_definition": "The Fault Containment Processor, the main flight control computer that coordinates the other processors."
+      },
+      {
+        "target": "NE",
+        "term_to_substitute": "NE",
+        "possible_definition": "The Network Element, a node within the fiber optic network."
+      }
+    ]
+  },
+  {
+    "requirement": "System Initialization shall synchronize the FCP virtual group in the presence of a startup delay of 2.5 seconds.",
+    "targets": [
+      {
+        "target": "Start-up",
+        "term_to_substitute": "System Initialization",
+        "possible_definition": "The transitional operating state during which the system performs startup diagnostics, configures hardware, and loads the runtime environment."
+      },
+      {
+        "target": "Virtual Group",
+        "term_to_substitute": "virtual group",
+        "possible_definition": "A logical group of processors operating in parallel to verify consistent output and tolerate faults."
+      },
+      {
+        "target": "Power-up skew",
+        "term_to_substitute": "startup delay",
+        "possible_definition": "A designated waiting period during system initialization to allow hardware components to stabilize or complete their boot sequences."
+      },
+      {
+        "target": "FCP",
+        "term_to_substitute": "FCP",
+        "possible_definition": "The Fault Containment Processor, the main flight control computer that coordinates the other processors."
+      },
+      {
+        "target": "Synchronization",
+        "term_to_substitute": "synchronize",
+        "possible_definition": "To bring redundant processors into execution lockstep within a defined synchronization tolerance."
+      }
+    ]
+  },
+  {
+    "requirement": "In the Fault Recovery state the system performs re-integration.",
+    "targets": [
+      {
+        "target": "Fault Recovery state",
+        "term_to_substitute": "Fault Recovery state",
+        "possible_definition": "The operating state in which the system detects and recovers from faults, including re-integration of failed components."
+      },
+      {
+        "target": "Re-integration",
+        "term_to_substitute": "re-integration",
+        "possible_definition": "The process of restoring a previously isolated or failed redundant component back into active, synchronized operation."
+      }
+    ]
+  },
+  {
+    "requirement": "System Initialization is entered when the system is powered up for the first time, or when a power on reset exception is received by the software.",
+    "targets": [
+      {
+        "target": "Start-up",
+        "term_to_substitute": "System Initialization",
+        "possible_definition": "The transitional operating state during which the system performs startup diagnostics, configures hardware, and loads the runtime environment."
+      },
+      {
+        "target": "Power on reset",
+        "term_to_substitute": "power on reset exception",
+        "possible_definition": "A hardware exception triggered when power is initially applied or cycled, causing the processor to reset to its initial state."
+      }
+    ]
+  },
+  {
+    "requirement": "The system transfers to the Normal Operation state after the FCP has been configured into a redundant processor set and enables the timer interrupt.",
+    "targets": [
+      {
+        "target": "Normal Operation state",
+        "term_to_substitute": "Normal Operation state",
+        "possible_definition": "The steady-state operating mode reached after initialization and configuration are complete."
+      },
+      {
+        "target": "Virtual Group",
+        "term_to_substitute": "redundant processor set",
+        "possible_definition": "A group of multiple processors configured to execute the same operations concurrently to provide fault tolerance."
+      },
+      {
+        "target": "Timer interrupt",
+        "term_to_substitute": "timer interrupt",
+        "possible_definition": "An interrupt generated by the system timer at regular intervals to drive periodic processing."
+      },
+      {
+        "target": "FCP",
+        "term_to_substitute": "FCP",
+        "possible_definition": "The Fault Containment Processor, the main flight control computer that coordinates the other processors."
+      }
+    ]
+  },
+  {
+    "requirement": "The system will transfer to the System Initialization state if an exception during instruction execution is received.",
+    "targets": [
+      {
+        "target": "Start-up",
+        "term_to_substitute": "System Initialization state",
+        "possible_definition": "The operating state entered at power-up in which the system performs startup diagnostics and configuration."
+      },
+      {
+        "target": "Exceptions",
+        "term_to_substitute": "exception",
+        "possible_definition": "An anomalous event or error, such as a divide-by-zero or memory access violation, encountered by the CPU while executing a program."
+      }
+    ]
+  },
+  {
+    "requirement": "If a permanent fault has occurred, for example, the system will, when the transfer is made back to Normal Operation state, be capable of handling another fault.",
+    "targets": [
+      {
+        "target": "Permanent Failure",
+        "term_to_substitute": "permanent fault",
+        "possible_definition": "A severe hardware or software failure from which the system cannot autonomously recover without a full restart or maintenance."
+      },
+      {
+        "target": "Normal Operation state",
+        "term_to_substitute": "Normal Operation state",
+        "possible_definition": "The steady-state operating mode reached after initialization and configuration are complete."
+      },
+      {
+        "target": "Permanent Failure",
+        "term_to_substitute": "fault",
+        "possible_definition": "A hardware or software failure that causes incorrect system behavior."
+      }
+    ]
+  },
+  {
+    "requirement": "As part of System Initialization, the Boot ROM shall be configured to, after completing the initial self-test, call the manufacturer-supplied VxWorks Board Support Package (BSP) initialization software followed by a call to the FTSS System Initialization software.",
+    "targets": [
+      {
+        "target": "Boot ROM",
+        "term_to_substitute": "Boot ROM",
+        "possible_definition": "A read-only memory device that contains the initial bootstrap code executed at power-up."
+      },
+      {
+        "target": "IBIT",
+        "term_to_substitute": "initial self-test",
+        "possible_definition": "A built-in diagnostic sequence executed immediately upon power-up to verify the basic integrity of hardware components."
+      },
+      {
+        "target": "BSP",
+        "term_to_substitute": "Board Support Package (BSP)",
+        "possible_definition": "The manufacturer-provided software that initializes the hardware and board peripherals for a given processor."
+      },
+      {
+        "target": "FTSS",
+        "term_to_substitute": "FTSS",
+        "possible_definition": "The Fault Tolerant System Software responsible for managing redundancy and fault recovery."
+      },
+      {
+        "target": "Start-up",
+        "term_to_substitute": "System Initialization",
+        "possible_definition": "The transitional operating state during which the system performs startup diagnostics, configures hardware, and loads the runtime environment."
+      },
+      {
+        "target": "Application initialization function",
+        "term_to_substitute": "initialization software",
+        "possible_definition": "The software routine responsible for setting up the operating system, initializing device drivers, and preparing the system for normal operation."
+      }
+    ]
+  },
+  {
+    "requirement": "If any of the FCP processors are not coordinated in time, System Initialization in the surviving triplex shall attempt to achieve synchronization with the failed FCP.",
+    "targets": [
+      {
+        "target": "Lost soul sync",
+        "term_to_substitute": "synchronization",
+        "possible_definition": "The process of resynchronizing a processor that has lost synchronization with the rest of its redundant group."
+      },
+      {
+        "target": "FCP",
+        "term_to_substitute": "FCP",
+        "possible_definition": "The Fault Containment Processor, the main flight control computer that coordinates the other processors."
+      },
+      {
+        "target": "Start-up",
+        "term_to_substitute": "System Initialization",
+        "possible_definition": "The transitional operating state during which the system performs startup diagnostics, configures hardware, and loads the runtime environment."
+      },
+      {
+        "target": "Surviving triplex",
+        "term_to_substitute": "surviving triplex",
+        "possible_definition": "The remaining three processors (of a redundant set) that keep operating after another processor has failed."
+      },
+      {
+        "target": "TNR mode",
+        "term_to_substitute": "not coordinated in time",
+        "possible_definition": "The mode entered when processors are no longer executing in phase with one another, requiring re-synchronization."
+      }
+    ]
+  },
+  {
+    "requirement": "The FCP shall configure ICP Simplex virtual groups for each channel in the FCP virtual group.",
+    "targets": [
+      {
+        "target": "Simplex",
+        "term_to_substitute": "simplex",
+        "possible_definition": "A single-processor unit without redundancy."
+      },
+      {
+        "target": "Virtual Group",
+        "term_to_substitute": "virtual groups",
+        "possible_definition": "Logical groupings of processors operating in parallel to verify consistency and tolerate localized faults."
+      },
+      {
+        "target": "Virtual Group",
+        "term_to_substitute": "virtual group",
+        "possible_definition": "A logical group of processors operating in parallel to verify consistent output and tolerate faults."
+      },
+      {
+        "target": "FCP",
+        "term_to_substitute": "FCP",
+        "possible_definition": "The Fault Containment Processor, the main flight control computer that coordinates the other processors."
+      },
+      {
+        "target": "ICP",
+        "term_to_substitute": "ICP",
+        "possible_definition": "The Input/Output Control Processor, a peripheral processor that manages I/O boards and network interfaces."
+      }
+    ]
+  },
+  {
+    "requirement": "System Initialization shall call an application initialization function to allow the application to (at least) create tasks, create communication sockets, initialize the vehicle mode, and initialize memory alignment allowance.",
+    "targets": [
+      {
+        "target": "Start-up",
+        "term_to_substitute": "System Initialization",
+        "possible_definition": "The transitional operating state during which the system performs startup diagnostics, configures hardware, and loads the runtime environment."
+      },
+      {
+        "target": "Application initialization function",
+        "term_to_substitute": "application initialization function",
+        "possible_definition": "An application-level function invoked at startup to create tasks, open communication sockets, and initialize application state."
+      },
+      {
+        "target": "Vehicle mode",
+        "term_to_substitute": "vehicle mode",
+        "possible_definition": "The configuration or operating mode of the vehicle that the application must initialize."
+      },
+      {
+        "target": "Memory Alignment allowance",
+        "term_to_substitute": "memory alignment allowance",
+        "possible_definition": "A configured allowance for memory alignment used when initializing the application's memory map."
+      },
+      {
+        "target": "Tasks",
+        "term_to_substitute": "tasks",
+        "possible_definition": "Concurrent units of execution created by the application during its initialization."
+      },
+      {
+        "target": "Communication sockets",
+        "term_to_substitute": "communication sockets",
+        "possible_definition": "Network endpoints used by the application to exchange messages with other components."
+      }
+    ]
+  },
+  {
+    "requirement": "The FCP shall wait up to 2.5 seconds (from the sending of the FCP Ready Sync) for the ICP Ready signal. Note that FTSS will not fail the isolated hardware region if this signal is not received within this time. FTSS will wait until the normal ICP presence test fails.",
+    "targets": [
+      {
+        "target": "Fault Containment Region (FCR)",
+        "term_to_substitute": "isolated hardware region",
+        "possible_definition": "A physical or logical segment of the system that has been fenced off due to a detected fault, preventing it from affecting the rest of the system."
+      },
+      {
+        "target": "ICP Ready signal",
+        "term_to_substitute": "ICP Ready signal",
+        "possible_definition": "The signal sent by an ICP indicating that it has completed initialization and is ready to communicate."
+      },
+      {
+        "target": "FCP",
+        "term_to_substitute": "FCP",
+        "possible_definition": "The Fault Containment Processor, the main flight control computer that coordinates the other processors."
+      },
+      {
+        "target": "FCP Ready Sync",
+        "term_to_substitute": "FCP Ready Sync",
+        "possible_definition": "The synchronization message sent by the FCP to indicate that it is ready to begin peer operations."
+      },
+      {
+        "target": "ICP",
+        "term_to_substitute": "ICP",
+        "possible_definition": "The Input/Output Control Processor, a peripheral processor that manages I/O boards and network interfaces."
+      },
+      {
+        "target": "FTSS",
+        "term_to_substitute": "FTSS",
+        "possible_definition": "The Fault Tolerant System Software responsible for managing redundancy and fault recovery."
+      },
+      {
+        "target": "CBIT",
+        "term_to_substitute": "presence test",
+        "possible_definition": "A continuous test that periodically verifies the presence and health of a component."
+      }
+    ]
+  },
+  {
+    "requirement": "System Initialization shall, when all other activities are completed, start the 50 Hz timer and enable the timer interrupt. This will allow the interrupt handler to initiate normal activities.",
+    "targets": [
+      {
+        "target": "Start-up",
+        "term_to_substitute": "System Initialization",
+        "possible_definition": "The transitional operating state during which the system performs startup diagnostics, configures hardware, and loads the runtime environment."
+      },
+      {
+        "target": "Timer interrupt",
+        "term_to_substitute": "timer interrupt",
+        "possible_definition": "An interrupt generated by the system timer at regular intervals to drive periodic processing."
+      },
+      {
+        "target": "ISR",
+        "term_to_substitute": "interrupt handler",
+        "possible_definition": "The interrupt service routine that responds to timer and hardware interrupts to initiate normal activities."
+      }
+    ]
+  },
+  {
+    "requirement": "The FCP shall initiate TNR to recover the lost network element.",
+    "targets": [
+      {
+        "target": "TNR",
+        "term_to_substitute": "TNR",
+        "possible_definition": "Transient Network Element Recovery process used to recover a lost network element."
+      },
+      {
+        "target": "FCP",
+        "term_to_substitute": "FCP",
+        "possible_definition": "The Fault Containment Processor, the main flight control computer that coordinates the other processors."
+      },
+      {
+        "target": "NE",
+        "term_to_substitute": "network element",
+        "possible_definition": "A node within the fiber optic network comprising a processor and its associated interfaces."
+      }
+    ]
+  },
+  {
+    "requirement": "After ISYNC completes, the processors resume normal operation.",
+    "targets": [
+      {
+        "target": "ISYNC",
+        "term_to_substitute": "ISYNC",
+        "possible_definition": "The initial synchronization process performed at power up to bring processors into phase."
+      },
+      {
+        "target": "Normal Operation state",
+        "term_to_substitute": "normal operation",
+        "possible_definition": "The steady-state operating mode after the system completes initialization and configuration."
+      }
+    ]
+  },
+  {
+    "requirement": "The system shall perform IBIT on each processor at startup.",
+    "targets": [
+      {
+        "target": "IBIT",
+        "term_to_substitute": "IBIT",
+        "possible_definition": "The Initial Built In Test sequence run on each processor at startup."
+      },
+      {
+        "target": "Start-up",
+        "term_to_substitute": "startup",
+        "possible_definition": "The process of powering up and initializing the system."
+      }
+    ]
+  },
+  {
+    "requirement": "The CBIT shall run at 50 Hz after all flight critical operations.",
+    "targets": [
+      {
+        "target": "CBIT",
+        "term_to_substitute": "CBIT",
+        "possible_definition": "The Continuous Built In Test executed during operation after flight critical operations."
+      },
+      {
+        "target": "Flight critical operations",
+        "term_to_substitute": "flight critical operations",
+        "possible_definition": "Those operations essential to the safe and correct functioning of the flight system."
+      }
+    ]
+  },
+  {
+    "requirement": "The FCR shall be electrically isolated from other regions.",
+    "targets": [
+      {
+        "target": "Fault Containment Region (FCR)",
+        "term_to_substitute": "FCR",
+        "possible_definition": "A hardware region with electrical isolation and independent power that confines faults."
+      }
+    ]
+  },
+  {
+    "requirement": "The BRVC provides guaranteed message delivery despite arbitrary faults.",
+    "targets": [
+      {
+        "target": "Byzantine Resilient Virtual Circuit (BRVC)",
+        "term_to_substitute": "BRVC",
+        "possible_definition": "An abstracted view of the network elements and fiber interconnection that provides fault-resilient message passing."
+      },
+      {
+        "target": "Exceptions",
+        "term_to_substitute": "arbitrary faults",
+        "possible_definition": "Faults consisting of arbitrary behavior on the part of failed components."
+      }
+    ]
+  },
+  {
+    "requirement": "The NE watchdog timer reset shall occur if the timer is not pulsed.",
+    "targets": [
+      {
+        "target": "NE watchdog timer reset",
+        "term_to_substitute": "NE watchdog timer reset",
+        "possible_definition": "A reset of the network element triggered by expiration of the onboard watchdog timer."
+      },
+      {
+        "target": "NE watchdog timer",
+        "term_to_substitute": "timer",
+        "possible_definition": "A dedicated hardware timer that must be periodically reset by software; if it expires, it forces a system reset."
+      }
+    ]
+  },
+  {
+    "requirement": "The scoreboard shall determine when messages are ready to be sent.",
+    "targets": [
+      {
+        "target": "Scoreboard",
+        "term_to_substitute": "scoreboard",
+        "possible_definition": "The message scheduler component of the network element that determines when messages are ready to be sent."
+      },
+      {
+        "target": "Telemetry messages",
+        "term_to_substitute": "messages",
+        "possible_definition": "Data messages carrying telemetry information scheduled for transmission."
+      }
+    ]
+  },
+  {
+    "requirement": "A babbler shall be masked within three minor frames of detection.",
+    "targets": [
+      {
+        "target": "Babbler",
+        "term_to_substitute": "babbler",
+        "possible_definition": "A processor sending unexpected messages that overload the network."
+      },
+      {
+        "target": "Masking",
+        "term_to_substitute": "masked",
+        "possible_definition": "To actively ignore and discard data and signals coming from a specific module deemed faulty or untrusted."
+      },
+      {
+        "target": "Minor frame",
+        "term_to_substitute": "minor frames",
+        "possible_definition": "The elementary time division unit used to structure messages on the network."
+      }
+    ]
+  },
+  {
+    "requirement": "The system shall initiate lost soul sync for the desynchronized FCP.",
+    "targets": [
+      {
+        "target": "Lost soul sync",
+        "term_to_substitute": "lost soul sync",
+        "possible_definition": "The process of resynchronizing a processor with its redundant group after synchronization is lost."
+      },
+      {
+        "target": "FCP",
+        "term_to_substitute": "FCP",
+        "possible_definition": "The Fault Containment Processor, the main flight control computer that coordinates the other processors."
+      }
+    ]
+  },
+  {
+    "requirement": "Upon voted reset, the NE shall bypass ISYNC and enter TNR directly.",
+    "targets": [
+      {
+        "target": "TNR",
+        "term_to_substitute": "TNR",
+        "possible_definition": "Transient Network Element Recovery process used to recover a lost network element."
+      },
+      {
+        "target": "ISYNC",
+        "term_to_substitute": "ISYNC",
+        "possible_definition": "The initial synchronization process performed at power up to bring processors into phase."
+      },
+      {
+        "target": "NE",
+        "term_to_substitute": "NE",
+        "possible_definition": "The Network Element, a node within the fiber optic network."
+      },
+      {
+        "target": "Voted reset",
+        "term_to_substitute": "voted reset",
+        "possible_definition": "A reset that is issued only when a strict majority of redundant voters agree on the state."
+      }
+    ]
+  }
+]

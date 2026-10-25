@@ -1,0 +1,33 @@
+term,definition
+Attestation,Any document originating from a third party intending to demonstrate a quality or fact pertaining to the candidate.
+Call for tender,Formal request soliciting price quotations or bids; contains specifications and contractual terms.
+Candidate,An economic operator seeking an invitation to take part in a restricted/negotiated procedure.
+Candidate Statement,"Any document originating from the candidate (declarations under oath, solemn declarations)."
+Certificate,A special type of attestation giving evidence that a criterion has been satisfied.
+Contract Notice,"Official, publicly available document describing a tender opportunity."
+Contracting authority,"State, regional or local authorities and public bodies governed by public law."
+Data types contained in a VCD,"Structural VCD package data, Tender specific data, Economic operator data, Structural data of evidence, Context specific data, Validation value, Evidences, and Translations."
+Declaration on oath,Statement equivalent to a self-declaration produced in the presence of a public officer or notary.
+Economic operator,"Contractor, supplier, candidate or tenderer offering works, products, or services on the market."
+European criteria,Criteria derived from Directives 2004/18/EC & 2004/17/EC used to check candidate eligibility.
+Evidence,Proof of compliance to a certain criterion supplied by an attestation or statement.
+Issuing Service,Public/private body or economic operator service issuing attestations and statements.
+Level of completeness,Number of criteria covered by the VCD package (Articles 45-46 and Articles 47-50).
+Level of support,"Semantic richness of the VCD package (Information, Compilation, and Decision support)."
+List of approved economic operators,List of pre-qualified economic operators verified by a pre-qualification agency under Article 52.
+Mapping,Assigning EU selection/exclusion criteria to national criteria and corresponding evidences.
+National criteria,Criteria derived from European criteria without enlarging them.
+Official translation,Translation performed by an authorized translator empowered for legal equivalence.
+Pre-VCD mapping tool,System-supported service capable of mapping evidence to European/national criteria.
+Self-declaration,Statement produced by an economic operator stating compliance to qualification/exclusion criteria.
+Stage,Level of maturity defining the implementation capability of a VCD solution.
+Tenderer,Economic operator who has submitted a tender.
+Virtual Company Dossier (VCD),Single Point of Contact solution for collecting business certificates into an electronic package.
+VCD lifecycle,"States of a VCD package: Creation, Valid, and Invalid."
+VCD package,Electronic container for data types required to participate in a tender.
+VCD service,"Internal or external functionality to establish, modify, or issue a VCD."
+VCD service provider,Entity hosting a VCD system and providing compilation and Mapping services on a national level.
+VCD system,System providing one or more VCD services.
+Authorised Entities,"Economic operators, intermediaries, and Contracting Authorities."
+Electronic Information Package,"Standardized, digitally signed container of structured data. It includes company registration, tax status, Attestations and compliance certifications"
+Issuing Body,Entity offering an Issuing Service

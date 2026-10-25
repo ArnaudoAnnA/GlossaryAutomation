@@ -1,0 +1,257 @@
+[
+  {
+    "requirement": "The system shall use SQL based database to store inventory information.",
+    "targets": [
+      {
+        "target": "Inventory Information",
+        "term_to_substitute": "inventory information",
+        "possible_definition": "The data describing the products and stock levels held by the system."
+      }
+    ]
+  },
+  {
+    "requirement": "The interface will be presented to the customer in a web browser. The interface must remain consistent among various web browsers and be intuitive to the customer.",
+    "targets": [
+      {
+        "target": "Customer",
+        "term_to_substitute": "customer",
+        "possible_definition": "A user of the system who browses, purchases, and manages products."
+      },
+      {
+        "target": "Customer",
+        "term_to_substitute": "customer",
+        "possible_definition": "A user of the system who browses, purchases, and manages products."
+      }
+    ]
+  },
+  {
+    "requirement": "Customers will be able to add and store products for purchase within the shopping cart.",
+    "targets": [
+      {
+        "target": "Customer",
+        "term_to_substitute": "Customers",
+        "possible_definition": "Users of the system who browse, purchase, and manage products."
+      },
+      {
+        "target": "Shopping Cart (SC)",
+        "term_to_substitute": "shopping cart",
+        "possible_definition": "The component that holds the items a customer has selected for purchase before checkout."
+      }
+    ]
+  },
+  {
+    "requirement": "The shopping cart will clearly display the number of items in the cart, along with the total cost.",
+    "targets": [
+      {
+        "target": "Shopping Cart (SC)",
+        "term_to_substitute": "shopping cart",
+        "possible_definition": "The component that holds the items a customer has selected for purchase before checkout."
+      },
+      {
+        "target": "Price",
+        "term_to_substitute": "cost",
+        "possible_definition": "The monetary amount charged for an item being purchased."
+      },
+      {
+        "target": "Total",
+        "term_to_substitute": "total cost",
+        "possible_definition": "The summed monetary amount of all items in the shopping cart."
+      },
+      {
+        "target": "Item name",
+        "term_to_substitute": "items",
+        "possible_definition": "The names of the products a customer has added to the shopping cart."
+      }
+    ]
+  },
+  {
+    "requirement": "Customers will be able to confirm the order after checkout. If the order is incorrect, the customer will be able to revise and update their order. The customer will then receive a confirmation email with the specific order details.",
+    "targets": [
+      {
+        "target": "Customer",
+        "term_to_substitute": "Customers",
+        "possible_definition": "Users of the system who browse, purchase, and manage products."
+      },
+      {
+        "target": "Customer",
+        "term_to_substitute": "customer",
+        "possible_definition": "A user of the system who browses, purchases, and manages products."
+      },
+      {
+        "target": "Order details",
+        "term_to_substitute": "order details",
+        "possible_definition": "The specific information describing a placed order, such as items, quantities, and costs."
+      },
+      {
+        "target": "Checkout",
+        "term_to_substitute": "checkout",
+        "possible_definition": "The process a customer performs to finalize and confirm an order for purchase."
+      }
+    ]
+  },
+  {
+    "requirement": "Customers will be presented with an unambiguous interface to assist in browsing the categories and products. Customers will have access to a search engine to be able to search for products matching their search criteria. The interface will be compatible with all major web browsers such as Google Chrome, Mozilla Firefox, Opera, and Safari.",
+    "targets": [
+      {
+        "target": "Customer",
+        "term_to_substitute": "Customers",
+        "possible_definition": "Users of the system who browse, purchase, and manage products."
+      },
+      {
+        "target": "Search Engine (SE)",
+        "term_to_substitute": "search engine",
+        "possible_definition": "The component that allows customers to search for products matching their criteria."
+      },
+      {
+        "target": "Search Criteria",
+        "term_to_substitute": "search criteria",
+        "possible_definition": "The terms or conditions a customer specifies when searching for products."
+      }
+    ]
+  },
+  {
+    "requirement": "The system will feature an API to allow customers to build custom plug-ins to be able to meet their needs",
+    "targets": [
+      {
+        "target": "API",
+        "term_to_substitute": "API",
+        "possible_definition": "The application programming interface that allows customers to build custom plug-ins."
+      },
+      {
+        "target": "Plug-in",
+        "term_to_substitute": "plug-ins",
+        "possible_definition": "Custom software extensions that customers build to meet their needs."
+      },
+      {
+        "target": "Customer",
+        "term_to_substitute": "customers",
+        "possible_definition": "Users of the system who browse, purchase, and manage products."
+      },
+      {
+        "target": "Sensitive Data",
+        "term_to_substitute": "sensitive customer data",
+        "possible_definition": "Personal or private customer information that must be protected."
+      }
+    ]
+  },
+  {
+    "requirement": "The system shall contain a Operations and Maintenance manual, Users Guide book, and Installation Instructions for the Administrator.",
+    "targets": [
+      {
+        "target": "Operations and Maintenance manual",
+        "term_to_substitute": "Operations and Maintenance manual",
+        "possible_definition": "A document describing how to operate and maintain the system."
+      },
+      {
+        "target": "Users Guide book",
+        "term_to_substitute": "Users Guide book",
+        "possible_definition": "A guide book describing how users interact with the system."
+      },
+      {
+        "target": "Installation Instructions",
+        "term_to_substitute": "Installation Instructions",
+        "possible_definition": "Instructions describing how to install the system."
+      },
+      {
+        "target": "System Administrator",
+        "term_to_substitute": "Administrator",
+        "possible_definition": "The person responsible for installing, configuring, and administering the system."
+      }
+    ]
+  },
+  {
+    "requirement": "The system shall validate email address existence.",
+    "targets": [
+      {
+        "target": "Email ID",
+        "term_to_substitute": "email address",
+        "possible_definition": "The electronic mail address used to identify and contact a user."
+      }
+    ]
+  },
+  {
+    "requirement": "The system shall utilize help bubbles to assist managers, customers, and administrators",
+    "targets": [
+      {
+        "target": "Project Manager",
+        "term_to_substitute": "managers",
+        "possible_definition": "Users responsible for overseeing and managing projects using the system."
+      },
+      {
+        "target": "Customer",
+        "term_to_substitute": "customers",
+        "possible_definition": "Users of the system who browse, purchase, and manage products."
+      },
+      {
+        "target": "System Administrator",
+        "term_to_substitute": "administrators",
+        "possible_definition": "People responsible for installing, configuring, and administering the system."
+      }
+    ]
+  },
+  {
+    "requirement": "For returning customers, the system shall validate 'existing' credit card in system after each log in.",
+    "targets": [
+      {
+        "target": "Customer",
+        "term_to_substitute": "customers",
+        "possible_definition": "Users of the system who browse, purchase, and manage products."
+      }
+    ]
+  },
+  {
+    "requirement": "The system shall be easily updatable for fixes and patches.",
+    "targets": [
+      {
+        "target": "Maintenance fix",
+        "term_to_substitute": "fixes",
+        "possible_definition": "Corrective updates applied to the system to resolve defects."
+      },
+      {
+        "target": "Feature patch",
+        "term_to_substitute": "patches",
+        "possible_definition": "Updates that add or modify system features."
+      }
+    ]
+  },
+  {
+    "requirement": "The system will use SSL for security",
+    "targets": [
+      {
+        "target": "Secure Socket Layer (SSL)",
+        "term_to_substitute": "SSL",
+        "possible_definition": "A cryptographic protocol that provides secure, encrypted communication over the network."
+      }
+    ]
+  },
+  {
+    "requirement": "The system will be \"Plug and Play\", no software installation will be necessary",
+    "targets": [
+      {
+        "target": "Plug and Play",
+        "term_to_substitute": "Plug and Play",
+        "possible_definition": "The ability of the system to operate without requiring a software installation step."
+      }
+    ]
+  },
+  {
+    "requirement": "Order confirmation will allow the customer to review their order after checkout prior to confirmation.",
+    "targets": [
+      {
+        "target": "Customer",
+        "term_to_substitute": "customer",
+        "possible_definition": "A user of the system who browses, purchases, and manages products."
+      },
+      {
+        "target": "Checkout",
+        "term_to_substitute": "checkout",
+        "possible_definition": "The process a customer performs to finalize and confirm an order for purchase."
+      },
+      {
+        "target": "Order confirmation",
+        "term_to_substitute": "Order confirmation",
+        "possible_definition": "The notification and record confirming that an order has been accepted."
+      }
+    ]
+  }
+]

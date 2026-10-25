@@ -1,0 +1,93 @@
+term,definition
+Babbler,"A processor or NE that continually unexpectedly sends messages over the fiber network, thus overloading the fiber network with unnecessary traffic."
+Byzantine Faults,"Faults consisting of arbitrary behavior on the part of failed components, including stopping and restarting execution, sending conflicting information to different destinations, or any behavior attempting to corrupt the system."
+Byzantine Resilient Virtual Circuit (BRVC),"An abstracted view of the Network Elements and the fiber optic interconnection network where NE hardware and fiber appear to software as a virtual message passing interface with guarantees about message order and consistency despite malicious faults."
+Debug mode,"A mode in which software can control and test the operation of network elements. Used by standalone NE test software. One of two power-up modes, but for X38 flight NEs this mode is not used."
+Degraded triplex,"A fault containment region configuration with 2 active processors but at least 3 NEs, where the third processor is masked out, possibly powered on to maintain the virtual group."
+Exceptions,"External signals, errors, or unusual conditions during instruction execution. When they occur, processor state is saved in registers and execution jumps to a predefined exception vector."
+Fault Containment Region (FCR),"A set of hardware with electrical isolation, independent power, independent clocking, and possibly physical separation so that errors inside the region are contained and external errors do not propagate into it."
+Hardware Exceptions,"Any processor exception not mapped to a VxWorks signal."
+Initial Synchronization (ISYNC),"The process by which network elements achieve synchronization at power up."
+Link,"A one-way point-to-point connection between the transmitter in one Network Element and the receiver in another."
+Lost soul sync,"The process of bringing a processor that is out of synchronization with its virtual group back into sync with the other redundant processors."
+Masking,"Preventing erroneous data from propagating beyond voters by using majority voting or configuring voters to ignore input from a faulty channel."
+NE watchdog timer reset,"A reset of the network element triggered when the onboard watchdog timer is not periodically pulsed in time."
+Permanent Failure,"A failure declared permanent when all recovery or reconfiguration attempts by FTSS or application-level mechanisms fail."
+Power on reset,"A reset of an entire channel caused by initially applying power or cycling power."
+Power-up skew,"The time between applying power to the first processor and the fifth processor during system startup."
+Re-integration,"The process of bringing a lost processor back into synchronization with a redundant virtual group and restoring its internal state such as memory, registers, and timers."
+Scoreboard,"A component of the network element that schedules messages and collectively determines when messages are ready to be sent across redundant NEs."
+Simplex,"A non-redundant virtual group consisting of a single processor. In X-38 architecture, each ICP is a simplex virtual group."
+Simultaneous Failure,"A second fault that occurs between the observation of a first fault and the system reconfiguration responding to it."
+Software Exceptions,"Any exception mapped to a VxWorks signal."
+Start-up,"The period from applying power or asserting reset until the 50 Hz interrupt is enabled, including activities such as IBIT, ISYNC, TNR, processor synchronization, and communication initialization."
+Synchronization,"The process of coordinating hardware or software entities in time so redundant components operate within acceptable skew."
+TNR mode,"The mode a network element enters when it cannot synchronize with other NEs and finds itself alone."
+Transient Failure,"Faults such as those caused by single event upsets that can be recovered by FTSS or application recovery mechanisms."
+Transient Network Element Recovery (TNR),"The process of recovering a lost network element and synchronizing it with the working group while aligning its internal state."
+Virtual group,"A virtual processor composed of processors located in different fault containment regions, capable of accepting work in a parallel processing environment."
+VMEbus reset,"A reset applied to the VMEbus."
+Voted reset,"A reset applied to an NE when processors in other channels agree and trigger a voted reset to recover a faulty channel."
+Working group TNR routine,"A software-commanded function where synchronized NEs search for and synchronize with a lost NE."
+API,Application Programmer's Interface
+BIT,Built-in-Test
+BRVC,Byzantine Resilient Virtual Circuit
+BSP,Board Support Package
+CBIT,Continuous Built In Test
+COTS,Commercial Off-The-Shelf
+CSCI,Computer Software Configuration Item
+CT,Configuration Table
+CTC,Command and Telemetry Computer
+DID,Data Item Description
+DIO,Digital Input/Output
+ECR,Engineering Change Request
+FCC,Flight Critical Computer
+FCP,Flight Critical Processor
+FCR,Fault Containment Region
+FDI,Fault Detection and Isolation
+FMG,Fault Masking Group
+FTC,Fault Tolerant Clock
+FTPP,Fault Tolerant Parallel Processor
+FTSS,Fault Tolerant System Services
+IBIT,Initial Built In Test
+ICP,Instrument Control Processor
+ID,IDentifier
+IRS,Interface Requirements Specification
+ISR,Interrupt Service Routine
+ISYNC,Initial Synchronization
+MET,Mission Elapsed Time
+MPCC,Multi-Protocol Communications Controller
+MPE,Minimum Processing Environment
+NASA,National Aeronautics and Space Administration
+NE,Network Element
+PPC,Power PC
+PPM,Parts Per Million
+RAM,Random Access Memory
+ROM,Read Only Memory
+RM,Redundancy Management
+RTC,Real Time Clock
+SEP,SEParation elapsed time
+SRS,Software Requirements Specification
+TAEM,Terminal Area Energy Management
+TNR,Transient Network Element Recovery
+VG,Virtual Group
+VME,Versa Module Eurocard
+Hardware reset,"A low-level processor reset that marks the earliest point of system startup, prior to any software execution. Triggers the System Initialization sequence; the boot phase is measured from this event to the enabling of the 50 Hz timer interrupt."
+NEFU ICP,"An Instrument Control Processor hosted in the Network Element Fifth Unit (NEFU). Unlike the ICPs on the four main Flight Critical Channels, the NEFU ICP does not have an associated FCP processor loaded, and its presence or absence does not affect the FTSS software load."
+ICP Ready signal,"A signal sent by an ICP to the FCP virtual group indicating that the ICP has completed its initialization and is ready for operation. The FCP waits up to 2.5 seconds after sending the FCP Ready Sync before expecting this signal; absence of the signal causes FTSS to defer failure detection until the normal ICP presence test."
+I/O boards,"Hardware boards installed in an ICP that provide digital input/output interfaces to external systems. These boards are typically initialized by the application during the window in which the FCP is waiting for the ICP Ready signal."
+Surviving triplex,"The set of three synchronized FCP processors that remain operational after the loss of one FCP processor is detected. The surviving triplex attempts to re-synchronize the failed processor and, if unsuccessful within 2.5 seconds, issues a voted VMEbus reset through the NE to that processor."
+Fault Recovery state,"A system operating state entered when a fault is detected during Normal Operation. In this state the system is reconfigured to isolate the fault; if a single permanent fault has occurred, the system will be capable of tolerating one additional fault upon return to Normal Operation."
+Normal Operation state,"A system operating state entered after System Initialization is complete, in which the FCP has been configured as a fault-tolerant computer and the 50 Hz timer interrupt is enabled. The system meets all performance and functional requirements in the no-fault case; faults detected in this state cause a transition to the Fault Recovery state."
+Timer interrupt,"The periodic hardware interrupt generated by the 50 Hz timer that invokes the scheduler to initiate application task execution. Its enablement marks the end of System Initialization and the transition to Normal Operation."
+Boot ROM,"Read-only memory containing the initial boot code executed at hardware reset. After completing IBIT, it calls the manufacturer-supplied VxWorks BSP initialization software, followed by the FTSS System Initialization software."
+Application Initialization function,"A dedicated software routine to set up application-level operations"
+Tasks,"Independent units of execution managed by the operating system to perform specific processing threads"
+Communication sockets,"Software structure --- identified by an IP address, port number, and protocol --- used by the application as an endpoint to establish network or inter-process communication links"
+Vehicle mode,"An operational state that determines which set of rate groups — and therefore which tasks — are active at a given time. Up to five vehicle modes may be defined in the system, each associated with up to three rate groups (50 Hz, 10 Hz, and 1 Hz). A vehicle mode change is requested via an explicit API call from the application; mode changes occur only while the system is in the Normal Operation state."
+Memory Alignment allowance,"Configured memory spacing to guarantee that software data structures conform to hardware-required memory boundary alignments."
+FCP Ready Sync,"A startup synchronization signal sent by an FCP to announce its readiness and initiate a timed wait for the ICP's acknowledgment signal."
+Flight critical operations,"Essential control functions. These include attitude control, flight control law execution and actuator command loops"
+NE Watchdog timer,"A hardware timer within the Network Element that must be regularly pulsed by software to prevent an automatic reset of the Network Element."
+Telemetry messages,"Structured data packets. Each message consists of a header (message ID, source NE, timestamp, sequence number, priority), a payload containing one or more of the following: sensor readings, system health indicators, resource utilization metrics, alarm and event data, or configuration state snapshots, and a footer (integrity check and end-of-message marker)."
+Minor frame,"10 ms time slot used to sequence scheduled tasks and complete fault isolation responses"

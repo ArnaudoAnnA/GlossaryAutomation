@@ -1,0 +1,207 @@
+[
+  {
+    "requirement": "SCE-MI message channels shall be optimized for implementing abstraction bridges between a software subsystem and a hardware subsystem.",
+    "targets": [
+      {
+        "target": "Abstraction bridge",
+        "term_to_substitute": "abstraction bridges",
+        "possible_definition": "An interface layer connecting and translating communication between hardware and software subsystems."
+      },
+      {
+        "target": "SCE-MI",
+        "term_to_substitute": "SCE-MI",
+        "possible_definition": "Standard Co-Emulation Modeling Interface; infrastructure connecting hardware and software execution environments."
+      },
+      {
+        "target": "Message channel",
+        "term_to_substitute": "message channels",
+        "possible_definition": "A high-performance communication conduit optimized for software-hardware interaction."
+      }
+    ]
+  },
+  {
+    "requirement": "Transactor names shall conform to the syntax of the HDL language that the bridge netlist is expressed in.",
+    "targets": [
+      {
+        "target": "Transactor",
+        "term_to_substitute": "Transactor",
+        "possible_definition": "A high-level interface component converting abstract software calls into hardware signals."
+      },
+      {
+        "target": "HDL",
+        "term_to_substitute": "HDL language",
+        "possible_definition": "Hardware Description Language; code syntax used to express netlists and hardware models."
+      },
+      {
+        "target": "Bridge netlist",
+        "term_to_substitute": "bridge netlist",
+        "possible_definition": "The lower-level structural circuit representation of an abstraction bridge."
+      }
+    ]
+  },
+  {
+    "requirement": "The SCE-MI infrastructure shall always implicitly create a controlled clock with a 1/1 ratio, which is the highest frequency controlled clock in the system",
+    "targets": [
+      {
+        "target": "SCE-MI",
+        "term_to_substitute": "SCE-MI",
+        "possible_definition": "The hardware-software co-emulation infrastructure environment."
+      },
+      {
+        "target": "Controlled Clock (cclock)",
+        "term_to_substitute": "controlled clock",
+        "possible_definition": "A system clock whose execution can be started or stopped by transactor instruction."
+      }
+    ]
+  },
+  {
+    "requirement": "Any transactor shall be able to instruct the SCE-MI infrastructure to stop the controlled clock and thus cause controlled time to freeze.",
+    "targets": [
+      {
+        "target": "Transactor",
+        "term_to_substitute": "transactor",
+        "possible_definition": "A bridge component with the authority to pause time execution in the hardware model."
+      },
+      {
+        "target": "SCE-MI",
+        "term_to_substitute": "SCE-MI",
+        "possible_definition": "The core co-emulation infrastructure managing simulation timing and hardware clocks."
+      },
+      {
+        "target": "Controlled Clock (cclock)",
+        "term_to_substitute": "controlled clock",
+        "possible_definition": "A stoppable clock signal driving the emulation hardware."
+      },
+      {
+        "target": "Controlled time",
+        "term_to_substitute": "controlled time",
+        "possible_definition": "Simulated time progress governed directly by controlled clock cycles."
+      }
+    ]
+  },
+  {
+    "requirement": "The SCE-MI infrastructure shall feature cycle stamping.",
+    "targets": [
+      {
+        "target": "SCE-MI",
+        "term_to_substitute": "SCE-MI",
+        "possible_definition": "The underlying emulation architecture managing signal timing."
+      },
+      {
+        "target": "Cycle stamping",
+        "term_to_substitute": "cycle stamping",
+        "possible_definition": "A timing mechanism that attaches exact clock-cycle timestamps to message transactions."
+      }
+    ]
+  },
+  {
+    "requirement": "Before messages can be transported over a SCE-MI message channel, their content must be serialized into a large bit vector by the DUT proxy model.",
+    "targets": [
+      {
+        "target": "SCE-MI",
+        "term_to_substitute": "SCE-MI",
+        "possible_definition": "The co-emulation framework defining communication structures."
+      },
+      {
+        "target": "Message channel",
+        "term_to_substitute": "message channel",
+        "possible_definition": "The bus transport mechanism over which bit vectors travel."
+      },
+      {
+        "target": "DUT proxy",
+        "term_to_substitute": "DUT proxy",
+        "possible_definition": "A software modeling adapter that serializes message data for transmission to the DUT."
+      },
+      {
+        "target": "Message",
+        "term_to_substitute": "messages",
+        "possible_definition": "High-level data structures serialized into bit vectors for channel transmission."
+      }
+    ]
+  },
+  {
+    "requirement": "The DUT shall always be clocked by one or more controlled clocks that are controlled by one or more transactors.",
+    "targets": [
+      {
+        "target": "DUT",
+        "term_to_substitute": "DUT",
+        "possible_definition": "Device Under Test; the primary hardware design or model being emulated."
+      },
+      {
+        "target": "Controlled Clock (cclock)",
+        "term_to_substitute": "controlled clocks",
+        "possible_definition": "Clock signals governing the DUT that can be frozen by controlling transactors."
+      },
+      {
+        "target": "Transactor",
+        "term_to_substitute": "transactors",
+        "possible_definition": "Interface controllers tasked with driving controlled clocks on the DUT."
+      }
+    ]
+  },
+  {
+    "requirement": "The users shall be able to specify that they only care about posedges of the cclock and do not care where the negedge falls.",
+    "targets": [
+      {
+        "target": "Posedge",
+        "term_to_substitute": "posedges",
+        "possible_definition": "The rising edge transition (from low to high) of the controlled clock."
+      },
+      {
+        "target": "Negedge",
+        "term_to_substitute": "negedge",
+        "possible_definition": "The falling edge transition (from high to low) of the controlled clock."
+      },
+      {
+        "target": "Controlled Clock (cclock)",
+        "term_to_substitute": "cclock",
+        "possible_definition": "The controlled clock signal whose edge transitions dictate hardware state evaluation."
+      }
+    ]
+  },
+  {
+    "requirement": "Controlled clocks shall have a 1/1 ratio which, when enabled, is the same frequency as the uncontrolled clocks",
+    "targets": [
+      {
+        "target": "Controlled Clock (cclock)",
+        "term_to_substitute": "Controlled clocks",
+        "possible_definition": "Emulation clocks that run matching the frequency of uncontrolled clocks when active."
+      },
+      {
+        "target": "Uncontrolled Clock (uclock)",
+        "term_to_substitute": "uncontrolled clocks",
+        "possible_definition": "Free-running system clock signals operating at continuous baseline frequencies."
+      }
+    ]
+  },
+  {
+    "requirement": "For output messages, the transactor shall accept the clocked events originating from the DUT hardware model, and assemble them into serialized bit streams.",
+    "targets": [
+      {
+        "target": "Message",
+        "term_to_substitute": "messages",
+        "possible_definition": "Output data streams assembled from clocked hardware events."
+      },
+      {
+        "target": "Transactor",
+        "term_to_substitute": "transactor",
+        "possible_definition": "A hardware-software translator that converts raw DUT clock events into serialized messages."
+      },
+      {
+        "target": "Clocked event",
+        "term_to_substitute": "clocked events",
+        "possible_definition": "Signal state changes output by the DUT hardware model on clock cycles."
+      },
+      {
+        "target": "DUT",
+        "term_to_substitute": "DUT",
+        "possible_definition": "Device Under Test; the target hardware implementation emitting output events."
+      },
+      {
+        "target": "Hardware model",
+        "term_to_substitute": "hardware model",
+        "possible_definition": "The underlying target hardware representation executing inside the emulator."
+      }
+    ]
+  }
+]

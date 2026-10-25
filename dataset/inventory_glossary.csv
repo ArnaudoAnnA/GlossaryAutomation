@@ -1,0 +1,13 @@
+term,definition
+Actor,"Someone or something that supplies a stimulus to the system, including users and other systems. Actor definitions do not map one-to-one with specific people or things. For example, one particular user (John Smith) may interact with the system as an Internal User to run a report and as a User Administrator to modify a user's information."
+SRS,Software Requirement Specification - a document defining and describing the business needs and processes related to the system and the expectations for the completed system.
+POS,QuickBooks Point of Sale system. The point of sale system currently in use by Construction Junction
+Unique Item,A type of item which typically has unique characteristics and is individually priced. E.g.: Antique piece of furniture. Each unique item has its own entry in the inventory system.
+Stock Item,A type of item with which typically has similar characteristics and a standard price. E.g.: Toilet seat. There is only one entry in the inventory for each stock item category.
+Under $5 Item,"Small, inexpensive items which are not tracked by the inventory system. E.g.: Nuts and bolts"
+Item Fields,"id, Serial Number, unit cost, quantity, description and up to 3 Images"
+Validation Error,"An error triggered when submitted data violates structural, data type, or syntax rules defined in the System schema"
+Search Error,An error triggered when a system query or filter returns no actionable or permitted results
+Description,"Textual definition of 50-200 characters, spaces included"
+System schema,The schema of the database underlying the application
+Serial Number,A unique alphanumeric code

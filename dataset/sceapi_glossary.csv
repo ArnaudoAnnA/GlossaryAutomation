@@ -1,0 +1,44 @@
+term,definition
+Abstraction Bridge,A collection of abstraction gasket components that disguise a bus cycle accurate (BCA) RTL DUT model as a purely untimed model.
+Abstraction Gasket,"A special model that can change the level of abstraction of data flowing from its input to output and vice versa. For example, an abstraction gasket might convert an untimed transaction to a series of cycle accurate events or assemble a series of events into a single message."
+BCA,Bus Cycle Accurate model - sometimes used interchangeably with RTL model.
+BCASH,CoWare style Bus Cycle Accurate SHell model.
+Behavioral Model,"A block modeled algorithmically at the functional level that exchanges data with other models in the form of messages, timed by a clock."
+BFM,Bus Functional Model.
+Bridge Netlist,"The top level of the user supplied netlist of components making up the hardware side of a co-modeling process. By convention, often named Bridge in a file called Bridge.v."
+Co-Emulation,Shorthand notation for co-emulation modeling (co-modeling).
+Co-Modeling,"Process of modeling and simulating a mixture of software models represented with an untimed level of abstraction, simultaneously executing and inter-communicating through an Abstraction bridge with hardware models represented with the RTL level of abstraction running on an emulator."
+Controlled Clock (cclock),The clock that drives the DUT and can be disabled by any transactor during operations that would result in erroneous operation of the DUT if it is clocked.
+Controlled Time,Time which is advanced by the controlled clock and frozen when the controlled clock is suspended by one or more transactors.
+Co-Simulation,Execution of software models modeled with different levels of abstraction that interact with each other through abstraction gaskets.
+Cycle Stamping,A process by which messages are tagged with the number of elapsed counts of the fastest controlled clock in the hardware side of a co-modeled design.
+Don't Care Duty Cycle,A way of specifying a duty cycle where the user only cares about one active edge (posedge or negedge) of the clock and does not care where in the period the other edge falls.
+DUT,Device or Design Under Test that might be modeled in hardware and stimulated and responded to by a software testbench through an abstraction bridge.
+DUT Proxy,Software model which acts as a 'socket' that disguises an abstraction bridge to look to the rest of a software testbench like an untimed DUT model.
+Hardware Model,"Model of a block that has a structural representation mapped onto the hardware side of a co-modeling process (e.g., an emulator or hardware simulation platform)."
+Hardware Side,"The portion of a user's design which, during a co-modeling session, runs on the emulator as opposed to the host workstation."
+HDL,Hardware Description Language such as Verilog or VHDL.
+Infrastructure Linkage Process,The process that reads a user description of the hardware (bridge netlist) and compiles it into a form suitable for executing in a co-modeling session.
+ISS,Instruction Set Simulator.
+Macros,"Implementation components provided by the hardware emulator vendor to implement the hardware side of the SCE-MI infrastructure (e.g., SceMiMessageInPort, SceMiMessageOutPort, SceMiClockControl, SceMiClockPort)."
+Message,"A unit of data of arbitrary size and abstraction to be transported over a channel. Not generally associated with specific clocked events, but may trigger or result from many clocks of event activity."
+Message Channel,A two-ended conduit of messages between the software and hardware sides of an abstraction bridge.
+Message Port,The hardware side end of a message channel. The means by which transactors gain access to messages being sent across the channel.
+Message Port Proxy,The software side end of a message channel. The means by which DUT proxies or other software models gain access to messages being sent across the channel.
+Negedge,Falling edge of a clock.
+Posedge,Rising edge of a clock.
+RTC,Register Transfer Level C model.
+SCE-API,Standard Co-Emulation API.
+SCE-MI,Standard Co-Emulation API - Modeling Interface.
+Service Loop,Method that provides a means for software models running on a host workstation to yield access to the SCE-MI software side so that pending input or output messages on channels can be serviced.
+Software Model,"Model of a block (hardware or software) that is simulated on the software side of a co-modeling session (i.e., the host workstation)."
+Software Side,"The portion of a user's design which, during a co-modeling session, runs on the host workstation as opposed to the emulator."
+Structural Model,A netlist of hardware models or other structural models with hierarchical structure.
+Transaction,"Used interchangeably with message, though transaction can imply lower-layer infrastructure overhead content in addition to user payload data."
+Transactor,"A form of abstraction gasket. Decomposes an untimed transaction to a series of cycle accurate clocked events, or composes a series of clocked events into a single message."
+Uncontrolled Clock (uclock),Free running system clock internally generated by the SCE-MI infrastructure used within transactor modules to advance states in uncontrolled time.
+Uncontrolled Reset,System reset internally generated by the SCE-MI infrastructure and used within transactor modules.
+Uncontrolled Time,Time that is advanced by the uncontrolled clock even when the controlled clock is suspended.
+Untimed Model,"A block modeled algorithmically at the functional level that exchanges data with other models in the form of messages, with no notion of a clock."
+UT or UTC,Untimed or untimed C model.
+Clocked event,A discrete logic or signal state change occurring on the hardware side of an Abstraction bridge
