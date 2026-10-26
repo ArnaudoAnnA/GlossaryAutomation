@@ -137,31 +137,18 @@ class GeneralEmbedder:
         else:
             return self._late_interaction_embedder.embed_documents(documents=texts)
 
-    def embed_word(
+    def dense_embedding(
         self,
-        term_definition: str,
-            user_interface_buffer: BackEndBuffer,
-    ) -> dict:
+        text: str
+    ) -> list[list[float]] | list[float]:
         """
-        This method takes a query string and computes its dense, sparse, and late interaction
-        embeddings using their respective models. The embeddings are returned as a
-        dictionary with keys corresponding to the model names.
+        This method takes a query string and computes its dense embeddings.
 
-        :param term_definition: Input query text (typically in "term: definition" format).
-        :param user_interface_buffer: User interface buffer to check for restart signals.
-        :return: A dictionary containing the embeddings.
+        :param text: Input query text.
+        :return: The embeddings vector.
         """
-        if user_interface_buffer and user_interface_buffer.read_restart_signal():
-            return {}
-
         dense_vec = self.embed_dense(
-            contents=term_definition,
+            contents=text,
         )
-        sparse_vec = self.embed_sparse(term_definition)
-        late_vec = self.embed_late_interaction(term_definition)
 
-        return {
-            self._late_interaction_embedder.model_name: late_vec,
-            self._sparse_embedder.model_name: sparse_vec,
-            self._dense_embedder.model_name: dense_vec,
-        }
+        return dense_vec

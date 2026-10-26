@@ -1,8 +1,5 @@
 from dataclasses import dataclass
 
-COLLECTION_NAME: str = "glossary_demo"
-"""The name of the collection used for RAG."""
-
 
 @dataclass(frozen=True)
 class QdrantConfig:

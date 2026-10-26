@@ -19,6 +19,8 @@ from typing import Any, Optional
 from back_end.rag.embedders import GeneralEmbedder
 from back_end.rag.models import GlossaryEntry, GlossaryMatch
 
+from RAG.models import RequirementEntry
+
 
 class DatabaseAdapter(ABC):
     """
@@ -79,8 +81,9 @@ class DatabaseAdapter(ABC):
         query_embeddings: dict[str, Any],
         top_k: int,
         k: int,
+        field_name: str,
         query_text: str = "",
-    ) -> list[GlossaryMatch]:
+    ) -> list[RequirementEntry]:
         """
         Search for similar entries using query embeddings.
 
@@ -89,6 +92,7 @@ class DatabaseAdapter(ABC):
         It stores them in the following format: {'dense_model_id': ..., 'sparse_model_id': ..., 'late_model_id': ...}.
         :param top_k: Number of results to return.
         :param k: Number of candidates to use during search.
+        :param field_name: Name of the field of the collection to be compared with the query.
         :param query_text: Optional query text for full-text search (ts_rank).
         :return: List of GlossaryMatch objects.
         """

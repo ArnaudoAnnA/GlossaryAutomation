@@ -1,171 +1,146 @@
 [
   {
-    "requirement": "The system must allow for fast transmission of rough images every 0.5 sec. This may be assisted through the use of data-loss compression techniques",
-    "targets": [
+    "requirement_text": "The system must allow for fast transmission of rough images every 0.5 sec. This may be assisted through the use of data-loss compression techniques",
+    "r4_violations": [
       {
         "target": "Data-loss compression",
-        "term_to_substitute": "data-loss compression",
-        "possible_definition": "Compression techniques that trade image fidelity to enable rapid transmission of rough images every 0.5 seconds."
+        "term_to_substitute": "data-loss compression"
       }
     ]
   },
   {
-    "requirement": "The system shall transmit data  between Gemini and home Institutes using a FITS format and contain all header information provided with the data.",
-    "targets": [
+    "requirement_text": "The system shall transmit data  between Gemini and home Institutes using a FITS format and contain all header information provided with the data.",
+    "r4_violations": [
       {
         "target": "FITS",
-        "term_to_substitute": "FITS",
-        "possible_definition": "Flexible Image Transport System; a standard file format that encapsulates data alongside complete header metadata."
+        "term_to_substitute": "FITS"
       },
       {
         "target": "Visiting Astronomer's Home Institute",
-        "term_to_substitute": "home Institutes",
-        "possible_definition": "External institutional organizations receiving FITS-formatted data transmitted from Gemini."
+        "term_to_substitute": "home Institutes"
       }
     ]
   },
   {
-    "requirement": "Handshaking of commands between IOCs must occur within 100-200 msec, signaling acceptance of each command.",
-    "targets": [
+    "requirement_text": "Handshaking of commands between IOCs must occur within 100-200 msec, signaling acceptance of each command.",
+    "r4_violations": [
       {
         "target": "Handshaking",
-        "term_to_substitute": "Handshaking",
-        "possible_definition": "An automated command-exchange protocol between controllers to acknowledge and signal acceptance of commands within 100-200 ms."
+        "term_to_substitute": "Handshaking"
       },
       {
         "target": "IOC",
-        "term_to_substitute": "IOCs",
-        "possible_definition": "Input/Output Controllers that process, accept, and acknowledge commands via rapid handshaking."
+        "term_to_substitute": "IOCs"
       }
     ]
   },
   {
-    "requirement": "The system shall support the standard ARPA services (telnet, FTP, SMTP, etc) as well as NFS, RPC, IPC, and the Unix socket interface library.",
-    "targets": [
+    "requirement_text": "The system shall support the standard ARPA services (telnet, FTP, SMTP, etc) as well as NFS, RPC, IPC, and the Unix socket interface library.",
+    "r4_violations": [
       {
         "target": "ARPA",
-        "term_to_substitute": "ARPA",
-        "possible_definition": "A collection of standard network protocols and services including telnet, FTP, and SMTP."
+        "term_to_substitute": "ARPA"
       },
       {
         "target": "Telnet",
-        "term_to_substitute": "telnet",
-        "possible_definition": "A standard network service providing remote terminal connections."
+        "term_to_substitute": "telnet"
       },
       {
         "target": "FTP",
-        "term_to_substitute": "FTP",
-        "possible_definition": "File Transfer Protocol; a network service used for transferring files across system interfaces."
+        "term_to_substitute": "FTP"
       },
       {
         "target": "SMTP",
-        "term_to_substitute": "SMTP",
-        "possible_definition": "Simple Mail Transfer Protocol; a standard service used for sending electronic mail."
+        "term_to_substitute": "SMTP"
       },
       {
         "target": "NFS",
-        "term_to_substitute": "NFS",
-        "possible_definition": "Network File System; a distributed file system protocol supported by the network."
+        "term_to_substitute": "NFS"
       },
       {
         "target": "RCP",
-        "term_to_substitute": "RCP",
-        "possible_definition": "Remote Copy Protocol; a service enabling remote file copying between hosts."
+        "term_to_substitute": "RCP"
       },
       {
         "target": "IPC",
-        "term_to_substitute": "IPC",
-        "possible_definition": "Inter-Process Communication; mechanism allowing distinct processes to share data and coordinate actions."
+        "term_to_substitute": "IPC"
       }
     ]
   },
   {
-    "requirement": "The system shall support data compression using a loss-less compression technique for transmission across the system LAN.",
-    "targets": [
+    "requirement_text": "The system shall support data compression using a loss-less compression technique for transmission across the system LAN.",
+    "r4_violations": [
       {
         "target": "Loss-less compression",
-        "term_to_substitute": "loss-less compression",
-        "possible_definition": "A compression method that reduces file size without losing any original data during LAN transmission."
+        "term_to_substitute": "loss-less compression"
       },
       {
         "target": "LAN",
-        "term_to_substitute": "LAN",
-        "possible_definition": "Local Area Network; the local high-speed network infrastructure used for data transmission."
+        "term_to_substitute": "LAN"
       }
     ]
   },
   {
-    "requirement": "The system shall support interactive and queue-based observing modes",
-    "targets": [
+    "requirement_text": "The system shall support interactive and queue-based observing modes",
+    "r4_violations": [
       {
         "target": "Interactive",
-        "term_to_substitute": "interactive",
-        "possible_definition": "An observing mode that allows real-time user engagement and direct system manipulation."
+        "term_to_substitute": "interactive"
       },
       {
         "target": "Queue-based",
-        "term_to_substitute": "queue-based",
-        "possible_definition": "An observing mode where tasks are scheduled and executed automatically in sequential order."
+        "term_to_substitute": "queue-based"
       },
       {
         "target": "Observing Modes",
-        "term_to_substitute": "observing modes",
-        "possible_definition": "Configured operational states governing how astronomical observations are conducted."
+        "term_to_substitute": "observing modes"
       }
     ]
   },
   {
-    "requirement": "The interactive observing mode shall only be supported through the OCS",
-    "targets": [
+    "requirement_text": "The interactive observing mode shall only be supported through the OCS",
+    "r4_violations": [
       {
         "target": "Interactive",
-        "term_to_substitute": "interactive",
-        "possible_definition": "Direct user-driven operation of the system."
+        "term_to_substitute": "interactive"
       },
       {
         "target": "Observing Modes",
-        "term_to_substitute": "observing mode",
-        "possible_definition": "The specific operating state controlling observation execution."
+        "term_to_substitute": "observing mode"
       },
       {
         "target": "OCS",
-        "term_to_substitute": "OCS",
-        "possible_definition": "Observatory Control System; the core software infrastructure that exclusively mediates interactive observing."
+        "term_to_substitute": "OCS"
       }
     ]
   },
   {
-    "requirement": "The operations staff shall control the Gemini 8m Telescopes indirectly via a scheduler program or directly via commands.",
-    "targets": [
+    "requirement_text": "The operations staff shall control the Gemini 8m Telescopes indirectly via a scheduler program or directly via commands.",
+    "r4_violations": [
       {
         "target": "Scheduler",
-        "term_to_substitute": "scheduler",
-        "possible_definition": "An automated program used by staff to indirectly queue and manage telescope operations."
+        "term_to_substitute": "scheduler"
       },
       {
         "target": "Operations staff",
-        "term_to_substitute": "operations staff",
-        "possible_definition": "Authorized personnel responsible for managing and commanding the Gemini 8m Telescopes."
+        "term_to_substitute": "operations staff"
       }
     ]
   },
   {
-    "requirement": "The system shall support access from WAN for remote diagnostics from operations facilities",
-    "targets": [
+    "requirement_text": "The system shall support access from WAN for remote diagnostics from operations facilities",
+    "r4_violations": [
       {
         "target": "WAN",
-        "term_to_substitute": "WAN",
-        "possible_definition": "Wide Area Network; external long-distance telecommunication network providing remote diagnostic access."
+        "term_to_substitute": "WAN"
       },
       {
         "target": "Remote diagnostics",
-        "term_to_substitute": "remote diagnostics",
-        "possible_definition": "Troubleshooting and system health evaluations performed from distant locations."
+        "term_to_substitute": "remote diagnostics"
       },
       {
         "target": "Operations facilities",
-        "term_to_substitute": "operations facilities",
-        "possible_definition": "Off-site or remote locations where operational personnel conduct diagnostics."
+        "term_to_substitute": "operations facilities"
       }
     ]
   }

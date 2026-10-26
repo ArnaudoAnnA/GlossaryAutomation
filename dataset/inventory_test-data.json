@@ -1,101 +1,88 @@
 [
   {
-    "requirement": "After a sale in QuickBooks POS, the system shall update the item's fields in the inventory",
-    "targets": [
+    "requirement_text": "After a sale in QuickBooks POS, the system shall update the item's fields in the inventory",
+    "r4_violations": [
       {
         "target": "POS",
-        "term_to_substitute": "POS",
-        "possible_definition": "Point of Sale; checkout software where sales transactions trigger inventory field updates."
+        "term_to_substitute": "POS"
       },
       {
         "target": "Item Fields",
-        "term_to_substitute": "item's fields",
-        "possible_definition": "Data attributes storing stock quantities, prices, and status within the inventory."
+        "term_to_substitute": "item's fields"
       }
     ]
   },
   {
-    "requirement": "In case of a sale, the system shall automatically apply the discount on purchases via QuickBooks POS",
-    "targets": [
+    "requirement_text": "In case of a sale, the system shall automatically apply the discount on purchases via QuickBooks POS",
+    "r4_violations": [
       {
         "target": "POS",
-        "term_to_substitute": "POS",
-        "possible_definition": "Point of Sale system where automatic purchase discounts are computed."
+        "term_to_substitute": "POS"
       }
     ]
   },
   {
-    "requirement": "When an under $5 item is selected, the system shall provide a search error  to the user",
-    "targets": [
+    "requirement_text": "When an under $5 item is selected, the system shall provide a search error  to the user",
+    "r4_violations": [
       {
         "target": "Under 5$ item",
-        "term_to_substitute": "under 5$ item",
-        "possible_definition": "An inventory product whose unit price is strictly less than $5."
+        "term_to_substitute": "under 5$ item"
       },
       {
         "target": "Search Error",
-        "term_to_substitute": "search error",
-        "possible_definition": "A system notification issued when selecting low-cost items."
+        "term_to_substitute": "search error"
       }
     ]
   },
   {
-    "requirement": "When a stock item Category is updated, the corresponding item is updated in QuickBooks POS",
-    "targets": [
+    "requirement_text": "When a stock item Category is updated, the corresponding item is updated in QuickBooks POS",
+    "r4_violations": [
       {
         "target": "Stock Item",
-        "term_to_substitute": "stock item",
-        "possible_definition": "An inventory product assigned to a category and tracked in POS."
+        "term_to_substitute": "stock item"
       },
       {
         "target": "POS",
-        "term_to_substitute": "POS",
-        "possible_definition": "Point of Sale system that receives category sync updates."
+        "term_to_substitute": "POS"
       }
     ]
   },
   {
-    "requirement": "When the unique items category is selected, the system shall require all the Item fields",
-    "targets": [
+    "requirement_text": "When the unique items category is selected, the system shall require all the Item fields",
+    "r4_violations": [
       {
         "target": "Unique Item",
-        "term_to_substitute": "unique items",
-        "possible_definition": "A distinct category of non-standard items requiring complete attribute fields."
+        "term_to_substitute": "unique items"
       },
       {
         "target": "Item Fields",
-        "term_to_substitute": "item fields",
-        "possible_definition": "Mandatory inventory record fields required during item entry."
+        "term_to_substitute": "item fields"
       }
     ]
   },
   {
-    "requirement": "When an item is part of the unique items category, the system shall not allow modifications to its description",
-    "targets": [
+    "requirement_text": "When an item is part of the unique items category, the system shall not allow modifications to its description",
+    "r4_violations": [
       {
         "target": "Unique Item",
-        "term_to_substitute": "unique items",
-        "possible_definition": "A protected classification of inventory items whose text properties are locked."
+        "term_to_substitute": "unique items"
       },
       {
         "target": "Description",
-        "term_to_substitute": "description",
-        "possible_definition": "Textual information defining an item which becomes read-only for unique items."
+        "term_to_substitute": "description"
       }
     ]
   },
   {
-    "requirement": "During data validation, all validation errors must be reported to the actor.",
-    "targets": [
+    "requirement_text": "During data validation, all validation errors must be reported to the actor.",
+    "r4_violations": [
       {
         "target": "Actor",
-        "term_to_substitute": "actor",
-        "possible_definition": "The system user or external entity performing data validation operations."
+        "term_to_substitute": "actor"
       },
       {
         "target": "Validation Error",
-        "term_to_substitute": "validation errors",
-        "possible_definition": "Exceptions raised when input data fails verification checks."
+        "term_to_substitute": "validation errors"
       }
     ]
   }

@@ -1,161 +1,137 @@
 [
   {
-    "requirement": "The VCD will support any authorised entities in creating an electronic information package.",
-    "targets": [
+    "requirement_text": "The VCD will support any authorised entities in creating an electronic information package.",
+    "r4_violations": [
       {
         "target": "Virtual Company Dossier (VCD)",
-        "term_to_substitute": "VCD",
-        "possible_definition": "Virtual Company Dossier; system that enables creation of electronic information packages."
+        "term_to_substitute": "VCD"
       },
       {
         "target": "Authorised Entities",
-        "term_to_substitute": "authorised entities",
-        "possible_definition": "Authenticated organizations permitted to create information packages in VCD."
+        "term_to_substitute": "authorised entities"
       },
       {
         "target": "Electronic Information Package",
-        "term_to_substitute": "electronic information package",
-        "possible_definition": "A compiled digital container of business credentials and statements."
+        "term_to_substitute": "electronic information package"
       }
     ]
   },
   {
-    "requirement": "The VCD system shall  provide an interface where the economic operator can provide non- sensitive economic operator data.",
-    "targets": [
+    "requirement_text": "The VCD system shall  provide an interface where the economic operator can provide non- sensitive economic operator data.",
+    "r4_violations": [
       {
         "target": "VCD system",
-        "term_to_substitute": "VCD system",
-        "possible_definition": "The software platform providing input interfaces for business entities."
+        "term_to_substitute": "VCD system"
       },
       {
         "target": "Economic operator",
-        "term_to_substitute": "economic operator",
-        "possible_definition": "A business enterprise or commercial entity entering data into the VCD system."
+        "term_to_substitute": "economic operator"
       }
     ]
   },
   {
-    "requirement": "An economic operator shall be able to act as an issuing body for candidate statements or other evidence that cannot be directly or electronically retrieved by the VCD system.",
-    "targets": [
+    "requirement_text": "An economic operator shall be able to act as an issuing body for candidate statements or other evidence that cannot be directly or electronically retrieved by the VCD system.",
+    "r4_violations": [
       {
         "target": "Economic operator",
-        "term_to_substitute": "economic operator",
-        "possible_definition": "A business entity capable of directly self-issuing missing candidate evidence."
+        "term_to_substitute": "economic operator"
       },
       {
         "target": "Candidate statement",
-        "term_to_substitute": "candidate statements",
-        "possible_definition": "Official statements submitted to substantiate criteria in procurement."
+        "term_to_substitute": "candidate statements"
       },
       {
         "target": "VCD system",
-        "term_to_substitute": "VCD system",
-        "possible_definition": "The automated system collecting procurement evidence."
+        "term_to_substitute": "VCD system"
       },
       {
         "target": "Issuing body",
-        "term_to_substitute": "issuing body",
-        "possible_definition": "An entity recognized as an authoritative publisher of statements or evidence."
+        "term_to_substitute": "issuing body"
       }
     ]
   },
   {
-    "requirement": "Often the VCD system will have the possibility to specify the issuing services that are needed to evidence certain criteria e.g. candidate statements or attestations from third parties that are not available in electronic format.",
-    "targets": [
+    "requirement_text": "Often the VCD system will have the possibility to specify the issuing services that are needed to evidence certain criteria e.g. candidate statements or attestations from third parties that are not available in electronic format.",
+    "r4_violations": [
       {
         "target": "VCD system",
-        "term_to_substitute": "VCD system",
-        "possible_definition": "System used to specify required verification services for procurement criteria."
+        "term_to_substitute": "VCD system"
       },
       {
         "target": "Issuing Service",
-        "term_to_substitute": "issuing services",
-        "possible_definition": "External or internal services that produce non-electronic attestations and statements."
+        "term_to_substitute": "issuing services"
       },
       {
         "target": "Candidate statement",
-        "term_to_substitute": "candidate statements",
-        "possible_definition": "Declarations submitted to satisfy eligibility criteria."
+        "term_to_substitute": "candidate statements"
       },
       {
         "target": "Attestation",
-        "term_to_substitute": "attestation",
-        "possible_definition": "Formal third-party documentation attesting to an entity's compliance or status."
+        "term_to_substitute": "attestation"
       }
     ]
   },
   {
-    "requirement": "The VCD system shall have an interface to receive and process the information (mapping of evidence) provided by the pre-VCD mapping tool.",
-    "targets": [
+    "requirement_text": "The VCD system shall have an interface to receive and process the information (mapping of evidence) provided by the pre-VCD mapping tool.",
+    "r4_violations": [
       {
         "target": "VCD system",
-        "term_to_substitute": "VCD system",
-        "possible_definition": "The core application processing evidence mappings from pre-ingestion tools."
+        "term_to_substitute": "VCD system"
       },
       {
         "target": "Mapping",
-        "term_to_substitute": "mapping",
-        "possible_definition": "The structural alignment between submitted evidence documents and regulatory criteria."
+        "term_to_substitute": "mapping"
       },
       {
         "target": "Pre-VCD mapping tool",
-        "term_to_substitute": "pre-VCD mapping tool",
-        "possible_definition": "An upstream utility that prepares and structures evidence data prior to VCD ingestion."
+        "term_to_substitute": "pre-VCD mapping tool"
       }
     ]
   },
   {
-    "requirement": "The VCD system shall provide a functionality to request attestations that can be collected automatically via an issuing body.",
-    "targets": [
+    "requirement_text": "The VCD system shall provide a functionality to request attestations that can be collected automatically via an issuing body.",
+    "r4_violations": [
       {
         "target": "VCD system",
-        "term_to_substitute": "VCD system",
-        "possible_definition": "Platform supporting automated retrieval requests for formal documents."
+        "term_to_substitute": "VCD system"
       },
       {
         "target": "Attestation",
-        "term_to_substitute": "attestations",
-        "possible_definition": "Formal verification certificates obtained from external bodies."
+        "term_to_substitute": "attestations"
       },
       {
         "target": "Issuing body",
-        "term_to_substitute": "issuing body",
-        "possible_definition": "An authoritative source organization capable of fulfilling automated evidence requests."
+        "term_to_substitute": "issuing body"
       }
     ]
   },
   {
-    "requirement": "VCD system shall be operated by at least one national VCD service provider",
-    "targets": [
+    "requirement_text": "VCD system shall be operated by at least one national VCD service provider",
+    "r4_violations": [
       {
         "target": "VCD system",
-        "term_to_substitute": "VCD system",
-        "possible_definition": "The software system maintained by designated national operators."
+        "term_to_substitute": "VCD system"
       },
       {
         "target": "VCD service provider",
-        "term_to_substitute": "VCD service provider",
-        "possible_definition": "A designated national entity responsible for hosting and operating the VCD system."
+        "term_to_substitute": "VCD service provider"
       }
     ]
   },
   {
-    "requirement": "A VCD Package may contain self-declarations and several other documents provided by the economic operator.",
-    "targets": [
+    "requirement_text": "A VCD Package may contain self-declarations and several other documents provided by the economic operator.",
+    "r4_violations": [
       {
         "target": "VCD package",
-        "term_to_substitute": "VCD package",
-        "possible_definition": "A compiled file collection containing self-declarations and associated evidence."
+        "term_to_substitute": "VCD package"
       },
       {
         "target": "Self-declaration",
-        "term_to_substitute": "self-declarations",
-        "possible_definition": "First-party sworn statements made by an economic operator."
+        "term_to_substitute": "self-declarations"
       },
       {
         "target": "Economic operator",
-        "term_to_substitute": "economic operator",
-        "possible_definition": "The commercial entity submitting self-declarations."
+        "term_to_substitute": "economic operator"
       }
     ]
   }

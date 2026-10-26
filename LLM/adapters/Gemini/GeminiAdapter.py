@@ -23,8 +23,8 @@ from LLM.adapters.interface import LLMAdapterInterface
 from constants import MAX_ATTEMPTS, TEMPERATURE
 from logging_debugging import log_thread_safe
 from logging_debugging.logging_debugging import GLOBAL_LOG, LogType
-from LLM.APIKeysManager import APIKeysManager, NUM_API_KEYS
-from LLM.init_genai_client import init_genai_client
+from LLM.adapters.Gemini.APIKeysManager import APIKeysManager, NUM_API_KEYS
+from LLM.adapters.Gemini.init_genai_client import init_genai_client
 
 MODEL_ID = "gemini-3.5-flash-lite"
 
@@ -35,13 +35,13 @@ class GeminiAdapter(LLMAdapterInterface):
         self,
         sys_prompt: str,
         model_id: str = MODEL_ID,
-        shot_examples: list[Content] = None,
+        shot_examples: list[tuple[str, str]] = None,
     ):
         # log_thread_safe(f"---\nUSING {model_id}\n---")
         self._model_id = model_id
         self._sys_prompt = sys_prompt
         self._chat, self._client = self.init_chat(
-            sys_prompt=sys_prompt, history=shot_examples
+            sys_prompt=sys_prompt, history=self.format_history(shot_examples)
         )
 
     @staticmethod
@@ -59,19 +59,11 @@ class GeminiAdapter(LLMAdapterInterface):
         )
 
     @staticmethod
-    def format_history(raw_dictionary: list[dict[str, str]]) -> list[Content]:
-        """
-
-        :param raw_dictionary: each dictionary in the list should be formatted like this: { 'role': '...', 'content': '...'}
-
-        :return:
-        """
-
+    def format_history(raw_history: list[tuple[str, str]]) -> list[Content]:
         ret = []
-        for d in raw_dictionary:
-            role = d["role"]
-            content = d["content"]
-            ret.append(Content(role=role, parts=[Part(content)]))
+        for d in raw_history:
+            ret.append(Content(role="user", parts=[Part(d[0])]))
+            ret.append(Content(role="assistant", parts=[Part(d[1])]))
 
         return ret
 

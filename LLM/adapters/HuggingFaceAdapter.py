@@ -19,7 +19,7 @@ class HuggingFaceAdapter(LLMAdapterInterface):
             self,
             sys_prompt: str,
             model_id: str = MODEL_ID,
-            shot_examples: list[dict[str, str]] = None,
+            shot_examples: list[tuple[str, str]] = None,
     ):
         self._model_id = model_id
         self._sys_prompt = sys_prompt
@@ -27,7 +27,7 @@ class HuggingFaceAdapter(LLMAdapterInterface):
         self._model = AutoModelForCausalLM.from_pretrained(
             model_id, device_map="auto", torch_dtype=torch.float16
         )
-        self._history = self.init_chat(sys_prompt=sys_prompt, history=shot_examples)
+        self._history = self.init_chat(sys_prompt=sys_prompt, history=self.format_history(shot_examples))
 
     @staticmethod
     def init_chat(
@@ -39,8 +39,13 @@ class HuggingFaceAdapter(LLMAdapterInterface):
         return chat_history
 
     @staticmethod
-    def format_history(raw_dictionary: list[dict[str, str]]) -> list[dict[str, str]]:
-        return [{"role": d["role"], "content": d["content"]} for d in raw_dictionary]
+    def format_history(raw_history: list[tuple[str, str]]) -> list[dict[str, str]]:
+        ret = []
+        for d in raw_history:
+            ret.append({"role": "user", "content": d[0]})
+            ret.append({"role": "assistant", "content": d[1]})
+
+        return ret
 
     def make_a_query(
             self,

@@ -1,231 +1,199 @@
 [
   {
-    "requirement": "The DH web system shall provide for authentication and information encryption through a recognized reliable and effective security technology, such as TLS.",
-    "targets": [
+    "requirement_text": "The DH web system shall provide for authentication and information encryption through a recognized reliable and effective security technology, such as TLS.",
+    "r4_violations": [
       {
         "target": "Transport Layer Security",
-        "term_to_substitute": "TLS",
-        "possible_definition": "A cryptographic standard protocol used to encrypt web communications and authenticate users."
+        "term_to_substitute": "TLS"
       },
       {
         "target": "Encryption",
-        "term_to_substitute": "encryption",
-        "possible_definition": "The protective encoding of data to secure web transmissions against unauthorized access."
+        "term_to_substitute": "encryption"
       },
       {
         "target": "Digital Home",
-        "term_to_substitute": "DH",
-        "possible_definition": "The integrated smart home infrastructure and web system being secured."
+        "term_to_substitute": "DH"
       }
     ]
   },
   {
-    "requirement": "The general user shall be able to use the DH system capabilities to monitor and control the environment in his/her home.",
-    "targets": [
+    "requirement_text": "The general user shall be able to use the DH system capabilities to monitor and control the environment in his/her home.",
+    "r4_violations": [
       {
         "target": "Digital Home",
-        "term_to_substitute": "DH",
-        "possible_definition": "The smart home ecosystem containing environmental control capabilities."
+        "term_to_substitute": "DH"
       },
       {
         "target": "To Monitor",
-        "term_to_substitute": "monitor",
-        "possible_definition": "To observe real-time environmental status and telemetry in the user's home."
+        "term_to_substitute": "monitor"
       }
     ]
   },
   {
-    "requirement": "The home system shall require an ISP. The ISP should be widely available (cable modem, high speed DSL),",
-    "targets": [
+    "requirement_text": "The home system shall require an ISP. The ISP should be widely available (cable modem, high speed DSL),",
+    "r4_violations": [
       {
         "target": "ISP",
-        "term_to_substitute": "ISP",
-        "possible_definition": "Internet Service Provider; an external service provider delivering broadband internet connectivity."
+        "term_to_substitute": "ISP"
       },
       {
         "target": "DSL (Digital Subscriber Line)",
-        "term_to_substitute": "DSL",
-        "possible_definition": "Digital Subscriber Line; a high-speed broadband internet technology."
+        "term_to_substitute": "DSL"
       },
       {
         "target": "Digital Home",
-        "term_to_substitute": "home system",
-        "possible_definition": "The smart home installation relying on an ISP for external connectivity."
+        "term_to_substitute": "home system"
       }
     ]
   },
   {
-    "requirement": "The system shall incude thermostats to monitor and regulate the temperature of an enclosed space.",
-    "targets": [
+    "requirement_text": "The system shall incude thermostats to monitor and regulate the temperature of an enclosed space.",
+    "r4_violations": [
       {
         "target": "Thermostat",
-        "term_to_substitute": "thermostats",
-        "possible_definition": "Environmental control devices designed to monitor and regulate spatial ambient temperature."
+        "term_to_substitute": "thermostats"
       },
       {
         "target": "To Monitor",
-        "term_to_substitute": "monitor",
-        "possible_definition": "To measure and track ambient spatial temperatures."
+        "term_to_substitute": "monitor"
       },
       {
         "target": "Regulate",
-        "term_to_substitute": "regulate",
-        "possible_definition": "To actively adjust heat flow to maintain target temperature levels."
+        "term_to_substitute": "regulate"
       }
     ]
   },
   {
-    "requirement": "The system shall include security sound and light alarms, which can be activated when DH senses a security breach from a magnetic contact.",
-    "targets": [
+    "requirement_text": "The system shall include security sound and light alarms, which can be activated when DH senses a security breach from a magnetic contact.",
+    "r4_violations": [
       {
         "target": "Digital Home",
-        "term_to_substitute": "DH",
-        "possible_definition": "The smart home automation system that detects sensor events and triggers alarms."
+        "term_to_substitute": "DH"
       },
       {
         "target": "Security breach",
-        "term_to_substitute": "security breach",
-        "possible_definition": "An unauthorized entry or intrusion event detected via hardware sensors."
+        "term_to_substitute": "security breach"
       },
       {
         "target": "Security Sound",
-        "term_to_substitute": "security sound",
-        "possible_definition": "An audible alarm siren activated in response to a detected intrusion."
+        "term_to_substitute": "security sound"
       },
       {
         "target": "Light alarm",
-        "term_to_substitute": "light alarms",
-        "possible_definition": "Visual flashing lights activated as a warning signal during security events."
+        "term_to_substitute": "light alarms"
       }
     ]
   },
   {
-    "requirement": "The controller part of thermostat shall provide a 'set point' temperature  to control the flow of heat energy and achieve the set point temperature.",
-    "targets": [
+    "requirement_text": "The controller part of thermostat shall provide a 'set point' temperature  to control the flow of heat energy and achieve the set point temperature.",
+    "r4_violations": [
       {
         "target": "Thermostat",
-        "term_to_substitute": "thermostat",
-        "possible_definition": "A temperature-regulating hardware unit containing an integrated controller."
+        "term_to_substitute": "thermostat"
       },
       {
         "target": "Set Point",
-        "term_to_substitute": "set point",
-        "possible_definition": "The targeted goal temperature used by the controller to regulate heat energy flow."
+        "term_to_substitute": "set point"
       }
     ]
   },
   {
-    "requirement": "The DH System shall provide users with online FAQ documentation about the DH system installed in their home.",
-    "targets": [
+    "requirement_text": "The DH System shall provide users with online FAQ documentation about the DH system installed in their home.",
+    "r4_violations": [
       {
         "target": "Digital Home",
-        "term_to_substitute": "DH",
-        "possible_definition": "The installed home automation system."
+        "term_to_substitute": "DH"
       },
       {
         "target": "FAQ",
-        "term_to_substitute": "FAQ",
-        "possible_definition": "Frequently Asked Questions; user documentation resolving common system questions online."
+        "term_to_substitute": "FAQ"
       }
     ]
   },
   {
-    "requirement": "The gateway device shall operate up to a 1000-foot range for indoor transmission.",
-    "targets": [
+    "requirement_text": "The gateway device shall operate up to a 1000-foot range for indoor transmission.",
+    "r4_violations": [
       {
         "target": "Gateway Device",
-        "term_to_substitute": "gateway device",
-        "possible_definition": "A central home hub enabling indoor wireless transmissions up to 1000 feet."
+        "term_to_substitute": "gateway device"
       }
     ]
   },
   {
-    "requirement": "The DH gateway device shall provide communication with all the DH devices and shall connect with a broadband internet connection.",
-    "targets": [
+    "requirement_text": "The DH gateway device shall provide communication with all the DH devices and shall connect with a broadband internet connection.",
+    "r4_violations": [
       {
         "target": "DH",
-        "term_to_substitute": "DH",
-        "possible_definition": "Digital Home; the system architecture linking home devices."
+        "term_to_substitute": "DH"
       },
       {
         "target": "Gateway Device",
-        "term_to_substitute": "gateway device",
-        "possible_definition": "The primary communications bridge connecting local smart devices to the internet."
+        "term_to_substitute": "gateway device"
       },
       {
         "target": "Broadband Internet",
-        "term_to_substitute": "broadband internet",
-        "possible_definition": "High-speed external internet connection required by the gateway device."
+        "term_to_substitute": "broadband internet"
       }
     ]
   },
   {
-    "requirement": "The system shall adhere to the standards, policies and procedures of the ASHRAE",
-    "targets": [
+    "requirement_text": "The system shall adhere to the standards, policies and procedures of the ASHRAE",
+    "r4_violations": [
       {
         "target": "ASHRAE",
-        "term_to_substitute": "ASHRAE",
-        "possible_definition": "American Society of Heating, Refrigerating and Air-Conditioning Engineers; standard-setting governing body."
+        "term_to_substitute": "ASHRAE"
       }
     ]
   },
   {
-    "requirement": "The system shall be compatible with a centralized HVAC",
-    "targets": [
+    "requirement_text": "The system shall be compatible with a centralized HVAC",
+    "r4_violations": [
       {
         "target": "HVAC",
-        "term_to_substitute": "HVAC",
-        "possible_definition": "Heating, Ventilation, and Air Conditioning; centralized climate control system."
+        "term_to_substitute": "HVAC"
       }
     ]
   },
   {
-    "requirement": "The humidistat shall provide a reading of the current humidity in the space where the humidistat is located.",
-    "targets": [
+    "requirement_text": "The humidistat shall provide a reading of the current humidity in the space where the humidistat is located.",
+    "r4_violations": [
       {
         "target": "Humidistat",
-        "term_to_substitute": "humidistat",
-        "possible_definition": "A local environmental sensor that measures ambient relative humidity."
+        "term_to_substitute": "humidistat"
       },
       {
         "target": "Current humidity",
-        "term_to_substitute": "current humidity",
-        "possible_definition": "The real-time measurement of atmospheric moisture present in a room."
+        "term_to_substitute": "current humidity"
       }
     ]
   },
   {
-    "requirement": "The DH System shall allow a web-ready computer, cell phone or PDA to control a home's temperature, humidity, lights, security, and the state of small appliances.",
-    "targets": [
+    "requirement_text": "The DH System shall allow a web-ready computer, cell phone or PDA to control a home's temperature, humidity, lights, security, and the state of small appliances.",
+    "r4_violations": [
       {
         "target": "Digital Home",
-        "term_to_substitute": "DH System",
-        "possible_definition": "The integrated control platform allowing remote user management of appliances and climate."
+        "term_to_substitute": "DH System"
       },
       {
         "target": "PDA",
-        "term_to_substitute": "PDA",
-        "possible_definition": "Personal Digital Assistant; a handheld electronic device used for remote system control."
+        "term_to_substitute": "PDA"
       }
     ]
   },
   {
-    "requirement": "The gateway shall contain an RF Module, which shall send and receive wireless communications between the gateway and the other DH devices",
-    "targets": [
+    "requirement_text": "The gateway shall contain an RF Module, which shall send and receive wireless communications between the gateway and the other DH devices",
+    "r4_violations": [
       {
         "target": "Gateway Device",
-        "term_to_substitute": "gateway",
-        "possible_definition": "The central home control hardware hosting the RF transceiver module."
+        "term_to_substitute": "gateway"
       },
       {
         "target": "RF",
-        "term_to_substitute": "RF",
-        "possible_definition": "Radio Frequency; wireless radio signals used for internal device communication."
+        "term_to_substitute": "RF"
       },
       {
         "target": "Digital Home",
-        "term_to_substitute": "DH",
-        "possible_definition": "Digital Home; the network of smart home peripherals."
+        "term_to_substitute": "DH"
       }
     ]
   }

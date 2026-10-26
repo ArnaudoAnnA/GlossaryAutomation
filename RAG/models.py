@@ -8,6 +8,20 @@ class GlossaryEntry:
     term: str
     definition: str
 
+@dataclass
+class TermReplacement:
+    term_to_substitute: str
+    target: str
+
+@dataclass
+class RequirementEntry:
+    requirement_text: str
+    r4_violations: list[TermReplacement]
+
+    def to_few_shot_example_for_violation_identification(self) -> tuple[str, str]:
+        return (f"Find the violations to INCOSE R4 in this requirement: {self.requirement_text}",
+                ', '.join([t.term_to_substitute for t in self.r4_violations]))
+
 
 @dataclass
 class GlossaryMatch:

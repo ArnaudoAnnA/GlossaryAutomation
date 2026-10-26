@@ -1,5 +1,5 @@
 
-from back_end.rag.config import COLLECTION_NAME, QdrantConfig
+from .config import QdrantConfig
 from .RagManager import RagManager
 from .adapters.base import DatabaseAdapter
 from .adapters.qdrant_adapter import QdrantAdapter
@@ -28,7 +28,6 @@ def _initialize_rag_manager(
     _embedder: GeneralEmbedder, _adapter: DatabaseAdapter
 ) -> RagManager:
     retriever = RagManager(adapter=_adapter, embedder=_embedder)
-    retriever.ensure_data(collection_name=COLLECTION_NAME)
     return retriever
 
 
