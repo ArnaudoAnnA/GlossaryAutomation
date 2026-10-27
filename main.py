@@ -107,7 +107,7 @@ if __name__ == "__main__":
 
 
 
-        rag_manager.clear_dataset(COLLECTION_NAME)
+        rag_manager.clear_collection(COLLECTION_NAME)
 
 
 

@@ -16,9 +16,7 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import Any, Optional
 
-from back_end.rag.embedders import GeneralEmbedder
-from back_end.rag.models import GlossaryEntry, GlossaryMatch
-
+from RAG.embedders.GeneralEmbedder import GeneralEmbedder
 from RAG.models import RequirementEntry
 
 
@@ -75,13 +73,13 @@ class DatabaseAdapter(ABC):
         pass
 
     @abstractmethod
-    def search(
+    def search_similar_requirements(
         self,
         collection_name: str,
         query_embeddings: dict[str, Any],
         top_k: int,
         k: int,
-        field_name: str,
+        field_name: str = "requirement_text",
         query_text: str = "",
     ) -> list[RequirementEntry]:
         """
@@ -94,7 +92,7 @@ class DatabaseAdapter(ABC):
         :param k: Number of candidates to use during search.
         :param field_name: Name of the field of the collection to be compared with the query.
         :param query_text: Optional query text for full-text search (ts_rank).
-        :return: List of GlossaryMatch objects.
+        :return: List of RequirementEntry objects.
         """
         pass
 
@@ -128,12 +126,12 @@ class DatabaseAdapter(ABC):
         pass
 
     @abstractmethod
-    def get_all_entries(self, collection_name: str) -> list[GlossaryEntry]:
+    def get_all_entries(self, collection_name: str) -> list[Any]:
         """
         Retrieve all entries from the collection.
 
         :param collection_name: Name of the collection to retrieve entries from.
-        :return: List of GlossaryEntry objects.
+        :return: List of Any objects.
         """
         pass
 

@@ -13,17 +13,18 @@
 #  limitations under the License.
 
 import uuid
+from qdrant_client import QdrantClient, models
+from qdrant_client.http.models import PointStruct
 from pathlib import Path
 from typing import Any, Optional
 
-from qdrant_client import QdrantClient, models
-from qdrant_client.http.models import PointStruct
 from tqdm import tqdm
 
-from back_end.rag.config import QdrantConfig
-from back_end.rag.embedders import GeneralEmbedder
-from back_end.rag.models import GlossaryMatch, GlossaryEntry
 from .base import DatabaseAdapter
+from .. import models
+from ..config import QdrantConfig
+from ..embedders.GeneralEmbedder import GeneralEmbedder
+from ..models import RequirementEntry, TermReplacement
 
 # TODO: load e load_from_cache si possono unire
 
@@ -105,68 +106,6 @@ class QdrantAdapter(DatabaseAdapter):
             sparse_vectors_config={self._embedder.sparse_vector_name: sparse_config},
         )
 
-    def _generate_points(
-        self,
-        entries: list[str],
-        dense_vecs: list[list[float]],
-        sparse_vecs: list[list[float]],
-        late_vecs: list[list[float]],
-    ) -> list[PointStruct]:
-        return [
-            PointStruct(
-                id=str(uuid.uuid4()),
-                vector={
-                    self._embedder.sparse_vector_name: sparse_vecs[i],
-                    self._embedder.late_vector_name: late_vecs[i],
-                    self._embedder.dense_vector_name: dense_vecs[i],
-                },
-                payload={
-                    "term": (text.split(":", 1)[0].strip() if text else ""),
-                    "definition": (
-                        text.split(":", 1)[1].strip() if ":" in text else ""
-                    ),
-                },
-            )
-            for i, text in enumerate(entries)
-        ]
-
-    def write_data(self, collection_name: str, entries: list[str], path: Optional[Path]) -> int:
-        """
-        Load text entries into the Qdrant collection.
-
-        :param collection_name: Name of the collection.
-        :param entries: List of text entries in format "term: definition".
-        :param path: Path to the original source file used for embedding, needed for caching.
-        :return: Number of entries loaded.
-        """
-
-        with tqdm(
-            total=len(entries), desc=f"Embedding {collection_name}", unit="entry"
-        ) as pbar:
-            for i in range(0, len(entries), BATCH_SIZE):
-                batch = entries[i : i + BATCH_SIZE]
-                batch_dense_vecs = self._embedder.embed_dense(
-                    contents=batch, source_file=path
-                )
-                batch_sparse_vecs = self._embedder.embed_sparse(batch)
-                batch_late_vecs = self._embedder.embed_late_interaction(batch)
-
-                points = self._generate_points(
-                    entries=batch,
-                    dense_vecs=batch_dense_vecs,
-                    sparse_vecs=batch_sparse_vecs,
-                    late_vecs=batch_late_vecs,
-                )
-                self._client.upload_points(
-                    collection_name=collection_name,
-                    points=points,
-                    batch_size=BATCH_SIZE,
-                    max_retries=MAX_RETRIES,
-                )
-                pbar.update(len(batch))
-
-        return len(entries)
-
     def write_dict(self, collection_name: str, entries: list[dict[str, str]]) -> int:
         if not self._client.collection_exists(collection_name):
             self._client.create_collection(collection_name=collection_name, vectors_config={})
@@ -205,14 +144,15 @@ class QdrantAdapter(DatabaseAdapter):
             return [self._to_python(v) for v in value]
         return value
 
-    def search(
+    def search_similar_requirements(
         self,
         collection_name: str,
         query_embeddings: dict[str, Any],
         top_k: int,
         k: int,
+        field_name: str = "requirement_text",
         query_text: str = "",
-    ) -> list[GlossaryMatch]:
+    ) -> list[RequirementEntry]:
         if self._hybrid_search:
             return self._hybrid_search_query(
                 collection_name=collection_name,
@@ -227,87 +167,6 @@ class QdrantAdapter(DatabaseAdapter):
                 top_k=top_k,
                 k=k,
             )
-
-    def _dense_search(
-        self,
-        collection_name: str,
-        query_embeddings: dict[str, Any],
-        top_k: int,
-        k: int,
-    ) -> list[GlossaryMatch]:
-        """
-        Search the collection using only dense vector embeddings.
-
-        :param collection_name: Name of the collection to search.
-        :param query_embeddings: Dictionary containing the dense query vector.
-        :param top_k: Maximum number of final matches to return.
-        :param k: Limit of points to retrieve from the database.
-        :return: List of the top matching GlossaryMatch objects.
-        """
-        dense_emb = query_embeddings.get(self._embedder.dense_vector_name)
-
-        results = self._client.query_points(
-            collection_name=collection_name,
-            query=dense_emb,
-            using=self._embedder.dense_vector_name,
-            with_payload=True,
-            limit=k,
-        )
-
-        return [
-            GlossaryMatch(
-                term=hit.payload["term"],
-                definition=hit.payload["definition"],
-                score=hit.score,
-            )
-            for hit in results.points
-            if hit.payload is not None
-        ][:top_k]
-
-    def _hybrid_search_query(
-        self,
-        collection_name: str,
-        query_embeddings: dict[str, Any],
-        top_k: int,
-        k: int,
-    ) -> list[GlossaryMatch]:
-        """
-        Perform a hybrid search using multi-vector prefetching and late-interaction scoring.
-
-        :param collection_name: Name of the collection to search.
-        :param query_embeddings: Dictionary containing dense, sparse, and late-interaction vectors.
-        :param top_k: Maximum number of final matches to return.
-        :param k: Limit of points to evaluate during the late-interaction phase.
-        :return: List of the top matching GlossaryMatch objects.
-        """
-        pre_fetch_limit = max(100, top_k * 10)
-        prefetch = [
-            models.Prefetch(
-                query=emb,
-                using=name,
-                limit=pre_fetch_limit,
-            )
-            for name, emb in query_embeddings.items()
-        ]
-
-        results = self._client.query_points(
-            collection_name=collection_name,
-            prefetch=prefetch,
-            query=query_embeddings[self._embedder.late_vector_name],
-            using=self._embedder.late_vector_name,
-            with_payload=True,
-            limit=k,
-        )
-
-        return [
-            GlossaryMatch(
-                term=hit.payload["term"],
-                definition=hit.payload["definition"],
-                score=hit.score,
-            )
-            for hit in results.points
-            if hit.payload is not None
-        ][:top_k]
 
     def delete_collection(self, name: str) -> None:
         """
@@ -355,37 +214,6 @@ class QdrantAdapter(DatabaseAdapter):
 
         return dense_embeddings
 
-    from typing import List
-    from back_end.rag.models import GlossaryEntry
-
-    def get_all_entries(self, collection_name: str) -> List[GlossaryEntry]:
-        """
-        Retrieve all entries from the Qdrant collection.
-
-        :param collection_name: Name of the collection to retrieve entries from.
-        :return: List of GlossaryEntry objects.
-        """
-        results, _ = self._client.scroll(
-            collection_name=collection_name,
-            with_payload=True,
-            limit=10000,
-        )
-
-        entries = []
-        for hit in results:
-            try:
-                if hit.payload is None:
-                    continue
-
-                term = hit.payload.get("term", "")
-                definition = hit.payload.get("definition", "")
-                entries.append(GlossaryEntry(term=term, definition=definition))
-            except Exception as e:
-                print(f"Error processing hit: {e}")
-                continue
-
-        return entries
-
     def has_entries(self, collection_name: str) -> int:
         """
         Check if collection has entries.
@@ -411,35 +239,220 @@ class QdrantAdapter(DatabaseAdapter):
         )
         return [hit.vector.get(self._embedder.dense_vector_name) for hit in results]
 
-    def load_data_from_cache(
-        self,
-        collection_name: str,
-        entries: list[str],
-        dense_embeddings: list[list[float]],
-        late_embeddings: Optional[list[list[float]]] = None,
-    ) -> int:
+    def _generate_points(
+            self,
+            entries: list[RequirementEntry],
+            dense_vecs: list[list[float]],
+            sparse_vecs: list[list[float]] = None,
+            late_vecs: list[list[float]] = None,
+    ) -> list[PointStruct]:
+        """
+        Generate Qdrant PointStruct objects from RequirementEntry instances.
 
-        if not late_embeddings:
-            raise ValueError(
-                "Late embeddings are required for loading from cache in Qdrant."
+        :param entries: List of RequirementEntry objects to be stored.
+        :param dense_vecs: List of dense vector embeddings for the entries.
+        :param sparse_vecs: Optional list of sparse vector embeddings.
+        :param late_vecs: Optional list of late-interaction vector embeddings.
+        :return: List of PointStruct objects ready for Qdrant insertion.
+        """
+        return [
+            PointStruct(
+                id=str(uuid.uuid4()),
+                vector={
+                    self._embedder.sparse_vector_name: sparse_vecs[i] if sparse_vecs else None,
+                    self._embedder.late_vector_name: late_vecs[i] if late_vecs else None,
+                    self._embedder.dense_vector_name: dense_vecs[i] if dense_vecs else None,
+                },
+                payload={
+                    "requirement_text": entry.requirement_text,
+                    "r4_violations": [
+                        {"target": v.target, "term_to_substitute": v.term_to_substitute}
+                        for v in entry.r4_violations
+                    ],
+                },
             )
+            for i, entry in enumerate(entries)
+        ]
 
+    def write_data(self, collection_name: str, entries: list[RequirementEntry], path: Optional[Path]) -> int:
+        """
+        Embed and load RequirementEntry objects into the Qdrant collection.
+
+        :param collection_name: Name of the Qdrant collection.
+        :param entries: List of RequirementEntry objects to embed and store.
+        :param path: Path to the original source file used for embedding, needed for caching.
+        :return: Number of entries successfully loaded.
+        """
         with tqdm(
-            total=len(entries),
-            desc=f"Loading data from cache for {collection_name}",
-            unit="entry",
+                total=len(entries), desc=f"Embedding {collection_name}", unit="entry"
         ) as pbar:
             for i in range(0, len(entries), BATCH_SIZE):
-                batch = entries[i : i + BATCH_SIZE]
-                batch_dense_vecs = dense_embeddings[i : i + BATCH_SIZE]
-                batch_sparse_vecs = self._embedder.embed_sparse(batch)
-                batch_late_vecs = late_embeddings[i : i + BATCH_SIZE]
+                batch = entries[i: i + BATCH_SIZE]
+                batch_texts = [entry.requirement_text for entry in batch]
+
+                batch_dense_vecs = self._embedder.embed_dense(
+                    contents=batch_texts, source_file=path
+                )
+                batch_sparse_vecs = self._embedder.embed_sparse(batch_texts)
+                batch_late_vecs = self._embedder.embed_late_interaction(batch_texts)
 
                 points = self._generate_points(
                     entries=batch,
                     dense_vecs=batch_dense_vecs,
                     sparse_vecs=batch_sparse_vecs,
                     late_vecs=batch_late_vecs,
+                )
+                self._client.upload_points(
+                    collection_name=collection_name,
+                    points=points,
+                    batch_size=BATCH_SIZE,
+                    max_retries=MAX_RETRIES,
+                )
+                pbar.update(len(batch))
+
+        return len(entries)
+
+    def _dense_search(
+            self,
+            collection_name: str,
+            query_embeddings: dict[str, Any],
+            top_k: int,
+            k: int,
+    ) -> list[RequirementEntry]:
+        """
+        Search the collection using only dense vector embeddings.
+
+        :param collection_name: Name of the collection to search.
+        :param query_embeddings: Dictionary containing the dense query vector.
+        :param top_k: Maximum number of final matches to return.
+        :param k: Limit of points to retrieve from the database.
+        :return: List of the top matching RequirementEntry objects.
+        """
+        dense_emb = query_embeddings.get(self._embedder.dense_vector_name)
+
+        results = self._client.query_points(
+            collection_name=collection_name,
+            query=dense_emb,
+            using=self._embedder.dense_vector_name,
+            with_payload=True,
+            limit=k,
+        )
+
+        return [
+            RequirementEntry(
+                requirement_text=hit.payload.get("requirement_text", ""),
+                r4_violations=[TermReplacement(**v) for v in hit.payload.get("r4_violations", [])]
+            )
+            for hit in results.points
+            if hit.payload is not None
+        ][:top_k]
+
+    def _hybrid_search_query(
+            self,
+            collection_name: str,
+            query_embeddings: dict[str, Any],
+            top_k: int,
+            k: int,
+    ) -> list[RequirementEntry]:
+        """
+        Perform a hybrid search using multi-vector prefetching and late-interaction scoring.
+
+        :param collection_name: Name of the collection to search.
+        :param query_embeddings: Dictionary containing dense, sparse, and late-interaction vectors.
+        :param top_k: Maximum number of final matches to return.
+        :param k: Limit of points to evaluate during the late-interaction phase.
+        :return: List of the top matching RequirementEntry objects.
+        """
+        pre_fetch_limit = max(100, top_k * 10)
+        prefetch = [
+            models.Prefetch(
+                query=emb,
+                using=name,
+                limit=pre_fetch_limit,
+            )
+            for name, emb in query_embeddings.items()
+        ]
+
+        results = self._client.query_points(
+            collection_name=collection_name,
+            prefetch=prefetch,
+            query=query_embeddings[self._embedder.late_vector_name],
+            using=self._embedder.late_vector_name,
+            with_payload=True,
+            limit=k,
+        )
+
+        return [
+            RequirementEntry(
+                requirement_text=hit.payload.get("requirement_text", ""),
+                r4_violations=[TermReplacement(**v) for v in hit.payload.get("r4_violations", [])]
+            )
+            for hit in results.points
+            if hit.payload is not None
+        ][:top_k]
+
+    def get_all_entries(self, collection_name: str) -> list[RequirementEntry]:
+        """
+        Retrieve all RequirementEntry objects from the Qdrant collection.
+
+        :param collection_name: Name of the collection to retrieve entries from.
+        :return: List of RequirementEntry objects.
+        """
+        results, _ = self._client.scroll(
+            collection_name=collection_name,
+            with_payload=True,
+            limit=10000,
+        )
+
+        entries = []
+        for hit in results:
+            try:
+                if hit.payload is None:
+                    continue
+
+                req_text = hit.payload.get("requirement_text", "")
+                violations = [TermReplacement(**v) for v in hit.payload.get("r4_violations", [])]
+                entries.append(RequirementEntry(requirement_text=req_text, r4_violations=violations))
+            except Exception as e:
+                print(f"Error processing hit: {e}")
+                continue
+
+        return entries
+
+    def load_data_from_cache(
+            self,
+            collection_name: str,
+            entries: list[RequirementEntry],
+            dense_embeddings: list[list[float]],
+            late_embeddings: list[list[float]] = None,
+    ) -> int:
+        """
+        Load pre-embedded RequirementEntry objects into the Qdrant collection from cache.
+
+        :param collection_name: Name of the Qdrant collection.
+        :param entries: List of RequirementEntry objects to store.
+        :param dense_embeddings: Pre-computed dense embeddings matching the entries.
+        :param late_embeddings: Optional pre-computed late-interaction embeddings.
+        :return: Number of entries successfully loaded.
+        """
+        with tqdm(
+                total=len(entries),
+                desc=f"Loading data from cache for {collection_name}",
+                unit="entry",
+        ) as pbar:
+            for i in range(0, len(entries), BATCH_SIZE):
+                batch = entries[i: i + BATCH_SIZE]
+                batch_texts = [entry.requirement_text for entry in batch]
+
+                batch_dense_vecs = dense_embeddings[i: i + BATCH_SIZE]
+                batch_sparse_vecs = self._embedder.embed_sparse(batch_texts)
+                batch_late_vecs = late_embeddings[i: i + BATCH_SIZE] if late_embeddings else None
+
+                points = self._generate_points(
+                    entries=batch,
+                    dense_vecs=batch_dense_vecs,
+                    sparse_vecs=batch_sparse_vecs,
+                    late_vecs=batch_late_vecs
                 )
 
                 self._client.upload_points(

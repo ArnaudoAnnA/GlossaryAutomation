@@ -3,3 +3,6 @@ filelock
 pydantic
 torch
 transformers
+qdrant-client
+tdqm
+fastembed

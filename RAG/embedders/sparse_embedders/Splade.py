@@ -1,7 +1,7 @@
 from fastembed import SparseTextEmbedding
 
-from back_end.constants import CACHE_DIR
 from .base import SparseEmbedder
+from ...CacheManager import CACHE_DIR
 
 _MODEL_ID: str = "prithivida/Splade_PP_en_v1"
 """The model ID used for serving Splade."""

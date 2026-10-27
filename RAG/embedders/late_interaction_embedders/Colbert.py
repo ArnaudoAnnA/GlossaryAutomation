@@ -3,9 +3,8 @@ from pathlib import Path
 from fastembed import LateInteractionTextEmbedding
 from tqdm import tqdm
 
-from back_end.utilities.CacheManager import CacheManager
-from back_end.constants import CACHE_DIR
 from .base import LateInteractionEmbedder
+from ...CacheManager import CACHE_DIR, CacheManager
 
 _MODEL_ID: str = "colbert-ir/colbertv2.0"
 """The model used to generate late interaction embeddings for RAG"""

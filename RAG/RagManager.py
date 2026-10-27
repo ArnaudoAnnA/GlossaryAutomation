@@ -56,7 +56,7 @@ class RagManager:
         self._ranking_size = default_config.ranking_size
         self._embedder = embedder
 
-    def clear_dataset(self, collection_name: str) -> None:
+    def clear_collection(self, collection_name: str) -> None:
         self._adapter.delete_collection(name=collection_name)
 
     def load_data(
@@ -95,28 +95,15 @@ class RagManager:
                     expected_count=len(entries),
                 )
 
-                cached_late_embeddings = cache_manager.get_cached_embeddings(
-                    path=path,
-                    model_name=self._embedder.late_vector_name,
-                    model_size=self._embedder.late_vector_size,
-                    expected_count=len(entries),
-                )
-
                 if not cached_dense_embeddings:
                     cached_dense_embeddings = self._embedder.embed_dense(
                         contents=entries, source_file=path
-                    )
-
-                if not cached_late_embeddings:
-                    cached_late_embeddings = self._embedder.embed_late_interaction(
-                        texts=entries
                     )
 
                 _ = self._adapter.load_data_from_cache(
                     collection_name=collection_name,
                     entries=entries,
                     dense_embeddings=cached_dense_embeddings,
-                    late_embeddings=cached_late_embeddings,
                 )
 
     def retrieve_similar_texts(
@@ -146,7 +133,7 @@ class RagManager:
         if not dense_embeddings:
             raise RuntimeError(f"Impossible to compute embeddings for text\"{text}")
 
-        hits = self._adapter.search(
+        hits = self._adapter.search_similar_requirements(
             collection_name=collection_name,
             query_embeddings=dense_embeddings,
             top_k=self._top_k,

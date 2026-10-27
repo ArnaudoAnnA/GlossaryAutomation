@@ -2,7 +2,7 @@
 from .config import QdrantConfig
 from .RagManager import RagManager
 from .adapters.base import DatabaseAdapter
-from .adapters.qdrant_adapter import QdrantAdapter
+from .adapters.QdrantAdapter import QdrantAdapter
 from .embedders.GeneralEmbedder import GeneralEmbedder
 from .embedders.dense_embedders.GeminiEmbedder import GeminiEmbedder
 

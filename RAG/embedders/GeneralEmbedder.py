@@ -16,7 +16,6 @@ import threading
 from pathlib import Path
 from typing import Optional, Union
 
-from back_end.BackEndBuffer import BackEndBuffer
 from .dense_embedders.base import DenseEmbedder
 from .late_interaction_embedders.Colbert import Colbert
 from .late_interaction_embedders.base import LateInteractionEmbedder

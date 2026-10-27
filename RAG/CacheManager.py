@@ -20,7 +20,8 @@ from typing import Optional
 
 import numpy as np
 
-from back_end.constants import CACHE_DIR_EMBEDDINGS
+CACHE_DIR = Path(__file__).resolve().parent / ".cache"
+CACHE_DIR_EMBEDDINGS = Path(__file__).resolve().parent / ".cache_embeddings"
 
 
 class CacheManager:
