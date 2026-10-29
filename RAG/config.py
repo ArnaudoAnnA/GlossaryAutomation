@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 @dataclass(frozen=True)
 class QdrantConfig:
-    host: str = "qdrant-db"
+    host: str = "localhost"
     """The URL of the Qdrant server"""
 
     port: int = 6333

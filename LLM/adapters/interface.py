@@ -49,7 +49,7 @@ def get_llm_adapter(
 
     # Deferred imports to prevent circular dependency
     if model_provider == LLMProvider.GOOGLE:
-        from LLM.adapters.Gemini.GeminiAdapter import GeminiAdapter
+        from LLM.adapters.GeminiAdapter import GeminiAdapter
         return GeminiAdapter(model_id=model_id, sys_prompt=sys_prompt, shot_examples=shot_examples)
 
     if model_provider == LLMProvider.HUGGINGFACE:

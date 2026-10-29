@@ -7,7 +7,7 @@ from RAG.models import RequirementEntry, TermReplacement
 
 DATASET_DIR = Path(__file__).parent.resolve()
 GLOSSARY_FILE_NAME = "{project}_glossary.csv"
-TEST_DATA_FILE_NAME = "{project}_test-data.csv"
+TEST_DATA_FILE_NAME = "{project}_test-data.json"
 
 
 class DatasetProject(Enum):
@@ -23,11 +23,11 @@ class DatasetProject(Enum):
 
 ALL_PROJECTS = [v for v in DatasetProject]
 
-def get_dataset_path(project_name: DatasetProject):
-    return DATASET_DIR / Path(TEST_DATA_FILE_NAME.format(project=project_name))
+def get_project_path(project_name: DatasetProject):
+    return DATASET_DIR / Path(TEST_DATA_FILE_NAME.format(project=project_name.value))
 
 def load_requirements(project_name: DatasetProject) -> list[RequirementEntry]:
-    path = get_dataset_path(project_name)
+    path = get_project_path(project_name)
     with open(path, "r", encoding="utf-8") as file:
         data = json.load(file)
 

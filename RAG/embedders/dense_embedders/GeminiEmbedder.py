@@ -19,13 +19,13 @@ from typing import Optional
 from google.genai import Client, types
 from tqdm.asyncio import tqdm
 
-from back_end.utilities.APIKeysManager import NUM_API_KEYS, APIKeysManager
-from back_end.utilities.CacheManager import CacheManager
-from back_end.utilities.init_genai_client import init_genai_client
-from globals.constants import MAX_ATTEMPTS
+from utilities_google_ai.APIKeysManager import NUM_API_KEYS, APIKeysManager
+from utilities_google_ai.init_genai_client import init_genai_client_APIs
+from constants import MAX_ATTEMPTS
 from logging_debugging import log_thread_safe
 from logging_debugging.logging_debugging import GLOBAL_LOG, LogType
 from .base import DenseEmbedder
+from ...CacheManager import CacheManager
 
 
 class TaskType(Enum):
@@ -64,7 +64,7 @@ class GeminiEmbedder(DenseEmbedder):
     def __init__(
         self, client: Client | None = None, model: str = _GEMINI_EMBEDDER_MODEL_ID
     ):
-        self._client = client or init_genai_client()
+        self._client = client or init_genai_client_APIs()
         self._model = model
         self._storage_config = types.EmbedContentConfig(
             task_type=TaskType.RETRIEVAL_DOCUMENT,
@@ -99,7 +99,7 @@ class GeminiEmbedder(DenseEmbedder):
         return cls._instance
 
     def _refresh_client(self) -> None:
-        self._client = init_genai_client()
+        self._client = init_genai_client_APIs()
 
     def _load_from_cache(
         self, source_file: Path, expected_count: int

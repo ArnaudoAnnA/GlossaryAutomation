@@ -1,12 +1,16 @@
+import csv
 import traceback
+from pathlib import Path
 
 from LLM.adapters.interface import get_llm_adapter
 from RAG.initialize_rag import get_rag_manager
-from constants import TEST_PROJECTS, LLMs, COLLECTION_NAME, SYS_PROMPT, REQUIREMENTS_PER_PROJECT, SHOT_EXAMPLES, REPEATED_RUNS, OUTPUT_FILE_NAME
-from dataset.index import get_dataset_path, ALL_PROJECTS, get_random_requirements
+from constants import TEST_PROJECTS, LLMs, COLLECTION_NAME, SYS_PROMPT, REQUIREMENTS_PER_PROJECT, SHOT_EXAMPLES, REPEATED_RUNS, OUTPUT_FILE_NAME, OUTPUT_DIR, OUTPUT_FILE_HEADER, USER_PROMPT, FAILED_RUNS_FILE_NAME
+from dataset.index import get_project_path, ALL_PROJECTS, get_random_requirements
 
 
 def compute_metrics(r4_violations_generated: set[str], r4_violations_ground_truth: set[str]) -> tuple[float, float, float]:
+    r4_violations_generated = set([v.strip() for v in r4_violations_generated])
+
     tp = len(r4_violations_generated & r4_violations_ground_truth)
     fp = len(r4_violations_generated - r4_violations_ground_truth)
     fn = len(r4_violations_ground_truth - r4_violations_generated)
@@ -53,24 +57,35 @@ if __name__ == "__main__":
             
             clear_dataset()          
     """
+    from huggingface_hub import login
+    login(token="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")
 
     rag_manager = get_rag_manager()
 
+    with open(Path(OUTPUT_DIR) / FAILED_RUNS_FILE_NAME, "w") as file:
+        file.write("")
 
     for project_name in TEST_PROJECTS:
+        print(project_name)
         # Few-shot data is all the dataset except the current test project
+        rag_manager.clear_collection(COLLECTION_NAME)
         few_shot_projects = ALL_PROJECTS.copy()
         few_shot_projects.remove(project_name)
-        few_shot_projects_paths = [get_dataset_path(project_name=p) for p in few_shot_projects]
-        rag_manager.load_data(collection_name=COLLECTION_NAME, paths=few_shot_projects_paths)
+        rag_manager.load_data(collection_name=COLLECTION_NAME, projects=few_shot_projects)
 
         # Test data
         test_requirements = get_random_requirements(project_name=project_name, quantity=REQUIREMENTS_PER_PROJECT)
 
         for llm_info in LLMs:
+            print(f"\t{llm_info[0]}")
 
             for n_examples in SHOT_EXAMPLES:
-                output_file = OUTPUT_FILE_NAME.format(n=n_examples, project=project_name, llm=llm_info[0])
+                print(f"\t\t{n_examples}-shot")
+                output_file = Path(OUTPUT_DIR) / OUTPUT_FILE_NAME.format(shots=n_examples, project=project_name, llm=llm_info[0].replace("/", "_"))
+
+                with open(output_file, "w") as file:
+                    writer = csv.writer(file, delimiter=";")
+                    writer.writerow(OUTPUT_FILE_HEADER)
 
                 for requirement in test_requirements:
 
@@ -79,7 +94,6 @@ if __name__ == "__main__":
                             # --- SETUP --------------------------------------------------------------------------------
                             few_shot_examples = rag_manager.retrieve_similar_texts(collection_name=COLLECTION_NAME,
                                                                                    text=requirement.requirement_text,
-                                                                                   field_name="requirement_text",
                                                                                    top_k=n_examples)
                             formatted_shot_examples = [se.to_few_shot_example_for_violation_identification() for se in few_shot_examples]
 
@@ -88,26 +102,29 @@ if __name__ == "__main__":
                             # -------------------------------------------------------------------------------------------
 
                             # STEP 1: violations identification
-                            r4_violations: list[str] = llm.make_a_query(f"Find the violations to INCOSE R4 in this requirement: {requirement.requirement_text}").split(",")
+                            r4_violations: list[str] = llm.make_a_query(USER_PROMPT.format(requirement_text=requirement.requirement_text)).split(",")
                             precision, recall, f1_score = compute_metrics(set(r4_violations), set([t.target for t in requirement.r4_violations]))
 
                             # STEP 2: definitions generations
                             # TODO
 
+                            with open(output_file, "a") as file:
+                                writer = csv.writer(file, delimiter=";")
+                                writer.writerow([independent_run, requirement.__str__(), r4_violations, precision, recall, f1_score, "", ""])
+
+
 
                         except Exception as e:
-                            print(f"ERROR: Impossible to obtain results for this configuration: "
-                                  f"(project_name = {project_name}, "
+                            failed_run = (f"(project_name = {project_name}, "
                                   f"llm_name = {llm_info[0]},  "
                                   f"n_examples = {n_examples}, "
-                                  f"requirement = {requirement}, "
-                                  f"independent_run = {independent_run}) \n")
+                                  f"requirement = {requirement.requirement_text}, "
+                                  f"independent_run = {independent_run})")
+                            print(f"ERROR: Impossible to obtain results for this configuration: {failed_run}\n")
+                            with open(Path(OUTPUT_DIR) / FAILED_RUNS_FILE_NAME, "a") as file:
+                                file.write(failed_run)
                             traceback.print_exc()
 
-
-
-
-        rag_manager.clear_collection(COLLECTION_NAME)
 
 
 

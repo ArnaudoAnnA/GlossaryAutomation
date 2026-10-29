@@ -9,6 +9,7 @@ from LLM.adapters.interface import LLMAdapterInterface
 from constants import TEMPERATURE
 from logging_debugging import log_thread_safe
 from logging_debugging.logging_debugging import GLOBAL_LOG, LogType
+from transformers import BitsAndBytesConfig
 
 MODEL_ID = "meta-llama/Meta-Llama-3-8B-Instruct"
 
@@ -24,8 +25,18 @@ class HuggingFaceAdapter(LLMAdapterInterface):
         self._model_id = model_id
         self._sys_prompt = sys_prompt
         self._tokenizer = AutoTokenizer.from_pretrained(model_id)
+
+        bnb_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.float16,
+            bnb_4bit_quant_type="nf4"  # NF4 is usually better for LLMs
+        )
+
         self._model = AutoModelForCausalLM.from_pretrained(
-            model_id, device_map="auto", torch_dtype=torch.float16
+            model_id,
+            quantization_config=bnb_config,
+            device_map="auto",
+            attn_implementation="sdpa"
         )
         self._history = self.init_chat(sys_prompt=sys_prompt, history=self.format_history(shot_examples))
 
@@ -39,12 +50,12 @@ class HuggingFaceAdapter(LLMAdapterInterface):
         return chat_history
 
     @staticmethod
-    def format_history(raw_history: list[tuple[str, str]]) -> list[dict[str, str]]:
+    def format_history(raw_history: list[tuple[str, str]] | None) -> list[dict[str, str]]:
         ret = []
-        for d in raw_history:
-            ret.append({"role": "user", "content": d[0]})
-            ret.append({"role": "assistant", "content": d[1]})
-
+        if raw_history:
+            for d in raw_history:
+                ret.append({"role": "user", "content": d[0]})
+                ret.append({"role": "assistant", "content": d[1]})
         return ret
 
     def make_a_query(
@@ -55,12 +66,14 @@ class HuggingFaceAdapter(LLMAdapterInterface):
     ) -> str | Any:
         self._history.append({"role": "user", "content": prompt})
 
-        input_ids = self._tokenizer.apply_chat_template(
-            self._history, return_tensors="pt", add_generation_prompt=True
-        ).to(self._model.device)
+        chat_prompt = self._tokenizer.apply_chat_template(
+            self._history, tokenize=False, add_generation_prompt=True
+        )
+
+        inputs = self._tokenizer(chat_prompt, return_tensors="pt").to(self._model.device)
 
         outputs = self._model.generate(
-            input_ids,
+            **inputs,
             max_new_tokens=max_new_tokens,
             temperature=TEMPERATURE,
             do_sample=True if TEMPERATURE > 0 else False,
@@ -68,7 +81,7 @@ class HuggingFaceAdapter(LLMAdapterInterface):
         )
 
         response_text = self._tokenizer.decode(
-            outputs[0][input_ids.shape[1]:], skip_special_tokens=True
+            outputs[0][inputs["input_ids"].shape[1]:], skip_special_tokens=True
         )
 
         self._history.append({"role": "assistant", "content": response_text})

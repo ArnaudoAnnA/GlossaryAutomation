@@ -3,7 +3,7 @@ from multiprocessing import Value
 
 from dotenv import load_dotenv
 
-from back_end.constants import ROOT_DIR
+from constants import ROOT_DIR
 from logging_debugging import log_thread_safe
 from logging_debugging.logging_debugging import GLOBAL_LOG, LogType
 

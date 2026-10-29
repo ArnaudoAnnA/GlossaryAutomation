@@ -21,7 +21,7 @@ from typing import Any, Optional
 from tqdm import tqdm
 
 from .base import DatabaseAdapter
-from .. import models
+from qdrant_client.http.models import models
 from ..config import QdrantConfig
 from ..embedders.GeneralEmbedder import GeneralEmbedder
 from ..models import RequirementEntry, TermReplacement
@@ -255,24 +255,31 @@ class QdrantAdapter(DatabaseAdapter):
         :param late_vecs: Optional list of late-interaction vector embeddings.
         :return: List of PointStruct objects ready for Qdrant insertion.
         """
-        return [
-            PointStruct(
-                id=str(uuid.uuid4()),
-                vector={
-                    self._embedder.sparse_vector_name: sparse_vecs[i] if sparse_vecs else None,
-                    self._embedder.late_vector_name: late_vecs[i] if late_vecs else None,
-                    self._embedder.dense_vector_name: dense_vecs[i] if dense_vecs else None,
-                },
-                payload={
-                    "requirement_text": entry.requirement_text,
-                    "r4_violations": [
-                        {"target": v.target, "term_to_substitute": v.term_to_substitute}
-                        for v in entry.r4_violations
-                    ],
-                },
+        points = []
+        for i, entry in enumerate(entries):
+            # Build the vector dictionary only with the available embeddings
+            vector_dict = {}
+            if dense_vecs and dense_vecs[i]:
+                vector_dict[self._embedder.dense_vector_name] = dense_vecs[i]
+            if sparse_vecs and sparse_vecs[i]:
+                vector_dict[self._embedder.sparse_vector_name] = sparse_vecs[i]
+            if late_vecs and late_vecs[i]:
+                vector_dict[self._embedder.late_vector_name] = late_vecs[i]
+
+            points.append(
+                PointStruct(
+                    id=str(uuid.uuid4()),
+                    vector=vector_dict,
+                    payload={
+                        "requirement_text": entry.requirement_text,
+                        "r4_violations": [
+                            {"target": v.target, "term_to_substitute": v.term_to_substitute}
+                            for v in entry.r4_violations
+                        ],
+                    },
+                )
             )
-            for i, entry in enumerate(entries)
-        ]
+        return points
 
     def write_data(self, collection_name: str, entries: list[RequirementEntry], path: Optional[Path]) -> int:
         """

@@ -13,10 +13,17 @@ class TermReplacement:
     term_to_substitute: str
     target: str
 
+    def __str__(self) -> str:
+        return f'{self.term_to_substitute} -> {self.target}'
+
 @dataclass
 class RequirementEntry:
     requirement_text: str
     r4_violations: list[TermReplacement]
+
+    def __str__(self) -> str:
+        violations_str = "\n".join([v.__str__() for v in self.r4_violations])
+        return f'{self.requirement_text}\n\n{violations_str}'
 
     def to_few_shot_example_for_violation_identification(self) -> tuple[str, str]:
         return (f"Find the violations to INCOSE R4 in this requirement: {self.requirement_text}",

@@ -23,8 +23,8 @@ from LLM.adapters.interface import LLMAdapterInterface
 from constants import MAX_ATTEMPTS, TEMPERATURE
 from logging_debugging import log_thread_safe
 from logging_debugging.logging_debugging import GLOBAL_LOG, LogType
-from LLM.adapters.Gemini.APIKeysManager import APIKeysManager, NUM_API_KEYS
-from LLM.adapters.Gemini.init_genai_client import init_genai_client
+from utilities_google_ai.APIKeysManager import APIKeysManager, NUM_API_KEYS
+from utilities_google_ai.init_genai_client import init_genai_client_APIs
 
 MODEL_ID = "gemini-3.5-flash-lite"
 
@@ -48,7 +48,7 @@ class GeminiAdapter(LLMAdapterInterface):
     def init_chat(
         sys_prompt: str, history: list[Content] | None, model_id: str = MODEL_ID
     ) -> tuple[Chat, Client]:
-        client = init_genai_client()
+        client = init_genai_client_APIs()
         config = GenerateContentConfig(
             system_instruction=sys_prompt,
             temperature=TEMPERATURE,  # TODO check the impact of the temperature
@@ -63,7 +63,7 @@ class GeminiAdapter(LLMAdapterInterface):
         ret = []
         for d in raw_history:
             ret.append(Content(role="user", parts=[Part(d[0])]))
-            ret.append(Content(role="assistant", parts=[Part(d[1])]))
+            ret.append(Content(role="model", parts=[Part(d[1])]))
 
         return ret
 

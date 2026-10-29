@@ -15,12 +15,12 @@ import threading
 from pathlib import Path
 from typing import Optional
 
+from dataset.index import load_requirements, DatasetProject, get_project_path
 from .CacheManager import CacheManager
-from .InputParser import InputParser
 from .adapters.base import DatabaseAdapter
 from .config import RAGConfig
-from .embedders import GeneralEmbedder
-from .models import GlossaryMatch, RequirementEntry
+from .embedders.GeneralEmbedder import GeneralEmbedder
+from .models import RequirementEntry
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -62,12 +62,12 @@ class RagManager:
     def load_data(
         self,
         collection_name: str,
-        paths: list[Path],
+        projects: list[DatasetProject],
     ) -> None:
         """
         Loads data from the indicated paths.
 
-        :param paths: List of paths to CSV or JSON files containing glossary entries.
+        :param projects: List of dataset projects to load.
         :param collection_name: Name of the glossary collection to check and populate.
         """
 
@@ -77,19 +77,12 @@ class RagManager:
 
             cache_manager = CacheManager()
 
-            for path in paths:
-                file_format = Path(path).suffix.lower()
-                if file_format == ".csv":
-                    loader_method = InputParser.parse_csv
-                elif file_format == ".json":
-                    loader_method = InputParser.parse_json
-                else:
-                    raise ValueError(f"Unsupported file format: {file_format}")
+            for project in projects:
 
-                entries = loader_method(path)
+                entries = load_requirements(project)
 
                 cached_dense_embeddings = cache_manager.get_cached_embeddings(
-                    path=path,
+                    path=get_project_path(project),
                     model_name=self._embedder.dense_vector_name,
                     model_size=self._embedder.dense_vector_size,
                     expected_count=len(entries),
@@ -97,7 +90,7 @@ class RagManager:
 
                 if not cached_dense_embeddings:
                     cached_dense_embeddings = self._embedder.embed_dense(
-                        contents=entries, source_file=path
+                        contents=[e.requirement_text for e in entries], source_file=get_project_path(project)
                     )
 
                 _ = self._adapter.load_data_from_cache(
@@ -107,39 +100,42 @@ class RagManager:
                 )
 
     def retrieve_similar_texts(
-        self,
-        collection_name: str,
-        text: str,
-        field_name: str,
-        top_k: int)\
-        -> list[RequirementEntry]:
+            self,
+            collection_name: str,
+            text: str,
+            top_k: int
+    ) -> list[RequirementEntry]:
         """
         Retrieves a list of matches for a given text using a dense search strategy.
 
-        The comparison is done between the embeddings of the provided text and the text contained in 'field_name' in the dataset.
+        The comparison is done between the embeddings of the provided text and the text contained in the dataset.
 
-        :param collection_name:
-        :param term_definition: The input term and definition to search for in the glossary. Formatted as "term: definition".
-        :type term_definition: str
-        :param user_interface_buffer: User interface buffer to check for restart signals.
-        :return: A list of `GlossaryMatch` objects, each containing a term, its associated
-            definition, and a relevance score.
-        :rtype: list[GlossaryMatch]
+        :param collection_name: The name of the collection to search.
+        :type collection_name: str
+        :param text: The input requirement text to search for.
+        :type text: str
+        :param top_k: The maximum number of matches to return.
+        :type top_k: int
+        :return: A list of matching RequirementEntry objects sorted by relevance score.
+        :rtype: list[RequirementEntry]
+        :raises RuntimeError: If embeddings cannot be computed.
         """
-        dense_embeddings = self._embedder.dense_embedding(
-            text=text
-        )
+        dense_embeddings = self._embedder.embed_dense(contents=[text])
 
-        if not dense_embeddings:
-            raise RuntimeError(f"Impossible to compute embeddings for text\"{text}")
+        if not dense_embeddings or not dense_embeddings[0]:
+            raise RuntimeError(f"Impossible to compute embeddings for text \"{text}\"")
+
+        query_dict = {
+            self._embedder.dense_vector_name: dense_embeddings[0]
+        }
 
         hits = self._adapter.search_similar_requirements(
             collection_name=collection_name,
-            query_embeddings=dense_embeddings,
-            top_k=self._top_k,
-            k=self._ranking_size,
+            query_embeddings=query_dict,
+            top_k=top_k,
+            k=getattr(self, "_ranking_size", top_k * 2),
             query_text=text,
         )
 
-        hits = sorted(hits, key=lambda x: x.score, reverse=True)
-        return hits[: self._ranking_size]
+        hits = sorted(hits, key=lambda x: getattr(x, "score", 0.0), reverse=True)
+        return hits[:top_k]

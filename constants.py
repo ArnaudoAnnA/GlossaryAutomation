@@ -1,5 +1,9 @@
+from pathlib import Path
+
 from LLM.adapters.interface import LLMProvider
 from dataset.index import DatasetProject
+
+ROOT_DIR = Path(__file__).resolve().parent
 
 MAX_ATTEMPTS = 5
 """The number of attempts performed when a LLM query fails (e.g., due to network errors)."""
@@ -9,11 +13,12 @@ OUTPUT_DIR = "output"
 OUTPUT_FILE_NAME = "{llm}_{shots}-shots_{project}.csv"
 """Each file contains all the independent runs executed for the same configuration."""
 OUTPUT_FILE_HEADER = ["Run", "Input_requirement", "Identified_violations", "Precision", "Recall", "F1-score", "Generated_definitions", "Cosine_similarities"]
+FAILED_RUNS_FILE_NAME = "failed_runs.txt"
 
 LLMs = [
     ("gemini-3.8-flash", LLMProvider.GOOGLE),
-    ("Qwen/Qwen2.5-32B-Instruct", LLMProvider.HUGGINGFACE),
-    ("meta-llama/Meta-Llama-3-8B-Instruct", LLMProvider.HUGGINGFACE)
+    ("Qwen/Qwen2.5-14B-Instruct", LLMProvider.HUGGINGFACE),
+    ("meta-llama/Llama-3.1-8B-Instruct", LLMProvider.HUGGINGFACE)
 ]
 TEMPERATURE = 0.0
 SHOT_EXAMPLES = [0, 5, 15]
@@ -40,6 +45,10 @@ terms in some form of ontology, including a glossary, data dictionary, or simila
 the reader of a need statement or requirement statement to know exactly what the writer’s 
 intended meaning was when the word was chosen.
 """
+USER_PROMPT = ("Find the violations to INCOSE R4. "
+                "Just report (verbatim) the strings that are related to a violation. "
+                "The strings should be separated by commas. "
+                "Find the violations in this requirement: {requirement_text}")
 
 TEST_PROJECTS = [DatasetProject.NASA, DatasetProject.INVENTORY, DatasetProject.SCEAPI]
 REQUIREMENTS_PER_PROJECT = 5

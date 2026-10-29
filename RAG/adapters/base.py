@@ -161,7 +161,7 @@ class DatabaseAdapter(ABC):
     def load_data_from_cache(
         self,
         collection_name: str,
-        entries: list[str],
+        entries: list[RequirementEntry],
         dense_embeddings: list[list[float]],
         late_embeddings: list[list[float]] = None,
     ) -> int:

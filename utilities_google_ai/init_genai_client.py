@@ -1,9 +1,10 @@
 
 from google import genai
 from google.genai import errors, Client
+from google.genai.types import HttpOptions
 
 from logging_debugging.logging_debugging import GLOBAL_LOG, LogType, log_thread_safe
-from .APIKeysManager import APIKeysManager, NUM_API_KEYS
+from utilities_google_ai.APIKeysManager import APIKeysManager, NUM_API_KEYS
 
 # ------------------------- AIBooster setup ---------------------------------------------------------
 PROJECT_ID = ""
@@ -30,7 +31,7 @@ def init_genai_client_APIs() -> Client:
     client = None
     for _ in range(NUM_API_KEYS):
         try:
-            client = genai.Client(api_key=APIKeysManager.get_api_key())
+            client = genai.Client(api_key=APIKeysManager.get_api_key(),)
             break
         except errors.ClientError as e:
             log_thread_safe(GLOBAL_LOG, __file__, LogType.ERROR, f"[EXCEPTION] {e}")
