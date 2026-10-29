@@ -8,18 +8,22 @@ from constants import TEST_PROJECTS, LLMs, COLLECTION_NAME, SYS_PROMPT, REQUIREM
 from dataset.index import get_project_path, ALL_PROJECTS, get_random_requirements
 
 
-def compute_metrics(r4_violations_generated: set[str], r4_violations_ground_truth: set[str]) -> tuple[float, float, float]:
+def compute_metrics(r4_violations_generated: set[str], r4_violations_ground_truth: set[str]) -> tuple[float, float, float, list[str], list[str], list[str]]:
     r4_violations_generated = set([v.strip() for v in r4_violations_generated])
 
-    tp = len(r4_violations_generated & r4_violations_ground_truth)
-    fp = len(r4_violations_generated - r4_violations_ground_truth)
-    fn = len(r4_violations_ground_truth - r4_violations_generated)
+    tp = r4_violations_generated & r4_violations_ground_truth
+    fp = r4_violations_generated - r4_violations_ground_truth
+    fn = r4_violations_ground_truth - r4_violations_generated
 
-    prec = tp / (tp + fp) if (tp + fp) > 0 else 0.0
-    rec = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+    tp_count = len(tp)
+    fp_count = len(fp)
+    fn_count = len(fn)
+
+    prec = tp_count / (tp_count + fp_count) if (tp_count + fp_count) > 0 else 0.0
+    rec = tp_count / (tp_count + fn_count) if (tp_count + fn_count) > 0 else 0.0
     f1 = 2 * (prec * rec) / (prec + rec) if (prec + rec) > 0 else 0.0
 
-    return prec, rec, f1
+    return prec, rec, f1, tp, fp, fn
 
 
 
@@ -103,14 +107,14 @@ if __name__ == "__main__":
 
                             # STEP 1: violations identification
                             r4_violations: list[str] = llm.make_a_query(USER_PROMPT.format(requirement_text=requirement.requirement_text)).split(",")
-                            precision, recall, f1_score = compute_metrics(set(r4_violations), set([t.target for t in requirement.r4_violations]))
+                            precision, recall, f1_score, tp, fp, fn = compute_metrics(set(r4_violations), set([t.term_to_substitute for t in requirement.r4_violations]))
 
                             # STEP 2: definitions generations
                             # TODO
 
                             with open(output_file, "a") as file:
                                 writer = csv.writer(file, delimiter=";")
-                                writer.writerow([independent_run, requirement.__str__(), r4_violations, precision, recall, f1_score, "", ""])
+                                writer.writerow([independent_run, requirement.__str__(), r4_violations, precision, recall, f1_score, tp, fp, fn, "", ""])
 
 
 

@@ -12,12 +12,12 @@ REPEATED_RUNS = 3
 OUTPUT_DIR = "output"
 OUTPUT_FILE_NAME = "{llm}_{shots}-shots_{project}.csv"
 """Each file contains all the independent runs executed for the same configuration."""
-OUTPUT_FILE_HEADER = ["Run", "Input_requirement", "Identified_violations", "Precision", "Recall", "F1-score", "Generated_definitions", "Cosine_similarities"]
+OUTPUT_FILE_HEADER = ["Run", "Input_requirement", "Identified_violations", "Precision", "Recall", "F1-score", "TP", "FP", "FN", "Generated_definitions", "Cosine_similarities"]
 FAILED_RUNS_FILE_NAME = "failed_runs.txt"
 
 LLMs = [
     ("gemini-3.8-flash", LLMProvider.GOOGLE),
-    ("Qwen/Qwen2.5-14B-Instruct", LLMProvider.HUGGINGFACE),
+    ("gemini-3.1-flash-lite", LLMProvider.GOOGLE),
     ("meta-llama/Llama-3.1-8B-Instruct", LLMProvider.HUGGINGFACE)
 ]
 TEMPERATURE = 0.0
