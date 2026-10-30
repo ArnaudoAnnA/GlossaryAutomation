@@ -20,7 +20,7 @@ LLMs = [
     ("gemini-3.1-flash-lite", LLMProvider.GOOGLE),
     ("meta-llama/Llama-3.1-8B-Instruct", LLMProvider.HUGGINGFACE)
 ]
-TEMPERATURE = 0.0
+TEMPERATURE = 0.1
 SHOT_EXAMPLES = [0, 5, 15]
 SYS_PROMPT = """INCOSE rule 4 (defined terms) states:
 

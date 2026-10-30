@@ -34,6 +34,7 @@ class LLMAdapterInterface(ABC):
             self,
             prompt: str,
             response_schema: Type[BaseModel] | None = None,
+            schema_info: str | None = None,
             max_new_tokens: int = 200,
     ) -> str | Any:
         pass

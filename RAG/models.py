@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-
+from pydantic import BaseModel
 
 @dataclass
 class GlossaryEntry:
@@ -15,6 +15,15 @@ class TermReplacement:
 
     def __str__(self) -> str:
         return f'{self.term_to_substitute} -> {self.target}'
+
+@dataclass
+class R4ViolationsList(BaseModel):
+    """Represents a list of simple terms violating R4. Used as Pydantic schema to get the outputs from the models."""
+    items: list[str]
+
+    @staticmethod
+    def to_schema_info_json()->str:
+        return "{\n\titems: [ \"violation from the input requirement\", \"violation2 from the input requirement\", ...]\n} "
 
 @dataclass
 class RequirementEntry:

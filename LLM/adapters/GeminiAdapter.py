@@ -51,14 +51,23 @@ class GeminiAdapter(LLMAdapterInterface):
         return GeminiAdapter(sys_prompt, model_id, shot_examples)
 
     @staticmethod
+    def init_content_config(sys_prompt: str, response_schema: Type[BaseModel] | None = None) -> GenerateContentConfig:
+        return GenerateContentConfig(
+            system_instruction=sys_prompt,
+            temperature=TEMPERATURE,  # TODO check the impact of the temperature
+        ) if not response_schema else GenerateContentConfig(
+            system_instruction=sys_prompt,
+            temperature=TEMPERATURE,  # TODO check the impact of the temperature
+            response_mime_type="application/json",
+            response_schema=response_schema,
+        )
+
+    @staticmethod
     def init_chat(
             sys_prompt: str, history: list[Content] | None, model_id: str = MODEL_ID
     ) -> tuple[Chat, Client]:
         client = init_genai_client_APIs()
-        config = GenerateContentConfig(
-            system_instruction=sys_prompt,
-            temperature=TEMPERATURE,  # TODO check the impact of the temperature
-        )
+        config = GeminiAdapter.init_content_config(sys_prompt=sys_prompt, )
         return (
             client.chats.create(model=model_id, history=history, config=config),
             client,
@@ -77,6 +86,7 @@ class GeminiAdapter(LLMAdapterInterface):
             self,
             prompt: str,
             response_schema: Type[BaseModel] | None = None,
+            schema_info: str | None = None,
             max_new_tokens: int = 200,
     ) -> str | Any:
         response = None
@@ -84,12 +94,7 @@ class GeminiAdapter(LLMAdapterInterface):
             "response is None, but no exceptions have been raised when invoking self._chat._send_message()"
         )
 
-        config = None
-        if response_schema:
-            config = GenerateContentConfig(
-                response_mime_type="application/json",
-                response_schema=response_schema,
-            )
+        config = GeminiAdapter.init_content_config(sys_prompt=self._sys_prompt, response_schema=response_schema)
 
         for _ in range(NUM_API_KEYS * MAX_ATTEMPTS):
 

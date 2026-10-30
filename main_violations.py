@@ -4,6 +4,7 @@ from pathlib import Path
 
 from LLM.adapters.interface import get_llm_adapter
 from RAG.initialize_rag import get_rag_manager
+from RAG.models import R4ViolationsList
 from constants import TEST_PROJECTS, LLMs, COLLECTION_NAME, SYS_PROMPT, REQUIREMENTS_PER_PROJECT, SHOT_EXAMPLES, REPEATED_RUNS, OUTPUT_FILE_NAME, OUTPUT_DIR, OUTPUT_FILE_HEADER, USER_PROMPT_VIOLATIONS, FAILED_RUNS_FILE_NAME
 from dataset.index import get_project_path, ALL_PROJECTS, get_random_requirements
 
@@ -110,13 +111,14 @@ if __name__ == "__main__":
                             # -------------------------------------------------------------------------------------------
 
                             # STEP 1: violations identification
-                            r4_violations: list[str] = llm.make_a_query(USER_PROMPT_VIOLATIONS.format(requirement_text=requirement.requirement_text)).split(",")
+                            r4_violations = llm.make_a_query(prompt=USER_PROMPT_VIOLATIONS.format(requirement_text=requirement.requirement_text), response_schema=R4ViolationsList, schema_info = R4ViolationsList.to_schema_info_json())
+                            if isinstance(r4_violations, R4ViolationsList):
+                                r4_violations: list[str] = r4_violations.items
+                            elif isinstance(r4_violations, str):
+                                r4_violations: list[str] = r4_violations.split(", ")
+
                             precision, recall, f1_score, tp, fp, fn = compute_metrics(set(r4_violations), set([t.term_to_substitute for t in requirement.r4_violations]))
 
-                            # STEP 2: definitions generations
-                            definitions = []
-                            for item in tp:
-                                definition = llm.make_a_query()
 
                             with open(output_file, "a") as file:
                                 writer = csv.writer(file, delimiter=";")

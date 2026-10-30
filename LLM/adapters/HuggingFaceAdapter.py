@@ -76,8 +76,16 @@ class HuggingFaceAdapter(LLMAdapterInterface):
             self,
             prompt: str,
             response_schema: Type[BaseModel] | None = None,
+            schema_info: str = None,
             max_new_tokens: int = 200,
     ) -> str | Any:
+
+        if response_schema:
+            prompt += (
+                f"\n\nRespond EXCLUSIVELY with a valid JSON object, "
+                f"without adding text before or after, following this schema:\n{schema_info}"
+            )
+
         self._history.append({"role": "user", "content": prompt})
 
         chat_prompt = self._tokenizer.apply_chat_template(
@@ -110,9 +118,16 @@ class HuggingFaceAdapter(LLMAdapterInterface):
 
         if response_schema:
             try:
-                return response_schema.model_validate_json(response_text)
+                # 2. Cleaning of eventual markdown annotations (eg. ```json ... ```)
+                cleaned_text = response_text.strip()
+                if "```json" in cleaned_text:
+                    cleaned_text = cleaned_text.split("```json")[1].split("```")[0].strip()
+                elif "```" in cleaned_text:
+                    cleaned_text = cleaned_text.split("```")[1].strip()
+
+                return response_schema.model_validate_json(cleaned_text)
             except Exception as e:
-                log_thread_safe(GLOBAL_LOG, __file__, LogType.ERROR, f"JSON Parsing error: {e}")
+                log_thread_safe(GLOBAL_LOG, __file__, LogType.ERROR, f"JSON Parsing error: {e} | Raw text: {response_text}")
                 return response_text
 
         return response_text
