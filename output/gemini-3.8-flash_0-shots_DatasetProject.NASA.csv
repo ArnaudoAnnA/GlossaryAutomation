@@ -1,0 +1,78 @@
+Run;Input_requirement;Identified_violations;Precision;Recall;F1-score;TP;FP;FN;Generated_definitions;Cosine_similarities
+0;"If any of the FCP processors are not coordinated in time, System Initialization in the surviving triplex shall attempt to achieve synchronization with the failed FCP.
+
+synchronization -> Lost soul sync
+FCP -> FCP
+System Initialization -> Start-up
+surviving triplex -> Surviving triplex
+not coordinated in time -> TNR mode";['FCP processors', 'coordinated in time', 'System Initialization', 'surviving triplex', 'synchronization', 'failed FCP'];0.5;0.6;0.5454545454545454;{'surviving triplex', 'System Initialization', 'synchronization'};{'coordinated in time', 'FCP processors', 'failed FCP'};{'FCP', 'not coordinated in time'};;
+1;"If any of the FCP processors are not coordinated in time, System Initialization in the surviving triplex shall attempt to achieve synchronization with the failed FCP.
+
+synchronization -> Lost soul sync
+FCP -> FCP
+System Initialization -> Start-up
+surviving triplex -> Surviving triplex
+not coordinated in time -> TNR mode";['FCP processors', 'coordinated in time', 'System Initialization', 'surviving triplex', 'synchronization', 'failed FCP'];0.5;0.6;0.5454545454545454;{'surviving triplex', 'System Initialization', 'synchronization'};{'coordinated in time', 'FCP processors', 'failed FCP'};{'FCP', 'not coordinated in time'};;
+2;"If any of the FCP processors are not coordinated in time, System Initialization in the surviving triplex shall attempt to achieve synchronization with the failed FCP.
+
+synchronization -> Lost soul sync
+FCP -> FCP
+System Initialization -> Start-up
+surviving triplex -> Surviving triplex
+not coordinated in time -> TNR mode";['FCP processors', 'System Initialization', 'surviving triplex', 'failed FCP'];0.5;0.4;0.4444444444444445;{'surviving triplex', 'System Initialization'};{'failed FCP', 'FCP processors'};{'not coordinated in time', 'FCP', 'synchronization'};;
+0;"A babbler shall be masked within three minor frames of detection.
+
+babbler -> Babbler
+masked -> Masking
+minor frames -> Minor frame";['babbler', 'masked', 'minor frames', 'detection'];0.75;1.0;0.8571428571428571;{'masked', 'babbler', 'minor frames'};{'detection'};set();;
+1;"A babbler shall be masked within three minor frames of detection.
+
+babbler -> Babbler
+masked -> Masking
+minor frames -> Minor frame";['babbler', 'masked', 'minor frames', 'detection'];0.75;1.0;0.8571428571428571;{'masked', 'babbler', 'minor frames'};{'detection'};set();;
+2;"A babbler shall be masked within three minor frames of detection.
+
+babbler -> Babbler
+masked -> Masking
+minor frames -> Minor frame";['babbler', 'masked', 'minor frames', 'detection'];0.75;1.0;0.8571428571428571;{'masked', 'babbler', 'minor frames'};{'detection'};set();;
+0;"The FCP shall wait up to 15 seconds, after configuring the ICP redundant processor groups, for communication to start from the ICP. The application can use this time on the ICP to initialize I/O boards.
+
+redundant processor groups -> Virtual Group
+I/O boards -> I/O boards
+FCP -> FCP
+ICP -> ICP";['FCP', 'ICP redundant processor groups', 'ICP', 'application', 'I/O boards'];0.6;0.75;0.6666666666666665;{'ICP', 'FCP', 'I/O boards'};{'ICP redundant processor groups', 'application'};{'redundant processor groups'};;
+1;"The FCP shall wait up to 15 seconds, after configuring the ICP redundant processor groups, for communication to start from the ICP. The application can use this time on the ICP to initialize I/O boards.
+
+redundant processor groups -> Virtual Group
+I/O boards -> I/O boards
+FCP -> FCP
+ICP -> ICP";['FCP', 'ICP redundant processor groups', 'communication', 'application', 'I/O boards'];0.4;0.5;0.4444444444444445;{'I/O boards', 'FCP'};{'communication', 'ICP redundant processor groups', 'application'};{'redundant processor groups', 'ICP'};;
+2;"The FCP shall wait up to 15 seconds, after configuring the ICP redundant processor groups, for communication to start from the ICP. The application can use this time on the ICP to initialize I/O boards.
+
+redundant processor groups -> Virtual Group
+I/O boards -> I/O boards
+FCP -> FCP
+ICP -> ICP";['FCP', 'ICP redundant processor groups', 'ICP', 'application', 'I/O boards'];0.6;0.75;0.6666666666666665;{'ICP', 'FCP', 'I/O boards'};{'ICP redundant processor groups', 'application'};{'redundant processor groups'};;
+0;"The FCR shall be electrically isolated from other regions.
+
+FCR -> Fault Containment Region (FCR)";['FCR', 'electrically isolated'];0.5;1.0;0.6666666666666666;{'FCR'};{'electrically isolated'};set();;
+1;"The FCR shall be electrically isolated from other regions.
+
+FCR -> Fault Containment Region (FCR)";['electrically isolated'];0.0;0.0;0.0;set();{'electrically isolated'};{'FCR'};;
+2;"The FCR shall be electrically isolated from other regions.
+
+FCR -> Fault Containment Region (FCR)";['electrically isolated', 'other regions'];0.0;0.0;0.0;set();{'electrically isolated', 'other regions'};{'FCR'};;
+0;"Boot phase, from hardware reset to starting of the 50 Hz timer, shall take no longer than 1.5 minutes.
+
+Boot phase -> Start-up
+hardware reset -> Hardware reset";['Boot phase', 'hardware reset', '50 Hz timer'];0.6666666666666666;1.0;0.8;{'hardware reset', 'Boot phase'};{'50 Hz timer'};set();;
+1;"Boot phase, from hardware reset to starting of the 50 Hz timer, shall take no longer than 1.5 minutes.
+
+Boot phase -> Start-up
+hardware reset -> Hardware reset";['Boot phase', '50 Hz timer'];0.5;0.5;0.5;{'Boot phase'};{'50 Hz timer'};{'hardware reset'};;
+2;"Boot phase, from hardware reset to starting of the 50 Hz timer, shall take no longer than 1.5 minutes.
+
+Boot phase -> Start-up
+hardware reset -> Hardware reset";['Boot phase', 'starting of the 50 Hz timer'];0.5;0.5;0.5;{'Boot phase'};{'starting of the 50 Hz timer'};{'hardware reset'};;
+Averages;;;0.5011111111111111;0.64;0.5621032132424538;;;;;
+Averages;;;0.5011111111111111;0.64;0.5621032132424538;;;;;

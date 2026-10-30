@@ -1,0 +1,75 @@
+Run;Input_requirement;Identified_violations;Precision;Recall;F1-score;TP;FP;FN;Generated_definitions;Cosine_similarities
+0;"Controlled clocks shall have a 1/1 ratio which, when enabled, is the same frequency as the uncontrolled clocks
+
+Controlled clocks -> Controlled Clock (cclock)
+uncontrolled clocks -> Uncontrolled Clock (uclock)";['Controlled clocks', 'uncontrolled clocks'];1.0;1.0;1.0;{'uncontrolled clocks', 'Controlled clocks'};set();set();;
+1;"Controlled clocks shall have a 1/1 ratio which, when enabled, is the same frequency as the uncontrolled clocks
+
+Controlled clocks -> Controlled Clock (cclock)
+uncontrolled clocks -> Uncontrolled Clock (uclock)";['Controlled clocks', 'uncontrolled clocks'];1.0;1.0;1.0;{'uncontrolled clocks', 'Controlled clocks'};set();set();;
+2;"Controlled clocks shall have a 1/1 ratio which, when enabled, is the same frequency as the uncontrolled clocks
+
+Controlled clocks -> Controlled Clock (cclock)
+uncontrolled clocks -> Uncontrolled Clock (uclock)";['Controlled clocks', 'uncontrolled clocks'];1.0;1.0;1.0;{'uncontrolled clocks', 'Controlled clocks'};set();set();;
+0;"The users shall be able to specify that they only care about posedges of the cclock and do not care where the negedge falls.
+
+posedges -> Posedge
+negedge -> Negedge
+cclock -> Controlled Clock (cclock)";['posedges', 'cclock', 'negedge'];1.0;1.0;1.0;{'cclock', 'negedge', 'posedges'};set();set();;
+1;"The users shall be able to specify that they only care about posedges of the cclock and do not care where the negedge falls.
+
+posedges -> Posedge
+negedge -> Negedge
+cclock -> Controlled Clock (cclock)";['posedges', 'cclock', 'negedge'];1.0;1.0;1.0;{'cclock', 'negedge', 'posedges'};set();set();;
+2;"The users shall be able to specify that they only care about posedges of the cclock and do not care where the negedge falls.
+
+posedges -> Posedge
+negedge -> Negedge
+cclock -> Controlled Clock (cclock)";['posedges', 'cclock', 'negedge'];1.0;1.0;1.0;{'cclock', 'negedge', 'posedges'};set();set();;
+0;"Any transactor shall be able to instruct the SCE-MI infrastructure to stop the controlled clock and thus cause controlled time to freeze.
+
+transactor -> Transactor
+SCE-MI -> SCE-MI
+controlled clock -> Controlled Clock (cclock)
+controlled time -> Controlled time";['transactor', 'SCE-MI infrastructure', 'controlled clock', 'controlled time'];0.75;0.75;0.75;{'controlled clock', 'transactor', 'controlled time'};{'SCE-MI infrastructure'};{'SCE-MI'};;
+1;"Any transactor shall be able to instruct the SCE-MI infrastructure to stop the controlled clock and thus cause controlled time to freeze.
+
+transactor -> Transactor
+SCE-MI -> SCE-MI
+controlled clock -> Controlled Clock (cclock)
+controlled time -> Controlled time";['transactor', 'SCE-MI infrastructure', 'controlled clock', 'controlled time'];0.75;0.75;0.75;{'controlled clock', 'transactor', 'controlled time'};{'SCE-MI infrastructure'};{'SCE-MI'};;
+2;"Any transactor shall be able to instruct the SCE-MI infrastructure to stop the controlled clock and thus cause controlled time to freeze.
+
+transactor -> Transactor
+SCE-MI -> SCE-MI
+controlled clock -> Controlled Clock (cclock)
+controlled time -> Controlled time";['transactor', 'SCE-MI infrastructure', 'controlled clock', 'controlled time'];0.75;0.75;0.75;{'controlled clock', 'transactor', 'controlled time'};{'SCE-MI infrastructure'};{'SCE-MI'};;
+0;"The SCE-MI infrastructure shall feature cycle stamping.
+
+SCE-MI -> SCE-MI
+cycle stamping -> Cycle stamping";['SCE-MI infrastructure', 'cycle stamping'];0.5;0.5;0.5;{'cycle stamping'};{'SCE-MI infrastructure'};{'SCE-MI'};;
+1;"The SCE-MI infrastructure shall feature cycle stamping.
+
+SCE-MI -> SCE-MI
+cycle stamping -> Cycle stamping";['SCE-MI infrastructure', 'cycle stamping'];0.5;0.5;0.5;{'cycle stamping'};{'SCE-MI infrastructure'};{'SCE-MI'};;
+2;"The SCE-MI infrastructure shall feature cycle stamping.
+
+SCE-MI -> SCE-MI
+cycle stamping -> Cycle stamping";['SCE-MI infrastructure', 'cycle stamping'];0.5;0.5;0.5;{'cycle stamping'};{'SCE-MI infrastructure'};{'SCE-MI'};;
+0;"The DUT shall always be clocked by one or more controlled clocks that are controlled by one or more transactors.
+
+DUT -> DUT
+controlled clocks -> Controlled Clock (cclock)
+transactors -> Transactor";['DUT', 'controlled clocks', 'transactors'];1.0;1.0;1.0;{'transactors', 'DUT', 'controlled clocks'};set();set();;
+1;"The DUT shall always be clocked by one or more controlled clocks that are controlled by one or more transactors.
+
+DUT -> DUT
+controlled clocks -> Controlled Clock (cclock)
+transactors -> Transactor";['DUT', 'controlled clocks', 'transactors'];1.0;1.0;1.0;{'transactors', 'DUT', 'controlled clocks'};set();set();;
+2;"The DUT shall always be clocked by one or more controlled clocks that are controlled by one or more transactors.
+
+DUT -> DUT
+controlled clocks -> Controlled Clock (cclock)
+transactors -> Transactor";['DUT', 'controlled clocks', 'transactors'];1.0;1.0;1.0;{'transactors', 'DUT', 'controlled clocks'};set();set();;
+Averages;;;0.85;0.85;0.85;;;;;
+Averages;;;0.85;0.85;0.85;;;;;

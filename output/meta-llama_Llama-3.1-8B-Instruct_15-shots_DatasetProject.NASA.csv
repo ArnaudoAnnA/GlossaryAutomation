@@ -1,0 +1,98 @@
+Run;Input_requirement;Identified_violations;Precision;Recall;F1-score;TP;FP;FN;Generated_definitions;Cosine_similarities
+0;"As part of System Initialization, the Boot ROM shall be configured to, after completing the initial self-test, call the manufacturer-supplied VxWorks Board Support Package (BSP) initialization software followed by a call to the FTSS System Initialization software.
+
+Boot ROM -> Boot ROM
+initial self-test -> IBIT
+Board Support Package (BSP) -> BSP
+FTSS -> FTSS
+System Initialization -> Start-up
+initialization software -> Application initialization function";['System Initialization', 'Boot ROM', 'VxWorks Board Support Package (BSP)', 'FTSS System Initialization software'];0.5;0.3333333333333333;0.4;{'Boot ROM', 'System Initialization'};{'VxWorks Board Support Package (BSP)', 'FTSS System Initialization software'};{'initial self-test', 'FTSS', 'initialization software', 'Board Support Package (BSP)'};;
+1;"As part of System Initialization, the Boot ROM shall be configured to, after completing the initial self-test, call the manufacturer-supplied VxWorks Board Support Package (BSP) initialization software followed by a call to the FTSS System Initialization software.
+
+Boot ROM -> Boot ROM
+initial self-test -> IBIT
+Board Support Package (BSP) -> BSP
+FTSS -> FTSS
+System Initialization -> Start-up
+initialization software -> Application initialization function";['System Initialization', 'Boot ROM', 'VxWorks Board Support Package (BSP)', 'FTSS System Initialization software'];0.5;0.3333333333333333;0.4;{'Boot ROM', 'System Initialization'};{'VxWorks Board Support Package (BSP)', 'FTSS System Initialization software'};{'initial self-test', 'FTSS', 'initialization software', 'Board Support Package (BSP)'};;
+2;"As part of System Initialization, the Boot ROM shall be configured to, after completing the initial self-test, call the manufacturer-supplied VxWorks Board Support Package (BSP) initialization software followed by a call to the FTSS System Initialization software.
+
+Boot ROM -> Boot ROM
+initial self-test -> IBIT
+Board Support Package (BSP) -> BSP
+FTSS -> FTSS
+System Initialization -> Start-up
+initialization software -> Application initialization function";['System Initialization', 'Boot ROM', 'VxWorks Board Support Package (BSP)', 'FTSS System Initialization software'];0.5;0.3333333333333333;0.4;{'Boot ROM', 'System Initialization'};{'VxWorks Board Support Package (BSP)', 'FTSS System Initialization software'};{'initial self-test', 'FTSS', 'initialization software', 'Board Support Package (BSP)'};;
+0;"System Initialization is entered when the system is powered up for the first time, or when a power on reset exception is received by the software.
+
+System Initialization -> Start-up
+power on reset exception -> Power on reset";['most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'];0.0;0.0;0.0;set();{'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle', 'most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context'};{'System Initialization', 'power on reset exception'};;
+1;"System Initialization is entered when the system is powered up for the first time, or when a power on reset exception is received by the software.
+
+System Initialization -> Start-up
+power on reset exception -> Power on reset";['most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'];0.0;0.0;0.0;set();{'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle', 'most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context'};{'System Initialization', 'power on reset exception'};;
+2;"System Initialization is entered when the system is powered up for the first time, or when a power on reset exception is received by the software.
+
+System Initialization -> Start-up
+power on reset exception -> Power on reset";['most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'];0.0;0.0;0.0;set();{'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle', 'most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context'};{'System Initialization', 'power on reset exception'};;
+0;"The FCP shall, if the NEFU ICP fails to send its ICP Ready signal, suppress input from that ICP, but continue to use the NE.
+
+Masking -> suppress input from
+NEFU ICP -> NEFU ICP
+ICP Ready signal -> ICP Ready signal
+FCP -> FCP
+ICP -> ICP
+NE -> NE";['most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'];0.0;0.0;0.0;set();{'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle', 'most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context'};{'NEFU ICP', 'NE', 'Masking', 'FCP', 'ICP', 'ICP Ready signal'};;
+1;"The FCP shall, if the NEFU ICP fails to send its ICP Ready signal, suppress input from that ICP, but continue to use the NE.
+
+Masking -> suppress input from
+NEFU ICP -> NEFU ICP
+ICP Ready signal -> ICP Ready signal
+FCP -> FCP
+ICP -> ICP
+NE -> NE";['Most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context.', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle.', 'This rule mandated to define terms in some form of ontology, including a glossary, data dictionary, or similar artifact that allows the reader of a need statement or requirement statement to know exactly what the writer’s intended meaning was when the word was chosen.'];0.0;0.0;0.0;set();{'This rule mandated to define terms in some form of ontology, including a glossary, data dictionary, or similar artifact that allows the reader of a need statement or requirement statement to know exactly what the writer’s intended meaning was when the word was chosen.', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle.', 'Most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context.'};{'NEFU ICP', 'NE', 'Masking', 'FCP', 'ICP', 'ICP Ready signal'};;
+2;"The FCP shall, if the NEFU ICP fails to send its ICP Ready signal, suppress input from that ICP, but continue to use the NE.
+
+Masking -> suppress input from
+NEFU ICP -> NEFU ICP
+ICP Ready signal -> ICP Ready signal
+FCP -> FCP
+ICP -> ICP
+NE -> NE";"['{\n\t""items"": [\n\t\t""most natural languages are rich with words having several synonyms', 'each with a subtly different meaning based on context"",\n\t\t""shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle"",\n\t\t""the definition and documentation of a common ontology by organizations and their projects is fundamental"",\n\t\t""the formal naming and definition of a set of terms', 'entities', 'data types', 'and properties as well as defining the relationships among these terms', 'entities', 'and data types that are fundamental to the project and organization of which the project is part"",\n\t\t""having a documented', 'common ontology and an associated glossary and/or data dictionary', 'helps ensure consistent use of this data and information across all system lifecycle process activities and work products as well as across various groups within and external to the project"",\n\t\t""this common ontology is key to tool interoperability and the ability to share sets of data and information', 'including needs']";0.0;0.0;0.0;set();"{'each with a subtly different meaning based on context"",\n\t\t""shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle"",\n\t\t""the definition and documentation of a common ontology by organizations and their projects is fundamental"",\n\t\t""the formal naming and definition of a set of terms', 'data types', 'including needs', 'helps ensure consistent use of this data and information across all system lifecycle process activities and work products as well as across various groups within and external to the project"",\n\t\t""this common ontology is key to tool interoperability and the ability to share sets of data and information', '{\n\t""items"": [\n\t\t""most natural languages are rich with words having several synonyms', 'common ontology and an associated glossary and/or data dictionary', 'and properties as well as defining the relationships among these terms', 'and data types that are fundamental to the project and organization of which the project is part"",\n\t\t""having a documented', 'entities'}";{'NEFU ICP', 'NE', 'Masking', 'FCP', 'ICP', 'ICP Ready signal'};;
+0;"If a permanent fault has occurred, for example, the system will, when the transfer is made back to Normal Operation state, be capable of handling another fault.
+
+permanent fault -> Permanent Failure
+Normal Operation state -> Normal Operation state
+fault -> Permanent Failure";['permanent fault', 'Normal Operation state'];1.0;0.6666666666666666;0.8;{'permanent fault', 'Normal Operation state'};set();{'fault'};;
+1;"If a permanent fault has occurred, for example, the system will, when the transfer is made back to Normal Operation state, be capable of handling another fault.
+
+permanent fault -> Permanent Failure
+Normal Operation state -> Normal Operation state
+fault -> Permanent Failure";['permanent fault', 'Normal Operation state'];1.0;0.6666666666666666;0.8;{'permanent fault', 'Normal Operation state'};set();{'fault'};;
+2;"If a permanent fault has occurred, for example, the system will, when the transfer is made back to Normal Operation state, be capable of handling another fault.
+
+permanent fault -> Permanent Failure
+Normal Operation state -> Normal Operation state
+fault -> Permanent Failure";['permanent fault', 'Normal Operation state'];1.0;0.6666666666666666;0.8;{'permanent fault', 'Normal Operation state'};set();{'fault'};;
+0;"System Initialization shall synchronize the FCP virtual group in the presence of a startup delay of 2.5 seconds.
+
+System Initialization -> Start-up
+virtual group -> Virtual Group
+startup delay -> Power-up skew
+FCP -> FCP
+synchronize -> Synchronization";['most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'];0.0;0.0;0.0;set();{'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle', 'most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context'};{'FCP', 'synchronize', 'virtual group', 'startup delay', 'System Initialization'};;
+1;"System Initialization shall synchronize the FCP virtual group in the presence of a startup delay of 2.5 seconds.
+
+System Initialization -> Start-up
+virtual group -> Virtual Group
+startup delay -> Power-up skew
+FCP -> FCP
+synchronize -> Synchronization";['most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'];0.0;0.0;0.0;set();{'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle', 'most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context'};{'FCP', 'synchronize', 'virtual group', 'startup delay', 'System Initialization'};;
+2;"System Initialization shall synchronize the FCP virtual group in the presence of a startup delay of 2.5 seconds.
+
+System Initialization -> Start-up
+virtual group -> Virtual Group
+startup delay -> Power-up skew
+FCP -> FCP
+synchronize -> Synchronization";['most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'];0.0;0.0;0.0;set();{'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle', 'most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context'};{'FCP', 'synchronize', 'virtual group', 'startup delay', 'System Initialization'};;
+Averages;;;0.3;0.19999999999999998;0.23999999999999996;;;;;

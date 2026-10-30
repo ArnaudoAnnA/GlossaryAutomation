@@ -1,0 +1,63 @@
+Run;Input_requirement;Identified_violations;Precision;Recall;F1-score;TP;FP;FN;Generated_definitions;Cosine_similarities
+0;"When a stock item Category is updated, the corresponding item is updated in QuickBooks POS
+
+stock item -> Stock Item
+POS -> POS";['stock item', 'Category', 'QuickBooks POS'];0.3333333333333333;0.5;0.4;{'stock item'};{'QuickBooks POS', 'Category'};{'POS'};;
+1;"When a stock item Category is updated, the corresponding item is updated in QuickBooks POS
+
+stock item -> Stock Item
+POS -> POS";['stock item', 'Category', 'QuickBooks POS'];0.3333333333333333;0.5;0.4;{'stock item'};{'QuickBooks POS', 'Category'};{'POS'};;
+2;"When a stock item Category is updated, the corresponding item is updated in QuickBooks POS
+
+stock item -> Stock Item
+POS -> POS";['stock item Category', 'QuickBooks POS'];0.0;0.0;0.0;set();{'stock item Category', 'QuickBooks POS'};{'stock item', 'POS'};;
+0;"During data validation, all validation errors must be reported to the actor.
+
+actor -> Actor
+validation errors -> Validation Error";['data validation', 'validation errors', 'actor'];0.6666666666666666;1.0;0.8;{'actor', 'validation errors'};{'data validation'};set();;
+1;"During data validation, all validation errors must be reported to the actor.
+
+actor -> Actor
+validation errors -> Validation Error";['data validation', 'validation errors', 'actor'];0.6666666666666666;1.0;0.8;{'actor', 'validation errors'};{'data validation'};set();;
+2;"During data validation, all validation errors must be reported to the actor.
+
+actor -> Actor
+validation errors -> Validation Error";['validation errors', 'actor'];1.0;1.0;1.0;{'actor', 'validation errors'};set();set();;
+0;"When an under $5 item is selected, the system shall provide a search error  to the user
+
+under 5$ item -> Under 5$ item
+search error -> Search Error";['item', 'search error', 'user'];0.3333333333333333;0.5;0.4;{'search error'};{'user', 'item'};{'under 5$ item'};;
+1;"When an under $5 item is selected, the system shall provide a search error  to the user
+
+under 5$ item -> Under 5$ item
+search error -> Search Error";['item', 'search error', 'user'];0.3333333333333333;0.5;0.4;{'search error'};{'user', 'item'};{'under 5$ item'};;
+2;"When an under $5 item is selected, the system shall provide a search error  to the user
+
+under 5$ item -> Under 5$ item
+search error -> Search Error";['item', 'search error', 'user'];0.3333333333333333;0.5;0.4;{'search error'};{'user', 'item'};{'under 5$ item'};;
+0;"When an item is part of the unique items category, the system shall not allow modifications to its description
+
+unique items -> Unique Item
+description -> Description";['unique items category'];0.0;0.0;0.0;set();{'unique items category'};{'description', 'unique items'};;
+1;"When an item is part of the unique items category, the system shall not allow modifications to its description
+
+unique items -> Unique Item
+description -> Description";['unique items category'];0.0;0.0;0.0;set();{'unique items category'};{'description', 'unique items'};;
+2;"When an item is part of the unique items category, the system shall not allow modifications to its description
+
+unique items -> Unique Item
+description -> Description";['unique items category', 'description'];0.5;0.5;0.5;{'description'};{'unique items category'};{'unique items'};;
+0;"After a sale in QuickBooks POS, the system shall update the item's fields in the inventory
+
+POS -> POS
+item's fields -> Item Fields";"['QuickBooks POS', ""item's fields"", 'inventory']";0.3333333333333333;0.5;0.4;"{""item's fields""}";{'inventory', 'QuickBooks POS'};{'POS'};;
+1;"After a sale in QuickBooks POS, the system shall update the item's fields in the inventory
+
+POS -> POS
+item's fields -> Item Fields";"['sale', 'QuickBooks POS', ""item's fields"", 'inventory']";0.25;0.5;0.3333333333333333;"{""item's fields""}";{'inventory', 'QuickBooks POS', 'sale'};{'POS'};;
+2;"After a sale in QuickBooks POS, the system shall update the item's fields in the inventory
+
+POS -> POS
+item's fields -> Item Fields";['sale', 'QuickBooks POS', 'fields', 'inventory'];0.0;0.0;0.0;set();{'fields', 'inventory', 'QuickBooks POS', 'sale'};"{'POS', ""item's fields""}";;
+Averages;;;0.33888888888888885;0.4666666666666667;0.39264367816091944;;;;;
+Averages;;;0.33888888888888885;0.4666666666666667;0.39264367816091944;;;;;

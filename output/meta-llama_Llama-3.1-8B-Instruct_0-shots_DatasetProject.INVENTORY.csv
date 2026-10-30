@@ -1,0 +1,59 @@
+Run;Input_requirement;Identified_violations;Precision;Recall;F1-score;TP;FP;FN;Generated_definitions;Cosine_similarities
+0;"After a sale in QuickBooks POS, the system shall update the item's fields in the inventory
+
+POS -> POS
+item's fields -> Item Fields";['system', 'fields', 'inventory'];0.0;0.0;0.0;set();{'fields', 'system', 'inventory'};"{""item's fields"", 'POS'}";;
+1;"After a sale in QuickBooks POS, the system shall update the item's fields in the inventory
+
+POS -> POS
+item's fields -> Item Fields";['system', 'fields', 'inventory'];0.0;0.0;0.0;set();{'fields', 'system', 'inventory'};"{""item's fields"", 'POS'}";;
+2;"After a sale in QuickBooks POS, the system shall update the item's fields in the inventory
+
+POS -> POS
+item's fields -> Item Fields";"[""the system shall update the item's fields in the inventory"", 'the system shall', ""the item's fields""]";0.0;0.0;0.0;set();"{""the item's fields"", 'the system shall', ""the system shall update the item's fields in the inventory""}";"{""item's fields"", 'POS'}";;
+0;"When an item is part of the unique items category, the system shall not allow modifications to its description
+
+unique items -> Unique Item
+description -> Description";['most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'];0.0;0.0;0.0;set();{'most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'};{'unique items', 'description'};;
+1;"When an item is part of the unique items category, the system shall not allow modifications to its description
+
+unique items -> Unique Item
+description -> Description";['most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'];0.0;0.0;0.0;set();{'most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'};{'unique items', 'description'};;
+2;"When an item is part of the unique items category, the system shall not allow modifications to its description
+
+unique items -> Unique Item
+description -> Description";['most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'];0.0;0.0;0.0;set();{'most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'};{'unique items', 'description'};;
+0;"When a stock item Category is updated, the corresponding item is updated in QuickBooks POS
+
+stock item -> Stock Item
+POS -> POS";['stock item Category', 'QuickBooks POS'];0.0;0.0;0.0;set();{'stock item Category', 'QuickBooks POS'};{'stock item', 'POS'};;
+1;"When a stock item Category is updated, the corresponding item is updated in QuickBooks POS
+
+stock item -> Stock Item
+POS -> POS";['stock item Category', 'QuickBooks POS'];0.0;0.0;0.0;set();{'stock item Category', 'QuickBooks POS'};{'stock item', 'POS'};;
+2;"When a stock item Category is updated, the corresponding item is updated in QuickBooks POS
+
+stock item -> Stock Item
+POS -> POS";['stock item Category', 'QuickBooks POS'];0.0;0.0;0.0;set();{'stock item Category', 'QuickBooks POS'};{'stock item', 'POS'};;
+0;"When an under $5 item is selected, the system shall provide a search error  to the user
+
+under 5$ item -> Under 5$ item
+search error -> Search Error";['most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'];0.0;0.0;0.0;set();{'most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'};{'under 5$ item', 'search error'};;
+1;"When an under $5 item is selected, the system shall provide a search error  to the user
+
+under 5$ item -> Under 5$ item
+search error -> Search Error";['most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'];0.0;0.0;0.0;set();{'most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'};{'under 5$ item', 'search error'};;
+2;"When an under $5 item is selected, the system shall provide a search error  to the user
+
+under 5$ item -> Under 5$ item
+search error -> Search Error";['most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'];0.0;0.0;0.0;set();{'most natural languages are rich with words having several synonyms, each with a subtly different meaning based on context', 'shades of meaning will most likely lead to ambiguity and to difficulty during verification and validation activities across the lifecycle'};{'under 5$ item', 'search error'};;
+0;"In case of a sale, the system shall automatically apply the discount on purchases via QuickBooks POS
+
+POS -> POS";['sale', 'discount', 'QuickBooks POS'];0.0;0.0;0.0;set();{'discount', 'QuickBooks POS', 'sale'};{'POS'};;
+1;"In case of a sale, the system shall automatically apply the discount on purchases via QuickBooks POS
+
+POS -> POS";['sale, automatically, apply, via, purchases, QuickBooks POS'];0.0;0.0;0.0;set();{'sale, automatically, apply, via, purchases, QuickBooks POS'};{'POS'};;
+2;"In case of a sale, the system shall automatically apply the discount on purchases via QuickBooks POS
+
+POS -> POS";['sale', 'discount', 'QuickBooks POS'];0.0;0.0;0.0;set();{'discount', 'QuickBooks POS', 'sale'};{'POS'};;
+Averages;;;0.0;0.0;0.0;;;;;
