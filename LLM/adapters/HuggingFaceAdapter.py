@@ -15,6 +15,7 @@ MODEL_ID = "meta-llama/Meta-Llama-3-8B-Instruct"
 
 
 class HuggingFaceAdapter(LLMAdapterInterface):
+    _INSTANCE: "HuggingFaceAdapter" = None
 
     def __init__(
             self,
@@ -35,10 +36,20 @@ class HuggingFaceAdapter(LLMAdapterInterface):
         self._model = AutoModelForCausalLM.from_pretrained(
             model_id,
             quantization_config=bnb_config,
-            device_map="auto",
+            device_map={"": "cuda:0"},  # Forces the loading of the full in the GPU
             attn_implementation="sdpa"
         )
         self._history = self.init_chat(sys_prompt=sys_prompt, history=self.format_history(shot_examples))
+
+    @staticmethod
+    def get_instance(sys_prompt: str,
+                     model_id: str = MODEL_ID,
+                     shot_examples: list[tuple[str, str]] = None, ) -> "HuggingFaceAdapter":
+        if not HuggingFaceAdapter._INSTANCE:
+            HuggingFaceAdapter._INSTANCE = HuggingFaceAdapter(sys_prompt, model_id, shot_examples)
+        else:
+            HuggingFaceAdapter._INSTANCE.clear_history()
+        return HuggingFaceAdapter._INSTANCE
 
     @staticmethod
     def init_chat(
@@ -57,6 +68,9 @@ class HuggingFaceAdapter(LLMAdapterInterface):
                 ret.append({"role": "user", "content": d[0]})
                 ret.append({"role": "assistant", "content": d[1]})
         return ret
+
+    def clear_history(self, shot_examples: list[tuple[str, str]] = None):
+        self._history = self.init_chat(sys_prompt=self._sys_prompt, history=self.format_history(shot_examples))
 
     def make_a_query(
             self,
@@ -81,7 +95,9 @@ class HuggingFaceAdapter(LLMAdapterInterface):
         )
 
         response_text = self._tokenizer.decode(
-            outputs[0][inputs["input_ids"].shape[1]:], skip_special_tokens=True
+            outputs[0][inputs["input_ids"].shape[1]:],
+            skip_special_tokens=True,
+            clean_up_tokenization_spaces=False  # Necessary for LLama
         )
 
         self._history.append({"role": "assistant", "content": response_text})

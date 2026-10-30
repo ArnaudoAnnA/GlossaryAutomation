@@ -1,0 +1,83 @@
+Run;Input_requirement;Identified_violations;Precision;Recall;F1-score;TP;FP;FN;Generated_definitions;Cosine_similarities
+0;"If the failed FCP processor has not synced in 2.5 seconds after the surviving triplex has detected the loss of the FCP, then the surviving triplex shall, within 1 second, send a single voted VMEbus reset through the NE to the failed FCP
+
+surviving triplex -> Surviving triplex
+VMEbus reset -> VMEbus reset
+FCP -> FCP
+NE -> NE";['FCP', ' triplex', ' VMEbus', ' NE'];0.5;0.5;0.5;{'NE', 'FCP'};{'VMEbus', 'triplex'};{'surviving triplex', 'VMEbus reset'};;
+1;"If the failed FCP processor has not synced in 2.5 seconds after the surviving triplex has detected the loss of the FCP, then the surviving triplex shall, within 1 second, send a single voted VMEbus reset through the NE to the failed FCP
+
+surviving triplex -> Surviving triplex
+VMEbus reset -> VMEbus reset
+FCP -> FCP
+NE -> NE";['FCP', ' triplex', ' VMEbus', ' NE'];0.5;0.5;0.5;{'NE', 'FCP'};{'VMEbus', 'triplex'};{'surviving triplex', 'VMEbus reset'};;
+2;"If the failed FCP processor has not synced in 2.5 seconds after the surviving triplex has detected the loss of the FCP, then the surviving triplex shall, within 1 second, send a single voted VMEbus reset through the NE to the failed FCP
+
+surviving triplex -> Surviving triplex
+VMEbus reset -> VMEbus reset
+FCP -> FCP
+NE -> NE";['FCP', ' triplex', ' VMEbus', ' NE'];0.5;0.5;0.5;{'NE', 'FCP'};{'VMEbus', 'triplex'};{'surviving triplex', 'VMEbus reset'};;
+0;"Upon voted reset, the NE shall bypass ISYNC and enter TNR directly.
+
+TNR -> TNR
+ISYNC -> ISYNC
+NE -> NE
+voted reset -> Voted reset";['voted reset', ' NE', ' ISYNC', ' TNR'];1.0;1.0;1.0;{'NE', 'ISYNC', 'TNR', 'voted reset'};set();set();;
+1;"Upon voted reset, the NE shall bypass ISYNC and enter TNR directly.
+
+TNR -> TNR
+ISYNC -> ISYNC
+NE -> NE
+voted reset -> Voted reset";['voted reset', ' NE', ' ISYNC', ' TNR'];1.0;1.0;1.0;{'NE', 'ISYNC', 'TNR', 'voted reset'};set();set();;
+2;"Upon voted reset, the NE shall bypass ISYNC and enter TNR directly.
+
+TNR -> TNR
+ISYNC -> ISYNC
+NE -> NE
+voted reset -> Voted reset";['voted reset', ' NE', ' ISYNC', ' TNR'];1.0;1.0;1.0;{'NE', 'ISYNC', 'TNR', 'voted reset'};set();set();;
+0;"The FCP shall wait up to 15 seconds, after configuring the ICP redundant processor groups, for communication to start from the ICP. The application can use this time on the ICP to initialize I/O boards.
+
+redundant processor groups -> Virtual Group
+I/O boards -> I/O boards
+FCP -> FCP
+ICP -> ICP";['FCP', ' ICP', ' redundant processor groups', ' communication', ' initialize', ' I/O boards'];0.6666666666666666;1.0;0.8;{'I/O boards', 'FCP', 'redundant processor groups', 'ICP'};{'initialize', 'communication'};set();;
+1;"The FCP shall wait up to 15 seconds, after configuring the ICP redundant processor groups, for communication to start from the ICP. The application can use this time on the ICP to initialize I/O boards.
+
+redundant processor groups -> Virtual Group
+I/O boards -> I/O boards
+FCP -> FCP
+ICP -> ICP";['FCP', ' ICP', ' redundant processor groups'];1.0;0.75;0.8571428571428571;{'FCP', 'redundant processor groups', 'ICP'};set();{'I/O boards'};;
+2;"The FCP shall wait up to 15 seconds, after configuring the ICP redundant processor groups, for communication to start from the ICP. The application can use this time on the ICP to initialize I/O boards.
+
+redundant processor groups -> Virtual Group
+I/O boards -> I/O boards
+FCP -> FCP
+ICP -> ICP";['FCP', ' ICP', ' redundant processor groups', ' I/O boards'];1.0;1.0;1.0;{'I/O boards', 'FCP', 'redundant processor groups', 'ICP'};set();set();;
+0;"Boot phase, from hardware reset to starting of the 50 Hz timer, shall take no longer than 1.5 minutes.
+
+Boot phase -> Start-up
+hardware reset -> Hardware reset";['Boot phase', ' 50 Hz timer'];0.5;0.5;0.5;{'Boot phase'};{'50 Hz timer'};{'hardware reset'};;
+1;"Boot phase, from hardware reset to starting of the 50 Hz timer, shall take no longer than 1.5 minutes.
+
+Boot phase -> Start-up
+hardware reset -> Hardware reset";['Boot phase', ' 50 Hz timer'];0.5;0.5;0.5;{'Boot phase'};{'50 Hz timer'};{'hardware reset'};;
+2;"Boot phase, from hardware reset to starting of the 50 Hz timer, shall take no longer than 1.5 minutes.
+
+Boot phase -> Start-up
+hardware reset -> Hardware reset";['Boot phase', ' 50 Hz timer'];0.5;0.5;0.5;{'Boot phase'};{'50 Hz timer'};{'hardware reset'};;
+0;"System Initialization shall, when all other activities are completed, start the 50 Hz timer and enable the timer interrupt. This will allow the interrupt handler to initiate normal activities.
+
+System Initialization -> Start-up
+timer interrupt -> Timer interrupt
+interrupt handler -> ISR";['System Initialization', ' 50 Hz timer', ' timer interrupt', ' interrupt handler', ' normal activities'];0.6;1.0;0.7499999999999999;{'System Initialization', 'interrupt handler', 'timer interrupt'};{'50 Hz timer', 'normal activities'};set();;
+1;"System Initialization shall, when all other activities are completed, start the 50 Hz timer and enable the timer interrupt. This will allow the interrupt handler to initiate normal activities.
+
+System Initialization -> Start-up
+timer interrupt -> Timer interrupt
+interrupt handler -> ISR";['System Initialization', ' activities', ' timer', ' interrupt', ' interrupt handler', ' normal activities'];0.3333333333333333;0.6666666666666666;0.4444444444444444;{'interrupt handler', 'System Initialization'};{'normal activities', 'interrupt', 'activities', 'timer'};{'timer interrupt'};;
+2;"System Initialization shall, when all other activities are completed, start the 50 Hz timer and enable the timer interrupt. This will allow the interrupt handler to initiate normal activities.
+
+System Initialization -> Start-up
+timer interrupt -> Timer interrupt
+interrupt handler -> ISR";['System Initialization', ' 50 Hz timer', ' timer interrupt', ' interrupt handler', ' normal activities'];0.6;1.0;0.7499999999999999;{'System Initialization', 'interrupt handler', 'timer interrupt'};{'50 Hz timer', 'normal activities'};set();;
+Averages;;;0.68;0.7611111111111111;0.7182729375481881;;;;;

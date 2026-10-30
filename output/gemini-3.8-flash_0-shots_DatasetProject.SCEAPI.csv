@@ -1,0 +1,80 @@
+Run;Input_requirement;Identified_violations;Precision;Recall;F1-score;TP;FP;FN;Generated_definitions;Cosine_similarities
+0;"The SCE-MI infrastructure shall always implicitly create a controlled clock with a 1/1 ratio, which is the highest frequency controlled clock in the system
+
+SCE-MI -> SCE-MI
+controlled clock -> Controlled Clock (cclock)";['SCE-MI', ' implicitly', ' controlled clock', ' 1/1 ratio', ' highest frequency'];0.4;1.0;0.5714285714285715;{'controlled clock', 'SCE-MI'};{'1/1 ratio', 'implicitly', 'highest frequency'};set();;
+1;"The SCE-MI infrastructure shall always implicitly create a controlled clock with a 1/1 ratio, which is the highest frequency controlled clock in the system
+
+SCE-MI -> SCE-MI
+controlled clock -> Controlled Clock (cclock)";['SCE-MI', ' implicitly', ' controlled clock', ' highest frequency'];0.5;1.0;0.6666666666666666;{'controlled clock', 'SCE-MI'};{'implicitly', 'highest frequency'};set();;
+2;"The SCE-MI infrastructure shall always implicitly create a controlled clock with a 1/1 ratio, which is the highest frequency controlled clock in the system
+
+SCE-MI -> SCE-MI
+controlled clock -> Controlled Clock (cclock)";['SCE-MI infrastructure', ' implicitly create', ' controlled clock', ' 1/1 ratio', ' highest frequency'];0.2;0.5;0.28571428571428575;{'controlled clock'};{'SCE-MI infrastructure', '1/1 ratio', 'implicitly create', 'highest frequency'};{'SCE-MI'};;
+0;"Transactor names shall conform to the syntax of the HDL language that the bridge netlist is expressed in.
+
+Transactor -> Transactor
+HDL language -> HDL
+bridge netlist -> Bridge netlist";['HDL', ' bridge'];0.0;0.0;0.0;set();{'bridge', 'HDL'};{'bridge netlist', 'Transactor', 'HDL language'};;
+1;"Transactor names shall conform to the syntax of the HDL language that the bridge netlist is expressed in.
+
+Transactor -> Transactor
+HDL language -> HDL
+bridge netlist -> Bridge netlist";['HDL', ' bridge'];0.0;0.0;0.0;set();{'bridge', 'HDL'};{'bridge netlist', 'Transactor', 'HDL language'};;
+2;"Transactor names shall conform to the syntax of the HDL language that the bridge netlist is expressed in.
+
+Transactor -> Transactor
+HDL language -> HDL
+bridge netlist -> Bridge netlist";['HDL'];0.0;0.0;0.0;set();{'HDL'};{'bridge netlist', 'Transactor', 'HDL language'};;
+0;"Before messages can be transported over a SCE-MI message channel, their content must be serialized into a large bit vector by the DUT proxy model.
+
+SCE-MI -> SCE-MI
+message channel -> Message channel
+DUT proxy -> DUT proxy
+messages -> Message";['SCE-MI message channel', ' DUT proxy model'];0.0;0.0;0.0;set();{'DUT proxy model', 'SCE-MI message channel'};{'SCE-MI', 'messages', 'message channel', 'DUT proxy'};;
+1;"Before messages can be transported over a SCE-MI message channel, their content must be serialized into a large bit vector by the DUT proxy model.
+
+SCE-MI -> SCE-MI
+message channel -> Message channel
+DUT proxy -> DUT proxy
+messages -> Message";['SCE-MI message channel', ' DUT proxy model'];0.0;0.0;0.0;set();{'DUT proxy model', 'SCE-MI message channel'};{'SCE-MI', 'messages', 'message channel', 'DUT proxy'};;
+2;"Before messages can be transported over a SCE-MI message channel, their content must be serialized into a large bit vector by the DUT proxy model.
+
+SCE-MI -> SCE-MI
+message channel -> Message channel
+DUT proxy -> DUT proxy
+messages -> Message";['SCE-MI message channel', ' large bit vector', ' DUT proxy model'];0.0;0.0;0.0;set();{'DUT proxy model', 'SCE-MI message channel', 'large bit vector'};{'SCE-MI', 'messages', 'message channel', 'DUT proxy'};;
+0;"Any transactor shall be able to instruct the SCE-MI infrastructure to stop the controlled clock and thus cause controlled time to freeze.
+
+transactor -> Transactor
+SCE-MI -> SCE-MI
+controlled clock -> Controlled Clock (cclock)
+controlled time -> Controlled time";['transactor', ' SCE-MI infrastructure', ' controlled clock', ' controlled time'];0.75;0.75;0.75;{'transactor', 'controlled clock', 'controlled time'};{'SCE-MI infrastructure'};{'SCE-MI'};;
+1;"Any transactor shall be able to instruct the SCE-MI infrastructure to stop the controlled clock and thus cause controlled time to freeze.
+
+transactor -> Transactor
+SCE-MI -> SCE-MI
+controlled clock -> Controlled Clock (cclock)
+controlled time -> Controlled time";['transactor', ' SCE-MI infrastructure', ' controlled clock', ' controlled time'];0.75;0.75;0.75;{'transactor', 'controlled clock', 'controlled time'};{'SCE-MI infrastructure'};{'SCE-MI'};;
+2;"Any transactor shall be able to instruct the SCE-MI infrastructure to stop the controlled clock and thus cause controlled time to freeze.
+
+transactor -> Transactor
+SCE-MI -> SCE-MI
+controlled clock -> Controlled Clock (cclock)
+controlled time -> Controlled time";['transactor', ' instruct', ' SCE-MI infrastructure', ' stop', ' controlled clock', ' cause', ' controlled time', ' freeze'];0.375;0.75;0.5;{'transactor', 'controlled clock', 'controlled time'};{'SCE-MI infrastructure', 'cause', 'freeze', 'stop', 'instruct'};{'SCE-MI'};;
+0;"The DUT shall always be clocked by one or more controlled clocks that are controlled by one or more transactors.
+
+DUT -> DUT
+controlled clocks -> Controlled Clock (cclock)
+transactors -> Transactor";['DUT', ' clocked', ' controlled clocks', ' controlled', ' transactors'];0.6;1.0;0.7499999999999999;{'transactors', 'DUT', 'controlled clocks'};{'clocked', 'controlled'};set();;
+1;"The DUT shall always be clocked by one or more controlled clocks that are controlled by one or more transactors.
+
+DUT -> DUT
+controlled clocks -> Controlled Clock (cclock)
+transactors -> Transactor";['controlled clocks', ' controlled', ' transactors'];0.6666666666666666;0.6666666666666666;0.6666666666666666;{'transactors', 'controlled clocks'};{'controlled'};{'DUT'};;
+2;"The DUT shall always be clocked by one or more controlled clocks that are controlled by one or more transactors.
+
+DUT -> DUT
+controlled clocks -> Controlled Clock (cclock)
+transactors -> Transactor";['The DUT', ' controlled clocks', ' transactors'];0.6666666666666666;0.6666666666666666;0.6666666666666666;{'transactors', 'controlled clocks'};{'The DUT'};{'DUT'};;
+Averages;;;0.32722222222222225;0.47222222222222227;0.38657246544668367;;;;;

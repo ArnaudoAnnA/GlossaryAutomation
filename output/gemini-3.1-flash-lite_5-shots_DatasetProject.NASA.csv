@@ -1,0 +1,83 @@
+Run;Input_requirement;Identified_violations;Precision;Recall;F1-score;TP;FP;FN;Generated_definitions;Cosine_similarities
+0;"If the failed FCP processor has not synced in 2.5 seconds after the surviving triplex has detected the loss of the FCP, then the surviving triplex shall, within 1 second, send a single voted VMEbus reset through the NE to the failed FCP
+
+surviving triplex -> Surviving triplex
+VMEbus reset -> VMEbus reset
+FCP -> FCP
+NE -> NE";['FCP processor', ' synced', ' surviving triplex', ' loss of the FCP', ' single voted VMEbus reset', ' NE', ' failed FCP'];0.2857142857142857;0.5;0.36363636363636365;{'surviving triplex', 'NE'};{'failed FCP', 'FCP processor', 'single voted VMEbus reset', 'synced', 'loss of the FCP'};{'VMEbus reset', 'FCP'};;
+1;"If the failed FCP processor has not synced in 2.5 seconds after the surviving triplex has detected the loss of the FCP, then the surviving triplex shall, within 1 second, send a single voted VMEbus reset through the NE to the failed FCP
+
+surviving triplex -> Surviving triplex
+VMEbus reset -> VMEbus reset
+FCP -> FCP
+NE -> NE";['FCP processor', ' synced', ' surviving triplex', ' loss', ' voted VMEbus reset', ' NE', ' failed FCP'];0.2857142857142857;0.5;0.36363636363636365;{'surviving triplex', 'NE'};{'voted VMEbus reset', 'failed FCP', 'FCP processor', 'loss', 'synced'};{'VMEbus reset', 'FCP'};;
+2;"If the failed FCP processor has not synced in 2.5 seconds after the surviving triplex has detected the loss of the FCP, then the surviving triplex shall, within 1 second, send a single voted VMEbus reset through the NE to the failed FCP
+
+surviving triplex -> Surviving triplex
+VMEbus reset -> VMEbus reset
+FCP -> FCP
+NE -> NE";['FCP processor', ' synced', ' surviving triplex', ' loss of the FCP', ' single voted VMEbus reset', ' NE', ' failed FCP'];0.2857142857142857;0.5;0.36363636363636365;{'surviving triplex', 'NE'};{'failed FCP', 'FCP processor', 'single voted VMEbus reset', 'synced', 'loss of the FCP'};{'VMEbus reset', 'FCP'};;
+0;"Upon voted reset, the NE shall bypass ISYNC and enter TNR directly.
+
+TNR -> TNR
+ISYNC -> ISYNC
+NE -> NE
+voted reset -> Voted reset";['voted reset', ' NE', ' ISYNC', ' TNR'];1.0;1.0;1.0;{'NE', 'ISYNC', 'TNR', 'voted reset'};set();set();;
+1;"Upon voted reset, the NE shall bypass ISYNC and enter TNR directly.
+
+TNR -> TNR
+ISYNC -> ISYNC
+NE -> NE
+voted reset -> Voted reset";['voted reset', ' NE', ' ISYNC', ' TNR'];1.0;1.0;1.0;{'NE', 'ISYNC', 'TNR', 'voted reset'};set();set();;
+2;"Upon voted reset, the NE shall bypass ISYNC and enter TNR directly.
+
+TNR -> TNR
+ISYNC -> ISYNC
+NE -> NE
+voted reset -> Voted reset";['voted reset', ' NE', ' ISYNC', ' TNR'];1.0;1.0;1.0;{'NE', 'ISYNC', 'TNR', 'voted reset'};set();set();;
+0;"The FCP shall wait up to 15 seconds, after configuring the ICP redundant processor groups, for communication to start from the ICP. The application can use this time on the ICP to initialize I/O boards.
+
+redundant processor groups -> Virtual Group
+I/O boards -> I/O boards
+FCP -> FCP
+ICP -> ICP";['FCP', ' ICP', ' redundant processor groups', ' I/O boards'];1.0;1.0;1.0;{'I/O boards', 'FCP', 'redundant processor groups', 'ICP'};set();set();;
+1;"The FCP shall wait up to 15 seconds, after configuring the ICP redundant processor groups, for communication to start from the ICP. The application can use this time on the ICP to initialize I/O boards.
+
+redundant processor groups -> Virtual Group
+I/O boards -> I/O boards
+FCP -> FCP
+ICP -> ICP";['FCP', ' ICP', ' redundant processor groups', ' I/O boards'];1.0;1.0;1.0;{'I/O boards', 'FCP', 'redundant processor groups', 'ICP'};set();set();;
+2;"The FCP shall wait up to 15 seconds, after configuring the ICP redundant processor groups, for communication to start from the ICP. The application can use this time on the ICP to initialize I/O boards.
+
+redundant processor groups -> Virtual Group
+I/O boards -> I/O boards
+FCP -> FCP
+ICP -> ICP";['FCP', ' ICP', ' redundant processor groups', ' communication', ' application', ' initialize', ' I/O boards'];0.5714285714285714;1.0;0.7272727272727273;{'I/O boards', 'FCP', 'redundant processor groups', 'ICP'};{'initialize', 'application', 'communication'};set();;
+0;"Boot phase, from hardware reset to starting of the 50 Hz timer, shall take no longer than 1.5 minutes.
+
+Boot phase -> Start-up
+hardware reset -> Hardware reset";['Boot phase', ' hardware reset', ' 50 Hz timer'];0.6666666666666666;1.0;0.8;{'hardware reset', 'Boot phase'};{'50 Hz timer'};set();;
+1;"Boot phase, from hardware reset to starting of the 50 Hz timer, shall take no longer than 1.5 minutes.
+
+Boot phase -> Start-up
+hardware reset -> Hardware reset";['Boot phase', ' 50 Hz timer'];0.5;0.5;0.5;{'Boot phase'};{'50 Hz timer'};{'hardware reset'};;
+2;"Boot phase, from hardware reset to starting of the 50 Hz timer, shall take no longer than 1.5 minutes.
+
+Boot phase -> Start-up
+hardware reset -> Hardware reset";['Boot phase', ' 50 Hz timer'];0.5;0.5;0.5;{'Boot phase'};{'50 Hz timer'};{'hardware reset'};;
+0;"System Initialization shall, when all other activities are completed, start the 50 Hz timer and enable the timer interrupt. This will allow the interrupt handler to initiate normal activities.
+
+System Initialization -> Start-up
+timer interrupt -> Timer interrupt
+interrupt handler -> ISR";['50 Hz timer', ' timer interrupt', ' interrupt handler', ' normal activities'];0.5;0.6666666666666666;0.5714285714285715;{'interrupt handler', 'timer interrupt'};{'50 Hz timer', 'normal activities'};{'System Initialization'};;
+1;"System Initialization shall, when all other activities are completed, start the 50 Hz timer and enable the timer interrupt. This will allow the interrupt handler to initiate normal activities.
+
+System Initialization -> Start-up
+timer interrupt -> Timer interrupt
+interrupt handler -> ISR";['System Initialization', ' 50 Hz timer', ' timer interrupt', ' interrupt handler', ' normal activities'];0.6;1.0;0.7499999999999999;{'System Initialization', 'interrupt handler', 'timer interrupt'};{'50 Hz timer', 'normal activities'};set();;
+2;"System Initialization shall, when all other activities are completed, start the 50 Hz timer and enable the timer interrupt. This will allow the interrupt handler to initiate normal activities.
+
+System Initialization -> Start-up
+timer interrupt -> Timer interrupt
+interrupt handler -> ISR";['50 Hz timer', ' timer interrupt', ' interrupt handler'];0.6666666666666666;0.6666666666666666;0.6666666666666666;{'interrupt handler', 'timer interrupt'};{'50 Hz timer'};{'System Initialization'};;
+Averages;;;0.6574603174603174;0.7888888888888889;0.7172031996878352;;;;;

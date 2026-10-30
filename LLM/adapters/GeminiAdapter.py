@@ -32,10 +32,10 @@ MODEL_ID = "gemini-3.5-flash-lite"
 class GeminiAdapter(LLMAdapterInterface):
 
     def __init__(
-        self,
-        sys_prompt: str,
-        model_id: str = MODEL_ID,
-        shot_examples: list[tuple[str, str]] = None,
+            self,
+            sys_prompt: str,
+            model_id: str = MODEL_ID,
+            shot_examples: list[tuple[str, str]] = None,
     ):
         # log_thread_safe(f"---\nUSING {model_id}\n---")
         self._model_id = model_id
@@ -45,8 +45,14 @@ class GeminiAdapter(LLMAdapterInterface):
         )
 
     @staticmethod
+    def get_instance(sys_prompt: str,
+                     model_id: str = MODEL_ID,
+                     shot_examples: list[tuple[str, str]] = None, ) -> "GeminiAdapter":
+        return GeminiAdapter(sys_prompt, model_id, shot_examples)
+
+    @staticmethod
     def init_chat(
-        sys_prompt: str, history: list[Content] | None, model_id: str = MODEL_ID
+            sys_prompt: str, history: list[Content] | None, model_id: str = MODEL_ID
     ) -> tuple[Chat, Client]:
         client = init_genai_client_APIs()
         config = GenerateContentConfig(
@@ -68,10 +74,10 @@ class GeminiAdapter(LLMAdapterInterface):
         return ret
 
     def make_a_query(
-        self,
-        prompt: str,
+            self,
+            prompt: str,
             response_schema: Type[BaseModel] | None = None,
-        max_new_tokens: int = 200,
+            max_new_tokens: int = 200,
     ) -> str | Any:
         response = None
         last_exception: Exception = Exception(
@@ -85,7 +91,6 @@ class GeminiAdapter(LLMAdapterInterface):
                 response_schema=response_schema,
             )
 
-
         for _ in range(NUM_API_KEYS * MAX_ATTEMPTS):
 
             try:
@@ -94,7 +99,7 @@ class GeminiAdapter(LLMAdapterInterface):
             except errors.ClientError as e:
 
                 if (
-                    e.code == 429 or e.code == 400
+                        e.code == 429 or e.code == 400
                 ):  # Usage limit reached (429 RESOURCE_EXHAUSTED) or invalid API key (400 INVALID_ARGUMENT)
                     # Change API key and continue the loop
                     APIKeysManager.change_api_key()
@@ -114,10 +119,10 @@ class GeminiAdapter(LLMAdapterInterface):
             raise last_exception
 
         log_thread_safe(GLOBAL_LOG, __file__, LogType.LLM_OUTPUT,
-            "[ModelWrapper]\n"
-            f"PROMPT: {prompt}\n\n"
-            f"RESPONSE: {response.text if response and response.parts and response.text else ''}"
-        )
+                        "[ModelWrapper]\n"
+                        f"PROMPT: {prompt}\n\n"
+                        f"RESPONSE: {response.text if response and response.parts and response.text else ''}"
+                        )
 
         if response_schema:
             return response.parsed

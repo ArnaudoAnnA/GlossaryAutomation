@@ -45,12 +45,18 @@ terms in some form of ontology, including a glossary, data dictionary, or simila
 the reader of a need statement or requirement statement to know exactly what the writer’s 
 intended meaning was when the word was chosen.
 """
-USER_PROMPT = ("Find the violations to INCOSE R4. "
+USER_PROMPT_VIOLATIONS = ("Find the violations to INCOSE R4. "
                 "Just report (verbatim) the strings that are related to a violation. "
                 "The strings should be separated by commas. "
                 "Find the violations in this requirement: {requirement_text}")
+USER_PROMPT_DEFINITIONS = None  # TODO
 
-TEST_PROJECTS = [DatasetProject.NASA, DatasetProject.INVENTORY, DatasetProject.SCEAPI]
+
+TEST_PROJECTS = [
+    DatasetProject.NASA,
+    DatasetProject.INVENTORY,
+    DatasetProject.SCEAPI
+]
 REQUIREMENTS_PER_PROJECT = 5
 """The number of requirements randomly extracted for each project in the test dataset."""
 COLLECTION_NAME: str = "few_shot_examples"

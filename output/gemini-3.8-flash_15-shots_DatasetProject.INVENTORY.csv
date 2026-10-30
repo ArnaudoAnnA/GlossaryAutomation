@@ -1,0 +1,59 @@
+Run;Input_requirement;Identified_violations;Precision;Recall;F1-score;TP;FP;FN;Generated_definitions;Cosine_similarities
+0;"When an item is part of the unique items category, the system shall not allow modifications to its description
+
+unique items -> Unique Item
+description -> Description";['unique items category'];0.0;0.0;0.0;set();{'unique items category'};{'description', 'unique items'};;
+1;"When an item is part of the unique items category, the system shall not allow modifications to its description
+
+unique items -> Unique Item
+description -> Description";['unique items category'];0.0;0.0;0.0;set();{'unique items category'};{'description', 'unique items'};;
+2;"When an item is part of the unique items category, the system shall not allow modifications to its description
+
+unique items -> Unique Item
+description -> Description";['unique items category'];0.0;0.0;0.0;set();{'unique items category'};{'description', 'unique items'};;
+0;"During data validation, all validation errors must be reported to the actor.
+
+actor -> Actor
+validation errors -> Validation Error";['validation errors', ' actor'];1.0;1.0;1.0;{'validation errors', 'actor'};set();set();;
+1;"During data validation, all validation errors must be reported to the actor.
+
+actor -> Actor
+validation errors -> Validation Error";['data validation', ' validation errors', ' actor'];0.6666666666666666;1.0;0.8;{'validation errors', 'actor'};{'data validation'};set();;
+2;"During data validation, all validation errors must be reported to the actor.
+
+actor -> Actor
+validation errors -> Validation Error";['actor'];1.0;0.5;0.6666666666666666;{'actor'};set();{'validation errors'};;
+0;"When an under $5 item is selected, the system shall provide a search error  to the user
+
+under 5$ item -> Under 5$ item
+search error -> Search Error";['under $5 item', ' search error'];0.5;0.5;0.5;{'search error'};{'under $5 item'};{'under 5$ item'};;
+1;"When an under $5 item is selected, the system shall provide a search error  to the user
+
+under 5$ item -> Under 5$ item
+search error -> Search Error";['under $5 item', ' search error'];0.5;0.5;0.5;{'search error'};{'under $5 item'};{'under 5$ item'};;
+2;"When an under $5 item is selected, the system shall provide a search error  to the user
+
+under 5$ item -> Under 5$ item
+search error -> Search Error";['search error'];1.0;0.5;0.6666666666666666;{'search error'};set();{'under 5$ item'};;
+0;"In case of a sale, the system shall automatically apply the discount on purchases via QuickBooks POS
+
+POS -> POS";['QuickBooks POS'];0.0;0.0;0.0;set();{'QuickBooks POS'};{'POS'};;
+1;"In case of a sale, the system shall automatically apply the discount on purchases via QuickBooks POS
+
+POS -> POS";['discount', ' purchases', ' QuickBooks POS'];0.0;0.0;0.0;set();{'QuickBooks POS', 'discount', 'purchases'};{'POS'};;
+2;"In case of a sale, the system shall automatically apply the discount on purchases via QuickBooks POS
+
+POS -> POS";['QuickBooks POS'];0.0;0.0;0.0;set();{'QuickBooks POS'};{'POS'};;
+0;"When a stock item Category is updated, the corresponding item is updated in QuickBooks POS
+
+stock item -> Stock Item
+POS -> POS";['stock item Category', ' QuickBooks POS'];0.0;0.0;0.0;set();{'QuickBooks POS', 'stock item Category'};{'POS', 'stock item'};;
+1;"When a stock item Category is updated, the corresponding item is updated in QuickBooks POS
+
+stock item -> Stock Item
+POS -> POS";['stock item Category', ' QuickBooks POS'];0.0;0.0;0.0;set();{'QuickBooks POS', 'stock item Category'};{'POS', 'stock item'};;
+2;"When a stock item Category is updated, the corresponding item is updated in QuickBooks POS
+
+stock item -> Stock Item
+POS -> POS";['stock item Category', ' QuickBooks POS'];0.0;0.0;0.0;set();{'QuickBooks POS', 'stock item Category'};{'POS', 'stock item'};;
+Averages;;;0.31111111111111106;0.26666666666666666;0.28717948717948716;;;;;

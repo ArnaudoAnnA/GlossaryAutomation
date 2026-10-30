@@ -9,11 +9,17 @@ class LLMAdapterInterface(ABC):
 
     @abstractmethod
     def __init__(
-        self,
-        model_id: str,
-        sys_prompt: str = "",
-        shot_examples: list[dict[str, str]] | None = None,
+            self,
+            model_id: str,
+            sys_prompt: str = "",
+            shot_examples: list[dict[str, str]] | None = None,
     ) -> None:
+        pass
+
+    @staticmethod
+    def get_instance(model_id: str,
+                     sys_prompt: str = "",
+                     shot_examples: list[dict[str, str]] | None = None, ) -> "LLMAdapterInterface":
         pass
 
     @staticmethod
@@ -25,10 +31,10 @@ class LLMAdapterInterface(ABC):
 
     @abstractmethod
     def make_a_query(
-        self,
-        prompt: str,
-        response_schema: Type[BaseModel] | None = None,
-        max_new_tokens: int = 200,
+            self,
+            prompt: str,
+            response_schema: Type[BaseModel] | None = None,
+            max_new_tokens: int = 200,
     ) -> str | Any:
         pass
 
@@ -39,10 +45,10 @@ class LLMProvider(Enum):
 
 
 def get_llm_adapter(
-    model_id: str,
-    model_provider: LLMProvider,
-    sys_prompt: str,
-    shot_examples: list[Any] | None,
+        model_id: str,
+        model_provider: LLMProvider,
+        sys_prompt: str,
+        shot_examples: list[Any] | None,
 ) -> LLMAdapterInterface:
     if not isinstance(model_provider, LLMProvider):
         raise ValueError(f"Unknown provider: {model_provider}")
@@ -54,6 +60,6 @@ def get_llm_adapter(
 
     if model_provider == LLMProvider.HUGGINGFACE:
         from LLM.adapters.HuggingFaceAdapter import HuggingFaceAdapter
-        return HuggingFaceAdapter(model_id=model_id, sys_prompt=sys_prompt, shot_examples=shot_examples)
+        return HuggingFaceAdapter.get_instance(model_id=model_id, sys_prompt=sys_prompt, shot_examples=shot_examples)
 
     raise ValueError(f"Provider not implemented: {model_provider}")

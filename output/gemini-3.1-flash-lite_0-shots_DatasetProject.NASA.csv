@@ -1,0 +1,98 @@
+Run;Input_requirement;Identified_violations;Precision;Recall;F1-score;TP;FP;FN;Generated_definitions;Cosine_similarities
+0;"The FCP shall wait up to 2.5 seconds (from the sending of the FCP Ready Sync) for the ICP Ready signal. Note that FTSS will not fail the isolated hardware region if this signal is not received within this time. FTSS will wait until the normal ICP presence test fails.
+
+isolated hardware region -> Fault Containment Region (FCR)
+ICP Ready signal -> ICP Ready signal
+FCP -> FCP
+FCP Ready Sync -> FCP Ready Sync
+ICP -> ICP
+FTSS -> FTSS
+presence test -> CBIT";['Based on INCOSE Rule 4 (which mandates the definition of terms to avoid ambiguity', ' synonyms', ' and shades of meaning in requirement statements)', ' the following terms and phrases in the requirement represent potential violations (ambiguous', ' contextual', ' or undefined terms requiring an ontology', ' glossary', ' or data dictionary):\n\nFCP', ' wait up to', ' FCP Ready Sync', ' ICP Ready signal', ' FTSS', ' fail', ' isolated hardware region', ' signal', ' normal ICP presence test fails'];0.25;0.5714285714285714;0.34782608695652173;{'isolated hardware region', 'FTSS', 'ICP Ready signal', 'FCP Ready Sync'};{'fail', 'and shades of meaning in requirement statements)', 'contextual', 'or undefined terms requiring an ontology', 'the following terms and phrases in the requirement represent potential violations (ambiguous', 'signal', 'glossary', 'synonyms', 'or data dictionary):\n\nFCP', 'normal ICP presence test fails', 'wait up to', 'Based on INCOSE Rule 4 (which mandates the definition of terms to avoid ambiguity'};{'ICP', 'FCP', 'presence test'};;
+1;"The FCP shall wait up to 2.5 seconds (from the sending of the FCP Ready Sync) for the ICP Ready signal. Note that FTSS will not fail the isolated hardware region if this signal is not received within this time. FTSS will wait until the normal ICP presence test fails.
+
+isolated hardware region -> Fault Containment Region (FCR)
+ICP Ready signal -> ICP Ready signal
+FCP -> FCP
+FCP Ready Sync -> FCP Ready Sync
+ICP -> ICP
+FTSS -> FTSS
+presence test -> CBIT";['wait up to 2.5 seconds', ' Note that FTSS will not fail the isolated hardware region if this signal is not received within this time. FTSS will wait until the normal ICP presence test fails'];0.0;0.0;0.0;set();{'wait up to 2.5 seconds', 'Note that FTSS will not fail the isolated hardware region if this signal is not received within this time. FTSS will wait until the normal ICP presence test fails'};{'ICP', 'FCP Ready Sync', 'FCP', 'presence test', 'isolated hardware region', 'FTSS', 'ICP Ready signal'};;
+2;"The FCP shall wait up to 2.5 seconds (from the sending of the FCP Ready Sync) for the ICP Ready signal. Note that FTSS will not fail the isolated hardware region if this signal is not received within this time. FTSS will wait until the normal ICP presence test fails.
+
+isolated hardware region -> Fault Containment Region (FCR)
+ICP Ready signal -> ICP Ready signal
+FCP -> FCP
+FCP Ready Sync -> FCP Ready Sync
+ICP -> ICP
+FTSS -> FTSS
+presence test -> CBIT";['The', ' Note', ' will'];0.0;0.0;0.0;set();{'will', 'The', 'Note'};{'ICP', 'FCP Ready Sync', 'FCP', 'presence test', 'isolated hardware region', 'FTSS', 'ICP Ready signal'};;
+0;"The scoreboard shall determine when messages are ready to be sent.
+
+scoreboard -> Scoreboard
+messages -> Telemetry messages";['ready', ' messages'];0.5;0.5;0.5;{'messages'};{'ready'};{'scoreboard'};;
+1;"The scoreboard shall determine when messages are ready to be sent.
+
+scoreboard -> Scoreboard
+messages -> Telemetry messages";['ready', ' messages'];0.5;0.5;0.5;{'messages'};{'ready'};{'scoreboard'};;
+2;"The scoreboard shall determine when messages are ready to be sent.
+
+scoreboard -> Scoreboard
+messages -> Telemetry messages";['messages', ' ready to be sent'];0.5;0.5;0.5;{'messages'};{'ready to be sent'};{'scoreboard'};;
+0;"If any of the FCP processors are not coordinated in time, System Initialization in the surviving triplex shall attempt to achieve synchronization with the failed FCP.
+
+synchronization -> Lost soul sync
+FCP -> FCP
+System Initialization -> Start-up
+surviving triplex -> Surviving triplex
+not coordinated in time -> TNR mode";['If any', ' processors', ' synchronized', ' coordinated in time', ' System Initialization', ' surviving triplex', ' failed FCP'];0.2857142857142857;0.4;0.3333333333333333;{'System Initialization', 'surviving triplex'};{'processors', 'synchronized', 'If any', 'failed FCP', 'coordinated in time'};{'FCP', 'not coordinated in time', 'synchronization'};;
+1;"If any of the FCP processors are not coordinated in time, System Initialization in the surviving triplex shall attempt to achieve synchronization with the failed FCP.
+
+synchronization -> Lost soul sync
+FCP -> FCP
+System Initialization -> Start-up
+surviving triplex -> Surviving triplex
+not coordinated in time -> TNR mode";['FCP processors', ' System Initialization', ' surviving triplex', ' failed FCP'];0.5;0.4;0.4444444444444445;{'System Initialization', 'surviving triplex'};{'FCP processors', 'failed FCP'};{'FCP', 'not coordinated in time', 'synchronization'};;
+2;"If any of the FCP processors are not coordinated in time, System Initialization in the surviving triplex shall attempt to achieve synchronization with the failed FCP.
+
+synchronization -> Lost soul sync
+FCP -> FCP
+System Initialization -> Start-up
+surviving triplex -> Surviving triplex
+not coordinated in time -> TNR mode";['FCP processors', ' System Initialization', ' surviving triplex', ' failed FCP'];0.5;0.4;0.4444444444444445;{'System Initialization', 'surviving triplex'};{'FCP processors', 'failed FCP'};{'FCP', 'not coordinated in time', 'synchronization'};;
+0;"The FCP shall wait up to 15 seconds, after configuring the ICP redundant processor groups, for communication to start from the ICP. The application can use this time on the ICP to initialize I/O boards.
+
+redundant processor groups -> Virtual Group
+I/O boards -> I/O boards
+FCP -> FCP
+ICP -> ICP";['The FCP shall wait up to 15 seconds', ' after configuring the ICP redundant processor groups', ' for communication to start from the ICP.', ' The application can use this time on the ICP to initialize I/O boards.'];0.0;0.0;0.0;set();{'The FCP shall wait up to 15 seconds', 'for communication to start from the ICP.', 'The application can use this time on the ICP to initialize I/O boards.', 'after configuring the ICP redundant processor groups'};{'ICP', 'FCP', 'I/O boards', 'redundant processor groups'};;
+1;"The FCP shall wait up to 15 seconds, after configuring the ICP redundant processor groups, for communication to start from the ICP. The application can use this time on the ICP to initialize I/O boards.
+
+redundant processor groups -> Virtual Group
+I/O boards -> I/O boards
+FCP -> FCP
+ICP -> ICP";['wait up to 15 seconds', ' initialize I/O boards'];0.0;0.0;0.0;set();{'wait up to 15 seconds', 'initialize I/O boards'};{'ICP', 'FCP', 'I/O boards', 'redundant processor groups'};;
+2;"The FCP shall wait up to 15 seconds, after configuring the ICP redundant processor groups, for communication to start from the ICP. The application can use this time on the ICP to initialize I/O boards.
+
+redundant processor groups -> Virtual Group
+I/O boards -> I/O boards
+FCP -> FCP
+ICP -> ICP";['The FCP shall wait up to 15 seconds', ' after configuring the ICP redundant processor groups', ' for communication to start from the ICP.', ' The application can use this time on the ICP to initialize I/O boards.'];0.0;0.0;0.0;set();{'The FCP shall wait up to 15 seconds', 'for communication to start from the ICP.', 'The application can use this time on the ICP to initialize I/O boards.', 'after configuring the ICP redundant processor groups'};{'ICP', 'FCP', 'I/O boards', 'redundant processor groups'};;
+0;"The FCP shall configure each ICP as a simplex VG.
+
+simplex VG -> Simplex
+FCP -> FCP
+ICP -> ICP
+VG -> Virtual Group";['FCP', ' ICP', ' simplex VG'];1.0;0.75;0.8571428571428571;{'simplex VG', 'ICP', 'FCP'};set();{'VG'};;
+1;"The FCP shall configure each ICP as a simplex VG.
+
+simplex VG -> Simplex
+FCP -> FCP
+ICP -> ICP
+VG -> Virtual Group";['FCP', ' ICP', ' simplex VG'];1.0;0.75;0.8571428571428571;{'simplex VG', 'ICP', 'FCP'};set();{'VG'};;
+2;"The FCP shall configure each ICP as a simplex VG.
+
+simplex VG -> Simplex
+FCP -> FCP
+ICP -> ICP
+VG -> Virtual Group";['FCP', ' ICP', ' simplex VG'];1.0;0.75;0.8571428571428571;{'simplex VG', 'ICP', 'FCP'};set();{'VG'};;
+Averages;;;0.4023809523809524;0.36809523809523803;0.384475248690329;;;;;

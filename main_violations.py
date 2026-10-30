@@ -4,7 +4,7 @@ from pathlib import Path
 
 from LLM.adapters.interface import get_llm_adapter
 from RAG.initialize_rag import get_rag_manager
-from constants import TEST_PROJECTS, LLMs, COLLECTION_NAME, SYS_PROMPT, REQUIREMENTS_PER_PROJECT, SHOT_EXAMPLES, REPEATED_RUNS, OUTPUT_FILE_NAME, OUTPUT_DIR, OUTPUT_FILE_HEADER, USER_PROMPT, FAILED_RUNS_FILE_NAME
+from constants import TEST_PROJECTS, LLMs, COLLECTION_NAME, SYS_PROMPT, REQUIREMENTS_PER_PROJECT, SHOT_EXAMPLES, REPEATED_RUNS, OUTPUT_FILE_NAME, OUTPUT_DIR, OUTPUT_FILE_HEADER, USER_PROMPT_VIOLATIONS, FAILED_RUNS_FILE_NAME
 from dataset.index import get_project_path, ALL_PROJECTS, get_random_requirements
 
 
@@ -87,6 +87,10 @@ if __name__ == "__main__":
                 print(f"\t\t{n_examples}-shot")
                 output_file = Path(OUTPUT_DIR) / OUTPUT_FILE_NAME.format(shots=n_examples, project=project_name, llm=llm_info[0].replace("/", "_"))
 
+                if output_file.exists():
+                    print(f"\t\t\t{output_file} already exists => skipping")
+                    continue # Skip this configuration
+
                 with open(output_file, "w") as file:
                     writer = csv.writer(file, delimiter=";")
                     writer.writerow(OUTPUT_FILE_HEADER)
@@ -106,16 +110,18 @@ if __name__ == "__main__":
                             # -------------------------------------------------------------------------------------------
 
                             # STEP 1: violations identification
-                            r4_violations: list[str] = llm.make_a_query(USER_PROMPT.format(requirement_text=requirement.requirement_text)).split(",")
+                            r4_violations: list[str] = llm.make_a_query(USER_PROMPT_VIOLATIONS.format(requirement_text=requirement.requirement_text)).split(",")
                             precision, recall, f1_score, tp, fp, fn = compute_metrics(set(r4_violations), set([t.term_to_substitute for t in requirement.r4_violations]))
 
                             # STEP 2: definitions generations
-                            # TODO
+                            definitions = []
+                            for item in tp:
+                                definition = llm.make_a_query()
 
                             with open(output_file, "a") as file:
                                 writer = csv.writer(file, delimiter=";")
                                 writer.writerow([independent_run, requirement.__str__(), r4_violations, precision, recall, f1_score, tp, fp, fn, "", ""])
-
+                                file.flush()
 
 
                         except Exception as e:
@@ -123,11 +129,18 @@ if __name__ == "__main__":
                                   f"llm_name = {llm_info[0]},  "
                                   f"n_examples = {n_examples}, "
                                   f"requirement = {requirement.requirement_text}, "
-                                  f"independent_run = {independent_run})")
+                                  f"independent_run = {independent_run})\n")
                             print(f"ERROR: Impossible to obtain results for this configuration: {failed_run}\n")
                             with open(Path(OUTPUT_DIR) / FAILED_RUNS_FILE_NAME, "a") as file:
                                 file.write(failed_run)
+                                file.flush()
                             traceback.print_exc()
+
+
+
+
+
+
 
 
 
