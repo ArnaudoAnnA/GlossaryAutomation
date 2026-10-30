@@ -62,9 +62,6 @@ if __name__ == "__main__":
             
             clear_dataset()          
     """
-    from huggingface_hub import login
-    login(token="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")
-
     rag_manager = get_rag_manager()
 
     with open(Path(OUTPUT_DIR) / FAILED_RUNS_FILE_NAME, "w") as file:
